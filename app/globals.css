@@ -24,3 +24,36 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.hero-bg-container {
+  background-image: url("/assets/BG-hero.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: #030712;
+}
+
+.hero-vignette {
+  background:
+    radial-gradient(circle at 50% 35%, rgba(38, 64, 124, 0.25), rgba(3, 7, 18, 0.72) 70%),
+    linear-gradient(180deg, rgba(3, 7, 18, 0.2) 0%, rgba(3, 7, 18, 0.75) 100%);
+}
+
+
+.glass-panel {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  box-shadow: 0 12px 40px rgba(6, 12, 32, 0.6);
+  backdrop-filter: blur(16px);
+}
+
+.glass-card {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(123, 143, 255, 0.05));
+  box-shadow: 0 12px 30px rgba(10, 20, 40, 0.55);
+  backdrop-filter: blur(14px);
+}
+
+.countdown-font {
+  font-family: Consolas, "Courier New", monospace;
+}

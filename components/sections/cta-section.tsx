@@ -12,7 +12,7 @@ export default function CtaSection() {
         
         <h2 className="text-5xl font-bold tracking-tight mb-6">Ready to Join Us?</h2>
         <p className="text-xl text-gray-400 mb-10">
-          Secure your spot at the universe's most anticipated tech gathering.
+          Secure your spot at the universe&apos;s most anticipated tech gathering.
         </p>
         <button className="px-10 py-5 bg-white text-black text-lg font-bold rounded-full hover:bg-gray-200 transition-colors shadow-[0_0_40px_rgba(255,255,255,0.2)]">
           Register Now
