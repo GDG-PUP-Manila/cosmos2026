@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const navItems = [
   { label: "Home", href: "#hero" },
@@ -7,14 +10,54 @@ const navItems = [
   { label: "FAQ", href: "#faq" },
 ];
 
-const countdown = [
-  { value: "08", label: "DAYS" },
-  { value: "21", label: "HOURS" },
-  { value: "50", label: "MINUTES" },
-  { value: "50", label: "SECONDS", active: true },
-];
+const EVENT_START_TIMESTAMP = new Date("2026-03-24T09:00:00+08:00").getTime();
+
+type CountdownState = {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+};
+
+function getCountdownState(nowMs: number): CountdownState {
+  const remainingMs = Math.max(0, EVENT_START_TIMESTAMP - nowMs);
+  const totalSeconds = Math.floor(remainingMs / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  return { days, hours, minutes, seconds };
+}
+
+function formatCountdownUnit(value: number): string {
+  return value.toString().padStart(2, "0");
+}
 
 export default function HeroSection() {
+  const [countdown, setCountdown] = useState<CountdownState>({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    const updateCountdown = () => setCountdown(getCountdownState(Date.now()));
+
+    updateCountdown();
+    const timerId = window.setInterval(updateCountdown, 1000);
+
+    return () => window.clearInterval(timerId);
+  }, []);
+
+  const countdownItems = [
+    { value: formatCountdownUnit(countdown.days), label: "DAYS" },
+    { value: formatCountdownUnit(countdown.hours), label: "HOURS" },
+    { value: formatCountdownUnit(countdown.minutes), label: "MINUTES" },
+    { value: formatCountdownUnit(countdown.seconds), label: "SECONDS", active: true },
+  ];
+
   return (
     <section
       id="hero"
@@ -117,7 +160,7 @@ export default function HeroSection() {
           </div>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4 sm:gap-5">
-            {countdown.map((item) => (
+            {countdownItems.map((item) => (
               <div
                 key={item.label}
                 className={`countdown-card flex w-[128px] flex-col items-center justify-center px-4 py-4 text-center ${item.active ? "countdown-card-active" : ""}`}
