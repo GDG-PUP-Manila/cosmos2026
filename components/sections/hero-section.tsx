@@ -70,8 +70,25 @@ export default function HeroSection() {
       <div className="relative z-10 flex min-h-[100svh] flex-col">
         <nav className="fixed inset-x-0 top-6 z-50">
           <div className="mx-auto w-full max-w-6xl px-6">
-            <div className="nav-pill flex items-center justify-between gap-6 rounded-full px-6 py-3 md:px-8 md:py-3.5">
-              <div className="flex items-center gap-3">
+            <div
+              className="relative flex items-center justify-between gap-6 rounded-full border px-6 py-3 backdrop-blur-[18px] md:px-8 md:py-3.5"
+              style={{
+                borderColor: "rgba(170, 195, 255, 0.4)",
+                background:
+                  "linear-gradient(180deg, rgba(38, 55, 115, 0.8) 0%, rgba(16, 24, 58, 0.92) 60%, rgba(10, 16, 40, 0.98) 100%)",
+                boxShadow:
+                  "0 12px 30px rgba(6, 10, 30, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -6px 18px rgba(3, 7, 18, 0.7)",
+              }}
+            >
+              <span
+                className="pointer-events-none absolute inset-0 rounded-full"
+                style={{
+                  boxShadow: "0 0 0 1px rgba(120, 160, 255, 0.35), 0 0 22px rgba(120, 160, 255, 0.25)",
+                  opacity: 0.7,
+                }}
+              />
+
+              <div className="relative z-10 flex items-center gap-3">
                 <Image
                   src="/assets/nav-logo.svg"
                   alt="COSMOS GDG PUP"
@@ -82,7 +99,7 @@ export default function HeroSection() {
                 />
               </div>
 
-              <ul className="hidden items-center gap-4 text-[12px] uppercase tracking-[0.28em] text-white/85 md:flex">
+              <ul className="relative z-10 hidden items-center gap-4 text-[12px] uppercase tracking-[0.28em] text-white/85 md:flex">
                 {navItems.map((item, index) => (
                   <li key={item.label} className="flex items-center gap-3">
                     <a className="transition hover:text-white" href={item.href}>
@@ -109,7 +126,14 @@ export default function HeroSection() {
                 ))}
               </ul>
 
-              <button className="nav-register rounded-full px-5 py-2 text-[11px] uppercase tracking-[0.26em] text-white/85 transition hover:border-white/80 hover:bg-white/15">
+              <button
+                className="relative z-10 rounded-full border px-5 py-2 text-[11px] uppercase tracking-[0.26em] text-white/85 transition hover:border-white/80 hover:bg-white/15"
+                style={{
+                  borderColor: "rgba(202, 218, 255, 0.6)",
+                  background: "linear-gradient(180deg, rgba(44, 62, 130, 0.55), rgba(18, 27, 64, 0.9))",
+                  boxShadow: "inset 0 1px 0 rgba(255, 255, 255, 0.2)",
+                }}
+              >
                 Register
               </button>
             </div>
@@ -163,12 +187,45 @@ export default function HeroSection() {
             {countdownItems.map((item) => (
               <div
                 key={item.label}
-                className={`countdown-card flex w-[128px] flex-col items-center justify-center px-4 py-4 text-center ${item.active ? "countdown-card-active" : ""}`}
+                className="flex w-[128px] flex-col items-center justify-center px-4 py-4 text-center backdrop-blur-[12px]"
+                style={
+                  item.active
+                    ? {
+                        minHeight: "126px",
+                        borderRadius: "22px",
+                        border: "1px solid rgba(128, 142, 255, 0.72)",
+                        background:
+                          "linear-gradient(180deg, rgba(88, 96, 202, 0.45), rgba(67, 73, 166, 0.42) 45%, rgba(45, 51, 122, 0.58) 100%)",
+                        boxShadow:
+                          "0 0 0 1px rgba(132, 146, 255, 0.34), 0 0 28px rgba(96, 112, 255, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -10px 18px rgba(33, 41, 96, 0.45)",
+                      }
+                    : {
+                        minHeight: "126px",
+                        borderRadius: "22px",
+                        border: "1px solid rgba(132, 156, 214, 0.3)",
+                        background:
+                          "linear-gradient(180deg, rgba(36, 50, 96, 0.38), rgba(14, 22, 50, 0.6) 60%, rgba(7, 13, 34, 0.72) 100%)",
+                        boxShadow:
+                          "inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -10px 20px rgba(6, 10, 26, 0.45), 0 14px 28px rgba(5, 9, 26, 0.42)",
+                      }
+                }
               >
-                <span className={`countdown-font countdown-value ${item.active ? "countdown-value-active" : ""}`}>
+                <span
+                  className="text-[44px] leading-[0.95] font-semibold tracking-[0.08em]"
+                  style={{
+                    fontFamily: "Consolas, 'Courier New', monospace",
+                    color: item.active ? "rgba(144, 159, 255, 0.96)" : "rgba(249, 252, 255, 0.96)",
+                    textShadow: item.active
+                      ? "0 0 16px rgba(130, 146, 255, 0.4)"
+                      : "0 3px 14px rgba(0, 0, 0, 0.35)",
+                  }}
+                >
                   {item.value}
                 </span>
-                <span className={`countdown-label mt-1 ${item.active ? "countdown-label-active" : ""}`}>
+                <span
+                  className="mt-1 text-[16px] tracking-[0.32em]"
+                  style={{ color: item.active ? "rgba(214, 223, 255, 0.88)" : "rgba(220, 232, 255, 0.72)" }}
+                >
                   {item.label}
                 </span>
               </div>
