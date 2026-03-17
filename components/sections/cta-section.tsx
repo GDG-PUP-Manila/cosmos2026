@@ -1,4 +1,7 @@
 export default function CtaSection() {
+  const registrationUrl = process.env.NEXT_PUBLIC_REGISTRATION_URL?.trim() || "#cta";
+  const isExternalRegistrationUrl = /^https?:\/\//i.test(registrationUrl);
+
   return (
     <section id="cta" className="relative py-32 bg-black text-white flex items-center justify-center overflow-hidden">
       {/* Glowing backdrop placeholder */}
@@ -14,9 +17,15 @@ export default function CtaSection() {
         <p className="text-xl text-gray-400 mb-10">
           Secure your spot at the universe&apos;s most anticipated tech gathering.
         </p>
-        <button className="px-10 py-5 bg-white text-black text-lg font-bold rounded-full hover:bg-gray-200 transition-colors shadow-[0_0_40px_rgba(255,255,255,0.2)]">
+        <a
+          href={registrationUrl}
+          target={isExternalRegistrationUrl ? "_blank" : undefined}
+          rel={isExternalRegistrationUrl ? "noopener noreferrer" : undefined}
+          className="inline-flex rounded-full px-10 py-5 text-lg font-bold text-black transition-all duration-300 hover:-translate-y-1 hover:bg-gray-200 hover:shadow-[0_0_55px_rgba(255,255,255,0.35)]"
+          style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(234,241,255,0.96))" }}
+        >
           Register Now
-        </button>
+        </a>
       </div>
     </section>
   );
