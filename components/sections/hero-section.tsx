@@ -1,4 +1,66 @@
+"use client";
+
+import Image from "next/image";
+import { useEffect, useState } from "react";
+
+const navItems = [
+  { label: "Home", href: "#hero" },
+  { label: "About", href: "#about" },
+  { label: "Nexus", href: "#program" },
+  { label: "FAQ", href: "#faq" },
+];
+
+const EVENT_START_TIMESTAMP = new Date("2026-03-24T09:00:00+08:00").getTime();
+
+type CountdownState = {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+};
+
+function getCountdownState(nowMs: number): CountdownState {
+  const remainingMs = Math.max(0, EVENT_START_TIMESTAMP - nowMs);
+  const totalSeconds = Math.floor(remainingMs / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  return { days, hours, minutes, seconds };
+}
+
+function formatCountdownUnit(value: number): string {
+  return value.toString().padStart(2, "0");
+}
+
 export default function HeroSection() {
+  const registrationUrl = process.env.NEXT_PUBLIC_REGISTRATION_URL?.trim() || "#cta";
+  const isExternalRegistrationUrl = /^https?:\/\//i.test(registrationUrl);
+
+  const [countdown, setCountdown] = useState<CountdownState>({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    const updateCountdown = () => setCountdown(getCountdownState(Date.now()));
+
+    updateCountdown();
+    const timerId = window.setInterval(updateCountdown, 1000);
+
+    return () => window.clearInterval(timerId);
+  }, []);
+
+  const countdownItems = [
+    { value: formatCountdownUnit(countdown.days), label: "DAYS" },
+    { value: formatCountdownUnit(countdown.hours), label: "HOURS" },
+    { value: formatCountdownUnit(countdown.minutes), label: "MINUTES" },
+    { value: formatCountdownUnit(countdown.seconds), label: "SECONDS", active: true },
+  ];
+
   return (
     <section id="hero" className="relative min-h-screen flex flex-col items-center pt-8 bg-black text-white overflow-hidden pb-32">
       {/* Top Navigation Placeholder */}
@@ -51,6 +113,7 @@ export default function HeroSection() {
         {/* Floating elements styling hint for future libraries */}
         <div className="absolute bottom-[-100px] w-full h-80 bg-gradient-to-t from-black to-transparent z-0"></div>
       </div>
+
     </section>
   );
 }
