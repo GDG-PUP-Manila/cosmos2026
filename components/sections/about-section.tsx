@@ -1,5 +1,6 @@
 import Image from "next/image";
 import AmbientStarfield from "@/components/ui/ambient-starfield";
+import ParallaxTilt from "@/components/ui/parallax-tilt";
 
 export default function AboutSection() {
   return (
@@ -48,15 +49,22 @@ export default function AboutSection() {
           </div>
           {/* Image */}
           <div className="flex w-full flex-1 justify-center md:justify-end">
-            <div className="group relative w-full max-w-[500px] perspective-1000">
-              <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[126%] w-[118%] -translate-x-1/2 -translate-y-1/2 rounded-[999px] bg-[radial-gradient(ellipse_at_center,rgba(235,246,255,0.46)_0%,rgba(182,220,255,0.26)_42%,transparent_78%)] blur-3xl" />
-              <Image
-                src="/assets/logo-about.svg"
-                alt="Infinity Logo"
-                width={559}
-                height={227}
-                className="relative z-10 w-full max-w-[500px] drop-shadow-[0_0_20px_rgba(206,234,255,0.58)]"
-              />
+            <div className="group relative w-full max-w-[520px]">
+              <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[130%] w-[122%] -translate-x-1/2 -translate-y-1/2 rounded-[999px] bg-[radial-gradient(ellipse_at_center,rgba(235,246,255,0.48)_0%,rgba(182,220,255,0.28)_42%,transparent_78%)] blur-3xl transition-all duration-500 group-hover:scale-110 group-hover:opacity-100" />
+              <ParallaxTilt
+                className="relative z-10 transition-all duration-500 ease-out group-hover:-translate-y-2"
+                maxTilt={11}
+                hoverScale={1.03}
+                perspective={1050}
+              >
+                <Image
+                  src="/assets/logo-about.svg"
+                  alt="Infinity Logo"
+                  width={559}
+                  height={227}
+                  className="relative z-10 w-full max-w-[500px] drop-shadow-[0_0_20px_rgba(206,234,255,0.58)] transition-all duration-500 ease-out group-hover:scale-[1.035] group-hover:drop-shadow-[0_0_34px_rgba(206,234,255,0.84)]"
+                />
+              </ParallaxTilt>
             </div>
           </div>
         </div>
@@ -65,15 +73,22 @@ export default function AboutSection() {
         <div className="flex flex-col items-center gap-12 md:flex-row">
           {/* Image */}
           <div className="order-last flex w-full flex-1 justify-center md:order-first md:justify-start">
-            <div className="group relative w-full max-w-[500px] perspective-1000">
-              <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[98%] w-[94%] -translate-x-1/2 -translate-y-1/2 rounded-[999px] bg-[radial-gradient(ellipse_at_center,rgba(196,230,255,0.26)_0%,rgba(120,190,255,0.12)_42%,transparent_76%)] blur-3xl" />
-              <Image
-                src="/assets/logo1-about.svg"
-                alt="Cosmos Features"
-                width={722}
-                height={680}
-                className="relative z-10 w-full max-w-[500px] drop-shadow-[0_0_14px_rgba(143,209,255,0.32)]"
-              />
+            <div className="group relative w-full max-w-[520px]">
+              <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[118%] w-[106%] -translate-x-1/2 -translate-y-1/2 rounded-[999px] bg-[radial-gradient(ellipse_at_center,rgba(196,230,255,0.34)_0%,rgba(120,190,255,0.16)_42%,transparent_76%)] blur-3xl transition-all duration-500 group-hover:scale-110 group-hover:opacity-100" />
+              <ParallaxTilt
+                className="relative z-10 transition-all duration-500 ease-out group-hover:-translate-y-2"
+                maxTilt={11}
+                hoverScale={1.03}
+                perspective={1050}
+              >
+                <Image
+                  src="/assets/logo1-about.svg"
+                  alt="Cosmos Features"
+                  width={722}
+                  height={680}
+                  className="relative z-10 w-full max-w-[500px] drop-shadow-[0_0_16px_rgba(143,209,255,0.4)] transition-all duration-500 ease-out group-hover:scale-[1.03] group-hover:brightness-[1.08] group-hover:contrast-[1.08] group-hover:drop-shadow-[0_0_34px_rgba(132,204,255,0.75)]"
+                />
+              </ParallaxTilt>
             </div>
           </div>
           {/* Text Content */}
