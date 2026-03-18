@@ -1,9 +1,19 @@
+import Image from "next/image";
 import AmbientStarfield from "@/components/ui/ambient-starfield";
 
 export default function ProgramFlowSection() {
   return (
-    <section id="program" className="relative overflow-hidden bg-black px-4 py-24 text-white">
-      <AmbientStarfield className="z-0" />
+    <section id="program" className="relative overflow-hidden px-4 py-24 text-white">
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/assets/program/BG-program.webp"
+          alt="Program section background"
+          fill
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,7,18,0.62)_0%,rgba(3,7,18,0.36)_45%,rgba(3,7,18,0.62)_100%)]" />
+      </div>
+      <AmbientStarfield className="z-[1]" />
       <div className="relative z-10 mx-auto max-w-4xl">
         <h2 className="mb-16 text-center text-4xl font-bold text-blue-100">Program Flow</h2>
 

@@ -10,7 +10,7 @@ export default function AboutSection() {
     >
       <div className="absolute inset-0 z-0">
         <Image
-          src="/assets/about/BG-about.png"
+          src="/assets/about/BG-about.webp"
           alt="About background"
           fill
           priority

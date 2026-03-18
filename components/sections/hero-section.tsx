@@ -107,7 +107,7 @@ export default function HeroSection() {
       className="relative min-h-[100svh] overflow-hidden bg-[#030712] text-white font-sans [--cosmos-cyan:#9be7ff] [--cosmos-blue:#7aa2ff] [--cosmos-pink:#ff86d1] [--cosmos-purple:#8f7bff]"
     >
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[url('/assets/hero/BG-hero.png')] bg-cover bg-top bg-no-repeat bg-[#020712]" />
+        <div className="absolute inset-0 bg-[url('/assets/hero/BG-hero.webp')] bg-cover bg-top bg-no-repeat bg-[#020712]" />
       </div>
       <AmbientStarfield className="z-[1]" density={1.2} />
       <div className="pointer-events-none absolute inset-0 z-[4] overflow-hidden" aria-hidden="true">

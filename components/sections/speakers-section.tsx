@@ -42,7 +42,7 @@ export default function SpeakersSection() {
     <section id="speakers" className="relative overflow-hidden bg-transparent px-4 py-20 text-white md:px-6">
       <div className="pointer-events-none absolute inset-0 z-0">
         <Image
-          src="/assets/speakers/BG-speakers.png"
+          src="/assets/speakers/BG-speakers.webp"
           alt="Speakers section background"
           fill
           unoptimized
