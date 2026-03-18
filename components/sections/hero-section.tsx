@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState, type MouseEvent } from "react";
+import AmbientStarfield from "@/components/ui/ambient-starfield";
 
 const navItems = [
   { label: "Home", href: "#hero" },
@@ -99,6 +100,7 @@ export default function HeroSection() {
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[url('/assets/BG-hero.png')] bg-cover bg-top bg-no-repeat bg-[#020712]" />
       </div>
+      <AmbientStarfield className="z-[1]" density={1.2} />
 
       <div className="relative flex min-h-[100svh] flex-col">
         <nav className="fixed inset-x-0 top-6 z-[1000]">
