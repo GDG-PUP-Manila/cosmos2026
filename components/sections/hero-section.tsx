@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState, type MouseEvent } from "react";
+import { useEffect, useState, useRef, type MouseEvent } from "react";
 import AmbientStarfield from "@/components/ui/ambient-starfield";
 
 const navItems = [
@@ -55,6 +55,32 @@ export default function HeroSection() {
     seconds: 0,
   });
 
+  const isScrollingProgrammatically = useRef(false);
+  const [isNavVisible, setIsNavVisible] = useState(true);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      if (isScrollingProgrammatically.current) return;
+
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < 50) {
+        setIsNavVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsNavVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        setIsNavVisible(true);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   useEffect(() => {
     const updateCountdown = () => setCountdown(getCountdownState(Date.now()));
 
@@ -80,8 +106,13 @@ export default function HeroSection() {
     const navOffsetPx = sectionId === "hero" ? 0 : 104;
     const targetTop = targetSection.getBoundingClientRect().top + window.scrollY - navOffsetPx;
 
+    isScrollingProgrammatically.current = true;
     window.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
     window.history.replaceState(null, "", hash);
+    
+    setTimeout(() => {
+      isScrollingProgrammatically.current = false;
+    }, 1000);
   };
 
   const handleLogoClick = (event: MouseEvent<HTMLAnchorElement>) => {
@@ -148,7 +179,11 @@ export default function HeroSection() {
       </div>
 
       <div className="relative flex min-h-[100svh] flex-col">
-        <nav className="fixed inset-x-0 top-6 z-[9999]">
+        <nav
+          className={`fixed inset-x-0 top-6 z-[9999] transition-all duration-300 ease-in-out ${
+            isNavVisible ? "translate-y-0 opacity-100" : "-translate-y-[150%] opacity-0 pointer-events-none"
+          }`}
+        >
           <div className="mx-auto w-full max-w-6xl px-6">
             <div
               className="relative flex items-center justify-between gap-6 rounded-full border px-6 py-3 backdrop-blur-[18px] md:px-8 md:py-3.5"

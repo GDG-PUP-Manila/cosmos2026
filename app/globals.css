@@ -313,3 +313,19 @@ body {
     transform: rotate(-42deg);
   }
 }
+
+/* Hide Scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide native cursor when custom cursor is active */
+.custom-cursor-enabled,
+.custom-cursor-enabled * {
+  cursor: none !important;
+}
