@@ -358,7 +358,7 @@ export default function HeroSection() {
               }}
             />
             <span
-              className="relative inline-flex items-center gap-2.5 rounded-full border px-6 py-2.5 text-base font-semibold uppercase tracking-[0.04em] transition-all duration-300 group-hover:border-white group-hover:text-white sm:px-8 sm:text-[22px]"
+              className="relative inline-flex items-center justify-center rounded-full border px-6 py-2.5 text-base font-semibold uppercase tracking-[0.04em] transition-all duration-300 group-hover:border-white group-hover:text-white sm:px-8 sm:text-[22px]"
               style={{
                 borderColor: "rgba(213, 225, 255, 0.85)",
                 background: "linear-gradient(180deg, rgba(23, 34, 82, 0.96), rgba(7, 13, 36, 0.97))",
@@ -366,20 +366,6 @@ export default function HeroSection() {
                 textShadow: "0 0 12px rgba(116, 157, 255, 0.55)",
               }}
             >
-              <svg
-                viewBox="0 0 24 24"
-                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 sm:h-5 sm:w-5"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 12h14M12 6l6 6-6 6"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
               REGISTER NOW
             </span>
           </a>
