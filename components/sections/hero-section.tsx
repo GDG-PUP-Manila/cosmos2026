@@ -11,6 +11,15 @@ const navItems = [
   { label: "FAQ", href: "#faq" },
 ];
 
+const heroComets = [
+  { top: "10%", right: "7%", width: "290px", duration: "20s", delay: "-3.4s", className: "comet-trail" },
+  { top: "23%", right: "64%", width: "220px", duration: "22s", delay: "-7.2s", className: "comet-trail" },
+  { top: "60%", right: "2%", width: "260px", duration: "21s", delay: "-5.1s", className: "comet-trail" },
+  { top: "69%", right: "69%", width: "240px", duration: "23s", delay: "-9.8s", className: "comet-trail" },
+  { top: "43%", right: "26%", width: "170px", duration: "24s", delay: "-4.1s", className: "comet-trail comet-trail-dim" },
+  { top: "54%", right: "46%", width: "145px", duration: "25s", delay: "-11.3s", className: "comet-trail comet-trail-dim" },
+] as const;
+
 const EVENT_START_TIMESTAMP = new Date("2026-03-24T09:00:00+08:00").getTime();
 
 type CountdownState = {
@@ -101,6 +110,42 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-[url('/assets/hero/BG-hero.png')] bg-cover bg-top bg-no-repeat bg-[#020712]" />
       </div>
       <AmbientStarfield className="z-[1]" density={1.2} />
+      <div className="pointer-events-none absolute inset-0 z-[4] overflow-hidden" aria-hidden="true">
+        {heroComets.map((comet) => (
+          <div
+            key={`${comet.top}-${comet.right}-${comet.delay}`}
+            className={comet.className}
+            style={{
+              top: comet.top,
+              right: comet.right,
+              width: comet.width,
+              animationDuration: comet.duration,
+              animationDelay: comet.delay,
+            }}
+          />
+        ))}
+      </div>
+      <div className="pointer-events-none absolute inset-0 z-[5]" aria-hidden="true">
+        <div className="absolute left-[0%] top-[20%] hidden w-56 opacity-95 md:block lg:left-[7%] lg:top-[15%] lg:w-[21rem] xl:left-[9%] xl:w-[24rem] 2xl:w-[26rem]">
+          <Image
+            src="/assets/hero/sparky.webp"
+            alt=""
+            width={512}
+            height={512}
+            className="h-auto w-full astro-float-a drop-shadow-[0_0_28px_rgba(194,235,255,0.82)]"
+          />
+        </div>
+
+        <div className="absolute right-[0%] top-[31%] hidden w-56 opacity-95 md:block lg:right-[7%] lg:top-[27%] lg:w-[22rem] xl:right-[9%] xl:w-[25rem] 2xl:w-[27rem]">
+          <Image
+            src="/assets/hero/cirby.webp"
+            alt=""
+            width={512}
+            height={512}
+            className="h-auto w-full astro-float-b drop-shadow-[0_0_28px_rgba(194,235,255,0.82)]"
+          />
+        </div>
+      </div>
 
       <div className="relative flex min-h-[100svh] flex-col">
         <nav className="fixed inset-x-0 top-6 z-[9999]">
