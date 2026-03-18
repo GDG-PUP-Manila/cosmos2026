@@ -124,3 +124,71 @@ body {
 .countdown-label-active {
   color: rgba(214, 223, 255, 0.88);
 }
+
+@keyframes astro-float-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-1deg) scale(1);
+  }
+  25% {
+    transform: translate3d(18px, -24px, 0) rotate(2deg) scale(1.04);
+  }
+  50% {
+    transform: translate3d(-18px, -48px, 0) rotate(-3deg) scale(1.07);
+  }
+  75% {
+    transform: translate3d(14px, -26px, 0) rotate(2deg) scale(1.04);
+  }
+}
+
+@keyframes astro-float-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(1deg) scale(1);
+  }
+  25% {
+    transform: translate3d(-22px, -20px, 0) rotate(4deg) scale(1.04);
+  }
+  50% {
+    transform: translate3d(20px, -44px, 0) rotate(-3deg) scale(1.08);
+  }
+  75% {
+    transform: translate3d(-14px, -22px, 0) rotate(3deg) scale(1.04);
+  }
+}
+
+@keyframes astro-float-c {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-2deg) scale(1);
+  }
+  25% {
+    transform: translate3d(20px, -18px, 0) rotate(2deg) scale(1.04);
+  }
+  50% {
+    transform: translate3d(-20px, -46px, 0) rotate(-4deg) scale(1.08);
+  }
+  75% {
+    transform: translate3d(16px, -22px, 0) rotate(2deg) scale(1.04);
+  }
+}
+
+.astro-float-a {
+  animation: astro-float-a 28s ease-in-out infinite;
+}
+
+.astro-float-b {
+  animation: astro-float-b 31s ease-in-out infinite;
+}
+
+.astro-float-c {
+  animation: astro-float-c 29s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .astro-float-a,
+  .astro-float-b,
+  .astro-float-c {
+    animation: none;
+  }
+}
