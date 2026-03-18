@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 
 const navItems = [
   { label: "Home", href: "#hero" },
@@ -61,6 +61,36 @@ export default function HeroSection() {
     { value: formatCountdownUnit(countdown.seconds), label: "SECONDS", active: true },
   ];
 
+  const scrollToSection = (hash: string) => {
+    if (!hash.startsWith("#")) return;
+    const sectionId = hash.slice(1);
+    const targetSection = document.getElementById(sectionId);
+    if (!targetSection) return;
+
+    const navOffsetPx = sectionId === "hero" ? 0 : 104;
+    const targetTop = targetSection.getBoundingClientRect().top + window.scrollY - navOffsetPx;
+
+    window.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
+    window.history.replaceState(null, "", hash);
+  };
+
+  const handleLogoClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    scrollToSection("#hero");
+  };
+
+  const handleNavItemClick = (hash: string) => (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    scrollToSection(hash);
+  };
+
+  const handleRegistrationClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (isExternalRegistrationUrl) return;
+    if (!registrationUrl.startsWith("#")) return;
+    event.preventDefault();
+    scrollToSection(registrationUrl);
+  };
+
   return (
     <section
       id="hero"
@@ -91,7 +121,12 @@ export default function HeroSection() {
                 }}
               />
 
-              <div className="relative z-10 flex items-center gap-3">
+              <a
+                href="#hero"
+                onClick={handleLogoClick}
+                className="relative z-10 flex items-center gap-3"
+                aria-label="Go to hero section"
+              >
                 <Image
                   src="/assets/nav-logo.svg"
                   alt="COSMOS GDG PUP"
@@ -100,12 +135,12 @@ export default function HeroSection() {
                   className="h-8 w-auto object-contain md:h-9"
                   priority
                 />
-              </div>
+              </a>
 
               <ul className="relative z-10 hidden items-center gap-4 text-[12px] uppercase tracking-[0.28em] text-white/85 md:flex">
                 {navItems.map((item, index) => (
                   <li key={item.label} className="flex items-center gap-3">
-                    <a className="transition hover:text-white" href={item.href}>
+                    <a className="transition hover:text-white" href={item.href} onClick={handleNavItemClick(item.href)}>
                       {item.label === "Nexus" ? (
                         <span className="inline-flex items-center gap-1">
                           <svg viewBox="0 0 16 16" className="h-3 w-3 text-cyan-200" aria-hidden="true">
@@ -133,6 +168,7 @@ export default function HeroSection() {
                 href={registrationUrl}
                 target={isExternalRegistrationUrl ? "_blank" : undefined}
                 rel={isExternalRegistrationUrl ? "noopener noreferrer" : undefined}
+                onClick={handleRegistrationClick}
                 className="relative z-10 rounded-full border px-5 py-2 text-[11px] uppercase tracking-[0.26em] text-white/85 transition-colors duration-200 hover:border-white/85 hover:bg-white/10 hover:text-white"
                 style={{
                   borderColor: "rgba(202, 218, 255, 0.6)",
@@ -256,6 +292,7 @@ export default function HeroSection() {
             href={registrationUrl}
             target={isExternalRegistrationUrl ? "_blank" : undefined}
             rel={isExternalRegistrationUrl ? "noopener noreferrer" : undefined}
+            onClick={handleRegistrationClick}
             className="group relative mt-10 inline-flex items-center justify-center rounded-full p-[1px] transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.015] md:mt-11"
             style={{
               boxShadow: "0 0 0 1px rgba(167, 199, 255, 0.28), 0 0 20px rgba(108, 156, 255, 0.48)",
