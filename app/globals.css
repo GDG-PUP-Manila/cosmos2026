@@ -224,7 +224,6 @@ body {
   display: block;
   height: 3px;
   border-radius: 999px;
-  clip-path: polygon(0 50%, 8% 12%, 100% 0, 100% 100%, 8% 88%);
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0.99) 0%,
@@ -248,10 +247,10 @@ body {
 .comet-trail::before {
   content: "";
   position: absolute;
-  left: -10px;
+  left: -7px;
   top: 50%;
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   border-radius: 999px;
   transform: translateY(-50%) scale(1);
   background: radial-gradient(
@@ -293,8 +292,8 @@ body {
 }
 
 .comet-trail-dim::before {
-  width: 13px;
-  height: 13px;
+  width: 10px;
+  height: 10px;
   box-shadow:
     0 0 16px rgba(255, 255, 255, 0.62),
     0 0 26px rgba(153, 206, 255, 0.42);

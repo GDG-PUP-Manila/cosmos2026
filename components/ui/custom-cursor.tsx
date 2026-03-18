@@ -25,7 +25,7 @@ export default function CustomCursor() {
 
       if (cursorDotRef.current) {
         cursorDotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate3d(-50%, -50%, 0) scale(${
-          isHovering ? 2 : 1
+          isHovering ? 1.25 : 1
         })`;
       }
     };
@@ -37,7 +37,7 @@ export default function CustomCursor() {
 
       if (cursorOutlineRef.current) {
         cursorOutlineRef.current.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0) translate3d(-50%, -50%, 0) scale(${
-          isHovering ? 1.5 : 1
+          isHovering ? 1.25 : 1
         })`;
       }
 
@@ -67,7 +67,7 @@ export default function CustomCursor() {
       }
       // Instantly update dot scale since it's driven in onMouseMove, but mouse might not move
       if (cursorDotRef.current) {
-         cursorDotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate3d(-50%, -50%, 0) scale(${isHovering ? 2 : 1})`;
+         cursorDotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate3d(-50%, -50%, 0) scale(${isHovering ? 1.75 : 1})`;
       }
     };
 
@@ -87,7 +87,7 @@ export default function CustomCursor() {
     <>
       <div
         ref={cursorDotRef}
-        className="pointer-events-none fixed left-0 top-0 z-[10000] hidden h-8 w-8 transition-transform duration-100 ease-out will-change-transform lg:block drop-shadow-[0_0_8px_rgba(155,231,255,0.6)]"
+        className="pointer-events-none fixed left-0 top-0 z-[999999] hidden h-8 w-8 transition-transform duration-100 ease-out will-change-transform lg:block drop-shadow-[0_0_8px_rgba(155,231,255,0.6)]"
       >
         <Image
           src="/assets/CIRBY.png"
@@ -100,7 +100,7 @@ export default function CustomCursor() {
       </div>
       <div
         ref={cursorOutlineRef}
-        className="pointer-events-none fixed left-0 top-0 z-[9999] hidden h-10 w-10 rounded-full border border-[rgba(122,162,255,0.4)] bg-[rgba(122,162,255,0.05)] mix-blend-screen transition-colors duration-200 ease-out will-change-transform lg:block"
+        className="pointer-events-none fixed left-0 top-0 z-[999998] hidden h-10 w-10 rounded-full border border-[rgba(122,162,255,0.4)] bg-[rgba(122,162,255,0.05)] mix-blend-screen transition-colors duration-200 ease-out will-change-transform lg:block"
       />
     </>
   );
