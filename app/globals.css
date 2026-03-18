@@ -174,15 +174,15 @@ body {
 }
 
 .astro-float-a {
-  animation: astro-float-a 28s ease-in-out infinite;
+  animation: astro-float-a 25s ease-in-out infinite;
 }
 
 .astro-float-b {
-  animation: astro-float-b 31s ease-in-out infinite;
+  animation: astro-float-b 25s ease-in-out infinite;
 }
 
 .astro-float-c {
-  animation: astro-float-c 29s ease-in-out infinite;
+  animation: astro-float-c 25s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
