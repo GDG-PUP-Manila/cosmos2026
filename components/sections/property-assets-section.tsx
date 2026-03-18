@@ -1,17 +1,23 @@
-'use client';
+"use client";
+
+import AmbientStarfield from "@/components/ui/ambient-starfield";
 
 export default function PropertyAssetsSection() {
   return (
-    <section id="assets" className="py-24 bg-gray-950 text-white px-4">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12">Property Assets</h2>
-        
+    <section id="assets" className="relative overflow-hidden bg-gray-950 px-4 py-24 text-white">
+      <AmbientStarfield className="z-0" />
+      <div className="relative z-10 mx-auto max-w-4xl">
+        <h2 className="mb-12 text-center text-3xl font-bold">Property Assets</h2>
+
         {/* Accordion List Placeholder */}
         <div className="space-y-4">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="bg-black border border-gray-800 rounded-xl overflow-hidden hover:border-blue-500 transition-colors">
-              <button className="w-full px-6 py-4 flex justify-between items-center text-left">
-                <span className="font-semibold text-lg">Asset Track {i}</span>
+            <div
+              key={i}
+              className="overflow-hidden rounded-xl border border-gray-800 bg-black transition-colors hover:border-blue-500"
+            >
+              <button className="flex w-full items-center justify-between px-6 py-4 text-left">
+                <span className="text-lg font-semibold">Asset Track {i}</span>
                 <span className="text-blue-500">+</span>
               </button>
             </div>

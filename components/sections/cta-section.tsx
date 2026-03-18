@@ -1,20 +1,23 @@
+import AmbientStarfield from "@/components/ui/ambient-starfield";
+
 export default function CtaSection() {
   const registrationUrl = process.env.NEXT_PUBLIC_REGISTRATION_URL?.trim() || "#cta";
   const isExternalRegistrationUrl = /^https?:\/\//i.test(registrationUrl);
 
   return (
-    <section id="cta" className="relative py-32 bg-black text-white flex items-center justify-center overflow-hidden">
+    <section id="cta" className="relative flex items-center justify-center overflow-hidden bg-black py-32 text-white">
       {/* Glowing backdrop placeholder */}
-      <div className="absolute w-96 h-96 bg-blue-600/20 rounded-full blur-[100px]"></div>
-      
-      <div className="relative z-10 text-center max-w-2xl px-4">
+      <div className="absolute z-0 h-96 w-96 rounded-full bg-blue-600/20 blur-[100px]" />
+      <AmbientStarfield className="z-[1]" density={1.15} />
+
+      <div className="relative z-10 max-w-2xl px-4 text-center">
         {/* Mascot / Icon Placeholder */}
-        <div className="w-24 h-24 mx-auto bg-gray-900 rounded-full border border-gray-800 mb-8 flex items-center justify-center">
-           Mascot
+        <div className="mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-full border border-gray-800 bg-gray-900">
+          Mascot
         </div>
-        
-        <h2 className="text-5xl font-bold tracking-tight mb-6">Ready to Join Us?</h2>
-        <p className="text-xl text-gray-400 mb-10">
+
+        <h2 className="mb-6 text-5xl font-bold tracking-tight">Ready to Join Us?</h2>
+        <p className="mb-10 text-xl text-gray-400">
           Secure your spot at the universe&apos;s most anticipated tech gathering.
         </p>
         <a
