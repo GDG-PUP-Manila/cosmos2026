@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="relative py-24 text-white px-6 md:px-12 w-full flex items-center justify-center overflow-hidden font-sans bg-[#030712]">
+    <section id="about" className="relative scroll-mt-32 py-24 text-white px-6 md:px-12 w-full flex items-center justify-center overflow-hidden font-sans bg-[#030712]">
       <div className="absolute inset-0 z-0">
         <Image
           src="/assets/BG-about.png"

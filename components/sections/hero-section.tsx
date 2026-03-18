@@ -100,8 +100,8 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-[url('/assets/BG-hero.png')] bg-cover bg-top bg-no-repeat bg-[#020712]" />
       </div>
 
-      <div className="relative z-10 flex min-h-[100svh] flex-col">
-        <nav className="fixed inset-x-0 top-6 z-50">
+      <div className="relative flex min-h-[100svh] flex-col">
+        <nav className="fixed inset-x-0 top-6 z-[1000]">
           <div className="mx-auto w-full max-w-6xl px-6">
             <div
               className="relative flex items-center justify-between gap-6 rounded-full border px-6 py-3 backdrop-blur-[18px] md:px-8 md:py-3.5"
