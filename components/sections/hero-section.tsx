@@ -98,7 +98,7 @@ export default function HeroSection() {
       className="relative min-h-[100svh] overflow-hidden bg-[#030712] text-white font-sans [--cosmos-cyan:#9be7ff] [--cosmos-blue:#7aa2ff] [--cosmos-pink:#ff86d1] [--cosmos-purple:#8f7bff]"
     >
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[url('/assets/BG-hero.png')] bg-cover bg-top bg-no-repeat bg-[#020712]" />
+        <div className="absolute inset-0 bg-[url('/assets/hero/BG-hero.png')] bg-cover bg-top bg-no-repeat bg-[#020712]" />
       </div>
       <AmbientStarfield className="z-[1]" density={1.2} />
 
@@ -202,7 +202,7 @@ export default function HeroSection() {
           <div className="relative mt-4 md:mt-6">
             <div className="absolute -inset-6 rounded-full bg-[radial-gradient(circle,rgba(120,210,255,0.32),rgba(120,210,255,0)_65%)] blur-2xl" />
             <Image
-              src="/assets/cosmos-header.svg"
+              src="/assets/hero/cosmos-header.svg"
               alt="Cosmos 2026"
               width={672}
               height={386}

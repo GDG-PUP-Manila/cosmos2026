@@ -10,7 +10,7 @@ export default function AboutSection() {
     >
       <div className="absolute inset-0 z-0">
         <Image
-          src="/assets/BG-about.png"
+          src="/assets/about/BG-about.png"
           alt="About background"
           fill
           priority
@@ -58,7 +58,7 @@ export default function AboutSection() {
                 perspective={1050}
               >
                 <Image
-                  src="/assets/logo-about.svg"
+                  src="/assets/about/logo-about.svg"
                   alt="Infinity Logo"
                   width={559}
                   height={227}
@@ -82,7 +82,7 @@ export default function AboutSection() {
                 perspective={1050}
               >
                 <Image
-                  src="/assets/logo1-about.svg"
+                  src="/assets/about/logo1-about.svg"
                   alt="Cosmos Features"
                   width={722}
                   height={680}
