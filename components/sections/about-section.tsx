@@ -16,8 +16,8 @@ export default function AboutSection() {
           className="object-cover object-center"
         />
       </div>
-      <AmbientStarfield className="z-[1]" density={1.05} />
-      <div className="absolute inset-0 z-[2] bg-[linear-gradient(180deg,rgba(3,7,18,0.24)_0%,rgba(3,7,18,0.42)_45%,rgba(3,7,18,0.58)_100%)]" />
+      <div className="absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(3,7,18,0.24)_0%,rgba(3,7,18,0.42)_45%,rgba(3,7,18,0.58)_100%)]" />
+      <AmbientStarfield className="z-[2]" density={1.05} />
 
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-32">
         {/* ROW 1 */}

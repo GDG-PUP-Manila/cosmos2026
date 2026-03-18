@@ -97,13 +97,13 @@ export default function HeroSection() {
       id="hero"
       className="relative min-h-[100svh] overflow-hidden bg-[#030712] text-white font-sans [--cosmos-cyan:#9be7ff] [--cosmos-blue:#7aa2ff] [--cosmos-pink:#ff86d1] [--cosmos-purple:#8f7bff]"
     >
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[url('/assets/BG-hero.png')] bg-cover bg-top bg-no-repeat bg-[#020712]" />
       </div>
       <AmbientStarfield className="z-[1]" density={1.2} />
 
       <div className="relative flex min-h-[100svh] flex-col">
-        <nav className="fixed inset-x-0 top-6 z-[1000]">
+        <nav className="fixed inset-x-0 top-6 z-[9999]">
           <div className="mx-auto w-full max-w-6xl px-6">
             <div
               className="relative flex items-center justify-between gap-6 rounded-full border px-6 py-3 backdrop-blur-[18px] md:px-8 md:py-3.5"
@@ -198,7 +198,7 @@ export default function HeroSection() {
           </div>
         </nav>
 
-        <div className="flex flex-1 flex-col items-center justify-center px-6 pb-14 pt-16 md:pb-16 md:pt-16 text-center">
+        <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pb-14 pt-16 text-center md:pb-16 md:pt-16">
           <div className="relative mt-4 md:mt-6">
             <div className="absolute -inset-6 rounded-full bg-[radial-gradient(circle,rgba(120,210,255,0.32),rgba(120,210,255,0)_65%)] blur-2xl" />
             <Image

@@ -25,7 +25,7 @@ function clamp(value: number, min: number, max: number) {
 
 function createStars(width: number, height: number, density: number): Star[] {
   const area = width * height;
-  const count = clamp(Math.round((area / 18000) * density), 28, 220);
+  const count = clamp(Math.round((area / 10500) * density), 48, 420);
   const stars: Star[] = [];
 
   for (let i = 0; i < count; i += 1) {
@@ -46,7 +46,7 @@ function createStars(width: number, height: number, density: number): Star[] {
   return stars;
 }
 
-export default function AmbientStarfield({ className, density = 1 }: AmbientStarfieldProps) {
+export default function AmbientStarfield({ className, density = 1.22 }: AmbientStarfieldProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 

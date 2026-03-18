@@ -6,10 +6,9 @@ export default function CtaSection() {
 
   return (
     <section id="cta" className="relative flex items-center justify-center overflow-hidden bg-black py-32 text-white">
-      <AmbientStarfield className="z-0" density={1.15} />
-
       {/* Glowing backdrop placeholder */}
-      <div className="absolute z-[1] h-96 w-96 rounded-full bg-blue-600/20 blur-[100px]" />
+      <div className="absolute z-0 h-96 w-96 rounded-full bg-blue-600/20 blur-[100px]" />
+      <AmbientStarfield className="z-[1]" density={1.15} />
 
       <div className="relative z-10 max-w-2xl px-4 text-center">
         {/* Mascot / Icon Placeholder */}
