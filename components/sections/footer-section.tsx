@@ -83,21 +83,13 @@ export default function FooterSection() {
       <div className="mx-auto w-full max-w-[1380px]">
         <div className="grid gap-9 lg:grid-cols-[1.55fr_1fr_1fr_1fr] lg:gap-10">
           <section>
-            <a 
-              href="https://gdg.community.dev/gdg-on-campus-polytechnic-university-of-the-philippines-manila-philippines/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block transition-transform duration-300 hover:scale-[1.04]"
-              aria-label="Visit GDG PUP on the official GDG Community Platform"
-            >
-              <Image
-                src="/assets/gdg-pup-logo.svg"
-                alt="Google Developer Group Polytechnic University of the Philippines"
-                width={260}
-                height={55}
-                className="h-auto w-[260px] sm:w-[320px]"
-              />
-            </a>
+            <Image
+              src="/assets/gdg-pup-logo.svg"
+              alt="Google Developer Group Polytechnic University of the Philippines"
+              width={260}
+              height={55}
+              className="h-auto w-[260px] sm:w-[320px]"
+            />
 
             <p className="mt-6 max-w-[330px] text-justify text-[0.83rem] leading-[1.4] tracking-[0.01em] text-[#8e9ebc]">
               GDG PUP is a student-led technology community supported by Google. We exist to grow the next generation of
