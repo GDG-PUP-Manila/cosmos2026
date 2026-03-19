@@ -381,24 +381,22 @@ export default function HeroSection() {
                 target={isExternalRegistrationUrl ? "_blank" : undefined}
                 rel={isExternalRegistrationUrl ? "noopener noreferrer" : undefined}
                 onClick={handleRegistrationClick}
-                className="group relative z-10 flex h-9 items-center justify-center overflow-hidden rounded-full border px-6 text-[11px] font-bold uppercase tracking-[0.26em] text-white transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_22px_rgba(86,164,255,0.7)]"
+                className="group relative z-10 flex h-9 items-center justify-center overflow-hidden rounded-full border px-6 text-[11px] font-bold uppercase tracking-[0.26em] text-[#0a1332] shadow-[0_8px_20px_rgba(11,23,71,0.6),inset_0_1px_2px_rgba(255,255,255,1)] transition-all duration-300 hover:scale-[1.06] hover:shadow-[0_8px_20px_rgba(11,23,71,0.6),inset_0_1px_2px_rgba(255,255,255,1),0_0_20px_4px_rgba(255,255,255,0.65)]"
                 style={{
-                  borderColor: "rgba(255, 255, 255, 0.4)",
-                  background: "linear-gradient(180deg, #4da3ff 0%, #1e56cf 100%)",
-                  boxShadow: "0 8px 20px rgba(11, 23, 71, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.6)",
-                  textShadow: "0 1px 3px rgba(0, 0, 0, 0.4)",
+                  borderColor: "rgba(255, 255, 255, 0.7)",
+                  background: "linear-gradient(90deg, #183385 0%, #ffffff 35%, #ffffff 100%)",
                 }}
               >
                 <span
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   style={{
-                    background: "linear-gradient(180deg, #6cafff 0%, #2f6de5 100%)",
+                    background: "linear-gradient(90deg, #2446b3 0%, #ffffff 35%, #ffffff 100%)",
                   }}
                 />
                 <span
                   className="pointer-events-none absolute -inset-2 rounded-full opacity-60 transition-all duration-300 group-hover:scale-110 group-hover:opacity-80"
                   style={{
-                    background: "radial-gradient(circle, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 72%)",
+                    background: "radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 72%)",
                     filter: "blur(6px)",
                     transform: "translateY(-60%)",
                   }}
