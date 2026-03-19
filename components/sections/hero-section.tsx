@@ -135,13 +135,19 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-[100svh] overflow-hidden bg-[#030712] text-white font-sans [--cosmos-cyan:#9be7ff] [--cosmos-blue:#7aa2ff] [--cosmos-pink:#ff86d1] [--cosmos-purple:#8f7bff]"
+      className="relative min-h-[100svh] bg-slate-950 text-white font-sans [--cosmos-cyan:#9be7ff] [--cosmos-blue:#7aa2ff] [--cosmos-pink:#ff86d1] [--cosmos-purple:#8f7bff]"
     >
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[url('/assets/hero/BG-hero.webp')] bg-cover bg-top bg-no-repeat bg-[#020712]" />
+      <div className="absolute inset-0 z-0 opacity-60">
+        <div className="absolute inset-0 bg-[url('/assets/hero/BG-hero.webp')] bg-cover bg-top bg-no-repeat opacity-80 mix-blend-lighten" />
       </div>
-      <AmbientStarfield className="z-[1]" density={1.2} />
-      <div className="pointer-events-none absolute inset-0 z-[4] overflow-hidden" aria-hidden="true">
+      
+      {/* 1:1 Figma gradients */}
+      <div className="absolute inset-0 z-0 bg-indigo-900/20 mix-blend-overlay" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-gray-950/10 via-gray-950/60 to-gray-950 pointer-events-none" />
+
+      <AmbientStarfield className="z-[1] opacity-70 mix-blend-screen" density={1} />
+      
+      <div className="pointer-events-none absolute inset-0 z-[20]" aria-hidden="true">
         {heroComets.map((comet) => (
           <div
             key={`${comet.top}-${comet.right}-${comet.delay}`}
@@ -156,6 +162,7 @@ export default function HeroSection() {
           />
         ))}
       </div>
+      
       <div className="pointer-events-none absolute inset-0 z-[5]" aria-hidden="true">
         <div className="absolute left-[0%] top-[20%] hidden w-56 opacity-95 md:block lg:left-[7%] lg:top-[15%] lg:w-[21rem] xl:left-[9%] xl:w-[24rem] 2xl:w-[26rem]">
           <Image
@@ -278,104 +285,92 @@ export default function HeroSection() {
           </div>
         </nav>
 
-        <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pb-14 pt-16 text-center md:pb-16 md:pt-16">
-          <div className="relative mt-4 md:mt-6">
-            <div className="absolute -inset-6 rounded-full bg-[radial-gradient(circle,rgba(120,210,255,0.32),rgba(120,210,255,0)_65%)] blur-2xl" />
+        {/* Body Content 1:1 - Fully Grouped & Responsive */}
+        <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 pt-24 pb-8 text-center sm:pt-28 sm:pb-12 min-h-0">
+          
+          {/* GROUP 1: Cosmos 2026 and Subtext */}
+          <div className="flex flex-col items-center justify-center gap-2 sm:gap-3 w-[80vw] max-w-[420px] sm:max-w-[500px] md:max-w-[580px] lg:max-w-[680px] xl:max-w-[760px] 2xl:max-w-[840px]">
             <Image
               src="/assets/hero/cosmos-header.svg"
               alt="Cosmos 2026"
               width={672}
               height={386}
-              className="w-[52vw] max-w-[620px] sm:w-[460px] md:w-[530px] lg:w-[590px] xl:w-[640px] h-auto object-contain"
+              className="w-full h-auto object-contain drop-shadow-[0_12px_30px_rgba(33,41,96,0.35)]"
               priority
             />
           </div>
 
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-5 text-[13px] text-[#d2daf6] md:text-sm">
-            <span className="inline-flex items-center gap-2.5 font-medium tracking-[0.01em]">
-              <svg viewBox="0 0 24 24" className="h-4 w-4 text-[#8193ff]" aria-hidden="true">
-                <path
-                  d="M7 3v3M17 3v3M4 9h16M6 7h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              March 24, 2026
-            </span>
-            <span className="inline-flex items-center gap-2.5 font-medium tracking-[0.01em]">
-              <svg viewBox="0 0 24 24" className="h-4 w-4 text-[#8193ff]" aria-hidden="true">
-                <path
-                  d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11z"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <circle cx="12" cy="10" r="2.4" fill="none" stroke="currentColor" strokeWidth="1.6" />
-              </svg>
-              PUP Bulawagan Balagtas
-            </span>
-          </div>
-
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-            {countdownItems.map((item) => (
-              <div
-                key={item.label}
-                className="flex w-[108px] sm:w-[114px] md:w-[120px] flex-col items-center justify-center px-3 py-3.5 text-center backdrop-blur-[12px]"
-                style={
-                  item.active
-                    ? {
-                        minHeight: "108px",
-                        borderRadius: "20px",
-                        border: "1px solid rgba(128, 142, 255, 0.72)",
-                        background:
-                          "linear-gradient(180deg, rgba(88, 96, 202, 0.45), rgba(67, 73, 166, 0.42) 45%, rgba(45, 51, 122, 0.58) 100%)",
-                        boxShadow:
-                          "0 0 0 1px rgba(132, 146, 255, 0.34), 0 0 28px rgba(96, 112, 255, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -10px 18px rgba(33, 41, 96, 0.45)",
-                      }
-                    : {
-                        minHeight: "108px",
-                        borderRadius: "20px",
-                        border: "1px solid rgba(132, 156, 214, 0.3)",
-                        background:
-                          "linear-gradient(180deg, rgba(36, 50, 96, 0.38), rgba(14, 22, 50, 0.6) 60%, rgba(7, 13, 34, 0.72) 100%)",
-                        boxShadow:
-                          "inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -10px 20px rgba(6, 10, 26, 0.45), 0 14px 28px rgba(5, 9, 26, 0.42)",
-                      }
-                }
-              >
-                <span
-                  className="text-[34px] leading-[0.95] font-semibold tracking-[0.08em]"
-                  style={{
-                    fontFamily: "Consolas, 'Courier New', monospace",
-                    color: item.active ? "rgba(144, 159, 255, 0.96)" : "rgba(249, 252, 255, 0.96)",
-                    textShadow: item.active
-                      ? "0 0 16px rgba(130, 146, 255, 0.4)"
-                      : "0 3px 14px rgba(0, 0, 0, 0.35)",
-                  }}
-                >
-                  {item.value}
-                </span>
-                <span
-                  className="mt-0.5 text-[12px] tracking-[0.28em]"
-                  style={{ color: item.active ? "rgba(214, 223, 255, 0.88)" : "rgba(220, 232, 255, 0.72)" }}
-                >
-                  {item.label}
-                </span>
+          {/* GROUP 2: Date, Location & Countdown */}
+          <div className="mt-6 sm:mt-10 md:mt-12 flex flex-col items-center gap-5 sm:gap-8">
+            {/* Top: Date and Location */}
+            <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-3 sm:gap-6 inter-var">
+              <div className="flex justify-center items-center gap-2">
+                 <svg viewBox="0 0 24 24" className="w-[16px] h-[16px] sm:w-[18px] sm:h-[18px] text-indigo-400" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                 </svg>
+                 <span className="text-center text-slate-300 text-sm sm:text-base font-normal tracking-wide">March 24, 2026</span>
               </div>
-            ))}
+              
+              <div className="hidden md:block w-1 h-1 bg-slate-600 rounded-full" />
+              
+              <div className="flex justify-center items-center gap-2">
+                 <svg viewBox="0 0 24 24" className="w-[16px] h-[16px] sm:w-[18px] sm:h-[18px] text-indigo-400" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round">
+                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                   <circle cx="12" cy="10" r="3" />
+                 </svg>
+                 <span className="text-center text-slate-300 text-sm sm:text-base font-normal tracking-wide">PUP Bulawagang Balagtas</span>
+              </div>
+            </div>
+
+            {/* Bottom: Countdown container */}
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+              {countdownItems.map((item) => (
+                <div key={item.label} className="relative w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32">
+                  {item.active && (
+                     <div className="w-full h-full left-0 top-0 absolute bg-purple-500/20 rounded-full blur-xl pointer-events-none" />
+                  )}
+                  <div
+                    className={`w-full h-full py-2 sm:py-3 absolute left-0 top-0 rounded-[14px] sm:rounded-[20px] outline outline-1 outline-offset-[-1px] flex flex-col justify-center items-center gap-1 sm:gap-2 backdrop-blur-md transition-all duration-300 ${
+                      item.active 
+                        ? "bg-slate-900/60 shadow-[0px_0px_35px_0px_rgba(168,85,247,0.35),inset_0px_1px_8px_0px_rgba(255,255,255,0.15)] outline-purple-400/50 border border-purple-500/30" 
+                        : "bg-slate-900/40 shadow-[inset_0px_1px_5px_0px_rgba(255,255,255,0.05)] outline-white/5 border border-white/5"
+                    }`}
+                  >
+                    <div className="w-full flex items-center justify-center opacity-95 h-6 sm:h-10 md:h-12 overflow-hidden">
+                      <span 
+                        className={`text-center text-2xl sm:text-4xl md:text-[42px] font-bold font-['Consolas'] leading-none drop-shadow-lg ${
+                          item.active ? "text-purple-300" : "text-white"
+                        }`}
+                        style={item.active ? { textShadow: "0 0 15px rgba(216,180,254,0.6)" } : {}}
+                      >
+                        {item.value}
+                      </span>
+                    </div>
+                    <div className="w-full flex items-center justify-center h-3 sm:h-4 relative">
+                      <span 
+                        className={`text-center text-[8px] sm:text-[10px] md:text-xs font-normal inter-var uppercase leading-none tracking-[0.15em] sm:tracking-[0.2em] ${
+                          item.active ? "text-purple-200" : "text-slate-400"
+                        }`}
+                      >
+                        {item.label}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
+          {/* GROUP 3: Register Now CTA */}
           <a
             href={registrationUrl}
             target={isExternalRegistrationUrl ? "_blank" : undefined}
             rel={isExternalRegistrationUrl ? "noopener noreferrer" : undefined}
             onClick={handleRegistrationClick}
-            className="group relative mt-10 inline-flex items-center justify-center rounded-full p-[1px] transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.015] md:mt-11"
+            className="group relative mt-8 sm:mt-10 md:mt-12 inline-flex items-center justify-center rounded-full p-[1px] transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.015]"
             style={{
               boxShadow: "0 0 0 1px rgba(167, 199, 255, 0.28), 0 0 20px rgba(108, 156, 255, 0.48)",
             }}
@@ -393,7 +388,7 @@ export default function HeroSection() {
               }}
             />
             <span
-              className="relative inline-flex items-center justify-center rounded-full border px-6 py-2.5 text-base font-semibold uppercase tracking-[0.04em] transition-all duration-300 group-hover:border-white group-hover:text-white sm:px-8 sm:text-[22px]"
+              className="relative inline-flex items-center justify-center rounded-full border px-6 py-2.5 sm:px-8 sm:py-3 text-[13px] sm:text-base font-semibold uppercase tracking-[0.04em] transition-all duration-300 group-hover:border-white group-hover:text-white"
               style={{
                 borderColor: "rgba(213, 225, 255, 0.85)",
                 background: "linear-gradient(180deg, rgba(23, 34, 82, 0.96), rgba(7, 13, 36, 0.97))",

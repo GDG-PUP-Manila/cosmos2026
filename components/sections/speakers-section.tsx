@@ -1,43 +1,57 @@
 import Image from "next/image";
 import AmbientStarfield from "@/components/ui/ambient-starfield";
 
-const topRowSpeakers = [
+const speakersData = [
   {
     src: "/assets/speakers/speaker-1.webp",
-    bioSrc: "/assets/speakers/bio-1.webp",
     alt: "Jazmine Calma speaker card",
-    bioAlt: "Jazmine Calma bio card",
+    name: "Jazmine Claire Calma",
+    position: "Head of Quality Assurance",
+    entity: "KOLLAB",
+    bio: "Jazmine Calma is a Quality Assurance Engineer who has been working with Kollab since 2020. She holds multiple certifications from Google Cloud, AWS, and ISTQB, and has worked across software testing, and cloud platforms. Outside of her technical role, Jazmine actively supports inclusive tech communities. She serves as a Community Lead for GDG Cloud Manila, and an Ambassador for Women Techmakers."
   },
   {
     src: "/assets/speakers/speaker-2.webp",
-    bioSrc: "/assets/speakers/bio-2.webp",
     alt: "Sermil Matoto speaker card",
-    bioAlt: "Sermil Matoto bio card",
+    name: "Sermil Matoto",
+    position: "Chief Engineer",
+    entity: "KOLLAB",
+    bio: (
+      <>
+        Recognized as a Google Developer Expert (GDE) for Cloud, specializing in multi-cloud architecture, serverless computing, and DevOps strategies. Proficient across AWS and Google Cloud ecosystems, focusing on building resilient, secure infrastructures and optimizing deployment workflows.
+        <br /><br />
+        Experienced in driving digital transformation and automating complex pipelines. Dedicated to advancing cloud engineering standards through technical leadership, community speaking, and delivering scalable solutions for modern enterprises.
+      </>
+    )
   },
   {
     src: "/assets/speakers/speaker-3.webp",
-    bioSrc: "/assets/speakers/bio-3.webp",
     alt: "John Dustin Santos speaker card",
-    bioAlt: "John Dustin Santos bio card",
+    name: "John Dustin Santos",
+    position: "Chairperson",
+    entity: "DEPARTMENT OF INFORMATION TECHNOLOGY",
+    bio: "His professional interests include computing education, human–computer interaction, software development, and emerging information technologies. As a department chairperson, he leads initiatives that strengthen teaching and learning, research engagement, industry collaboration, and student development within the IT program. He also contributes to academic quality assurance and program accreditation efforts to continuously enhance the standards of computing education."
   },
-];
-
-const bottomRowSpeakers = [
   {
     src: "/assets/speakers/speaker-4.webp",
-    bioSrc: "/assets/speakers/bio-4.webp",
     alt: "Julianne Cera speaker card",
-    bioAlt: "Julianne Cera bio card",
+    name: "Julianne Cera",
+    position: "Community and Partnership Relations Officer",
+    entity: "WHITE CLOAK TECHNOLOGIES",
+    bio: "Julianne is a 4th-year BSIT student at PUP Parañaque and a Tech Community and Partnership Relations Officer at White Cloak Technologies. She recently co-organized the first-ever AWSUG PH Leadership Summit and actively manages partnerships for the AWSUG Builders+. Additionally, she serves as a Campus Ambassador for AWS Cloud Club PUP, helping expand to four new campuses this cohort. In her spare time, she manages the social media and behind-the-scenes for the KaKaComputer Podcast and hosts Teacher Trainings for WayMaker HQ. Through these roles, she champions community building and accessible cloud education."
   },
   {
     src: "/assets/speakers/speaker-5.webp",
-    bioSrc: "/assets/speakers/bio-5.webp",
     alt: "Carlos Jerico Dela Torre speaker card",
-    bioAlt: "Carlos Jerico Dela Torre bio card",
+    name: "Carlos Jerico Dela Torre",
+    position: "Chief Technology Officer",
+    entity: "Google Developer Groups on Campus PUP",
+    bio: "Carlos Jerico Dela Torre is a third-year Computer Engineering student and technology builder who serves as Chief Technology Officer of Google Developer Groups on Campus PUP and the Co-Founder and Chief Executive Officer of Seekers Guild. As the founder of Axon Enjin and an award-winning hackathon strategist, he architects systems that convert student-led innovation into market-ready ventures—turning vision into execution and execution into scalable enterprises."
   },
 ];
 
 export default function SpeakersSection() {
+
   return (
     <section id="speakers" className="relative overflow-hidden bg-transparent px-4 py-20 text-white md:px-6">
       <div className="pointer-events-none absolute inset-0 z-0">
@@ -97,73 +111,45 @@ export default function SpeakersSection() {
 
       <AmbientStarfield className="z-[2]" density={1.2} />
 
-      <div className="relative z-10 mx-auto w-full max-w-5xl">
-        <div className="w-full text-left">
-          <div className="mb-3 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#4da4ff] sm:text-[12px]">
-            <span className="h-px w-8 bg-[#4da4ff]/60" />
-            <span>Voices from the frontier.</span>
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 lg:px-8">
+        {/* Header Section from Figma */}
+        <div className="flex flex-col items-start gap-4 mb-12 md:mb-16">
+          <div className="flex items-center gap-4 h-5">
+            <div className="w-12 h-px bg-blue-500/50" />
+            <span className="text-blue-500 text-sm font-semibold font-['Inter'] uppercase tracking-wider">
+              Voices from the frontier.
+            </span>
           </div>
 
-          <h2 className="bg-[linear-gradient(180deg,#f3fbff_0%,#9be8ff_38%,#7aa2ff_73%,#c1edff_100%)] bg-clip-text text-3xl font-black uppercase leading-[0.95] tracking-tight text-transparent drop-shadow-[0_0_16px_rgba(91,173,255,0.6)] sm:text-4xl md:text-5xl">
-            Meet the Speakers
-          </h2>
+          <div className="relative h-20 md:h-24 w-full max-w-[778px]">
+            <Image
+              src="/assets/speakers/meet-the-speakers-title.png"
+              alt="Meet the Speakers"
+              width={778}
+              height={96}
+              className="object-contain object-left ml-[-22px] md:ml-[-18px]"
+            />
+          </div>
 
-          <p className="mt-6 max-w-2xl text-xs leading-relaxed text-[#c7d4f8]/90 sm:text-sm">
-            COSMOS 2026 brings together practitioners, builders, and thought leaders from across the technology
-            industry. They&apos;re not just the people who talks about the industry, they&apos;re the ones shipping
-            it.
+          <p className="max-w-[970px] text-justify text-slate-400 text-base md:text-lg font-light font-['Inter'] leading-7 mt-2">
+            COSMOS 2026 brings together practitioners, builders, and thought leaders from across the technology industry. They&apos;re not just the people who talks about the industry, they&apos;re the ones shipping it.
           </p>
         </div>
 
-        <div className="mt-8 space-y-6 md:mt-10">
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 xl:grid-cols-3">
-            {topRowSpeakers.map((speaker) => (
-              <div
-                key={speaker.src}
-                className="group relative mx-auto w-full max-w-[340px] overflow-hidden rounded-2xl border border-white/15 bg-[#08133d]/35 shadow-[0_18px_38px_rgba(2,8,28,0.68)] transition-transform duration-300 hover:-translate-y-0.5"
-              >
-                <Image
-                  src={speaker.src}
-                  alt={speaker.alt}
-                  width={340}
-                  height={453}
-                  sizes="(min-width: 1280px) 340px, (min-width: 768px) 45vw, 85vw"
-                  className="h-auto w-full transition-opacity duration-300 group-hover:opacity-0"
-                />
-                <Image
-                  src={speaker.bioSrc}
-                  alt={speaker.bioAlt}
-                  width={340}
-                  height={453}
-                  sizes="(min-width: 1280px) 340px, (min-width: 768px) 45vw, 85vw"
-                  className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                />
-              </div>
+        {/* Unified Responsive Grid - Split for precise [3,2] centering */}
+        <div className="flex flex-col gap-6 lg:gap-10">
+          {/* Top Row: 3 Speakers */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 xl:gap-10 justify-items-center">
+            {speakersData.slice(0, 3).map((speaker, idx) => (
+              <SpeakerCard key={idx} speaker={speaker} />
             ))}
           </div>
 
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 xl:mx-auto xl:w-[62%]">
-            {bottomRowSpeakers.map((speaker) => (
-              <div
-                key={speaker.src}
-                className="group relative mx-auto w-full max-w-[340px] overflow-hidden rounded-2xl border border-white/15 bg-[#08133d]/35 shadow-[0_18px_38px_rgba(2,8,28,0.68)] transition-transform duration-300 hover:-translate-y-0.5"
-              >
-                <Image
-                  src={speaker.src}
-                  alt={speaker.alt}
-                  width={340}
-                  height={453}
-                  sizes="(min-width: 1280px) 340px, (min-width: 768px) 45vw, 85vw"
-                  className="h-auto w-full transition-opacity duration-300 group-hover:opacity-0"
-                />
-                <Image
-                  src={speaker.bioSrc}
-                  alt={speaker.bioAlt}
-                  width={340}
-                  height={453}
-                  sizes="(min-width: 1280px) 340px, (min-width: 768px) 45vw, 85vw"
-                  className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                />
+          {/* Bottom Row: 2 Speakers (Centered) */}
+          <div className="grid grid-cols-1 lg:flex lg:justify-center gap-6 lg:gap-8 xl:gap-10 justify-items-center">
+            {speakersData.slice(3, 5).map((speaker, idx) => (
+              <div key={idx} className="w-full max-w-[384px] lg:w-[calc(33.333%-1.33rem)] xl:w-[calc(33.333%-1.66rem)] flex justify-center">
+                <SpeakerCard speaker={speaker} />
               </div>
             ))}
           </div>
@@ -171,5 +157,59 @@ export default function SpeakersSection() {
 
       </div>
     </section>
+  );
+}
+
+function SpeakerCard({ speaker }: { speaker: typeof speakersData[0] }) {
+  return (
+    <div className="group relative mx-auto w-full max-w-[384px] aspect-[395/526]">
+      {/* Ambient Backlight Glow (Seamless connection to background) */}
+      <div className="absolute -inset-4 z-0 bg-sky-500/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      
+      <div
+        className="relative z-10 h-full w-full overflow-hidden rounded-2xl bg-slate-900/80 backdrop-blur-sm border border-white/10 shadow-xl shadow-sky-950/20 transition-transform duration-300 hover:-translate-y-1 cursor-pointer"
+      >
+        {/* Default Front Image */}
+        <Image
+          src={speaker.src}
+          alt={speaker.alt}
+          fill
+          sizes="(min-width: 1280px) 384px, (min-width: 768px) 45vw, 85vw"
+          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-0 z-10"
+        />
+
+        {/* Hover State Backdrop Base (Simple Fade Transition) */}
+        <div className="absolute inset-0 h-full w-full bg-slate-950/90 z-20 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+          <Image
+            src="/assets/speakers/v2-bg.png"
+            alt="V2 Background overlay"
+            fill
+            unoptimized
+            className="absolute inset-0 h-full w-full object-cover mix-blend-screen opacity-100"
+          />
+
+          {/* Text Content Fade In Container (Lowered starting point) */}
+          <div className="absolute inset-0 z-30 flex flex-col items-center pt-20 pb-6 px-6 sm:px-7 opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 translate-y-8">
+            
+            <div className="w-full flex flex-col justify-start items-center space-y-0 mb-3 shrink-0">
+              <h3 className="w-full text-center text-white text-[22px] md:text-[24px] font-semibold font-['Inter'] leading-tight tracking-tight break-words">
+                {speaker.name}
+              </h3>
+              
+              <div className="w-full max-w-[320px] text-center text-sky-400 font-normal font-['Inter'] leading-snug pt-1 flex flex-col items-center space-y-0.5">
+                <span className="text-xs sm:text-[13px]">{speaker.position}</span>
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider opacity-80">{speaker.entity}</span>
+              </div>
+            </div>
+
+            {/* Biographies are contained in a smooth CSS scrollbar field */}
+            <div className="w-full flex-grow text-justify text-white text-[12px] sm:text-[13px] font-normal font-['Google_Sans'] leading-relaxed overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent pr-2">
+              {speaker.bio}
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
