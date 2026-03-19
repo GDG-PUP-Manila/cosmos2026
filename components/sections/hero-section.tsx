@@ -411,7 +411,7 @@ export default function HeroSection() {
         <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 pt-24 pb-8 text-center sm:pt-28 sm:pb-12 min-h-0">
           
           {/* GROUP 1: Cosmos 2026 and Subtext */}
-          <div className="relative flex flex-col items-center justify-center gap-2 sm:gap-3 w-[80vw] max-w-[420px] sm:max-w-[500px] md:max-w-[580px] lg:max-w-[680px] xl:max-w-[760px] 2xl:max-w-[840px]">
+          <div className="relative flex flex-col items-center justify-center gap-2 sm:gap-3 w-[80vw] max-w-[280px] sm:max-w-[340px] md:max-w-[420px] lg:max-w-[500px] xl:max-w-[580px] 2xl:max-w-[660px]">
             {/* Twinkling glow points BEHIND the text */}
             {[
               { top: "-2%",  left: "12%", size: 7,  delay: "0.2s" },
