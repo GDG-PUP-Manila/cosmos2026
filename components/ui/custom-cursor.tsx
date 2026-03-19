@@ -92,7 +92,7 @@ export default function CustomCursor() {
         </>
       )}
       <Image
-        src="/assets/hero/cirby.webp"
+        src="/assets/CIRBY.png"
         alt="Cursor"
         width={32}
         height={32}
