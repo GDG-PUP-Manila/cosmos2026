@@ -25,3 +25,113 @@ body {
   font-family: "Google Sans", "Inter", system-ui, sans-serif;
 }
 
+/* Comet animations for background layers */
+@keyframes shoot-comet {
+  0% {
+    transform: rotate(var(--angle)) translateX(-200px);
+    opacity: 0;
+  }
+  2% {
+    opacity: 1;
+  }
+  15% {
+    transform: rotate(var(--angle)) translateX(3000px);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(var(--angle)) translateX(3000px);
+    opacity: 0;
+  }
+}
+
+.comet-trail {
+  position: absolute;
+  height: 2px;
+  
+  /* Default Pink Cosmic Colors */
+  --color-head: 255, 255, 255;
+  --color-1: 122, 162, 255; /* Right (Blueish) */
+  --color-2: 255, 134, 209; /* Mid (Pink) */
+  --color-3: 255, 84, 180;  /* Left/Tail (Bright Pink) */
+
+  background: linear-gradient(90deg, 
+    rgba(var(--color-3), 0) 0%, 
+    rgba(var(--color-3), 0.8) 35%, 
+    rgba(var(--color-2), 1) 65%, 
+    rgba(var(--color-1), 1) 85%, 
+    rgba(var(--color-head), 1) 100%
+  );
+  border-radius: 50%;
+  --angle: 155deg;
+  animation: shoot-comet 12s linear infinite;
+  opacity: 0;
+  filter: drop-shadow(0 0 6px rgba(var(--color-2), 0.9));
+}
+
+.comet-trail::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(var(--color-head), 1), 
+              0 0 20px rgba(var(--color-1), 1), 
+              0 0 30px rgba(var(--color-2), 1), 
+              0 0 40px rgba(var(--color-3), 1);
+}
+
+.comet-trail-lg {
+  height: 3px;
+  --angle: 160deg;
+  filter: drop-shadow(0 0 8px rgba(var(--color-2), 1));
+}
+
+.comet-trail-lg::after {
+  width: 5px;
+  height: 5px;
+  box-shadow: 0 0 12px rgba(var(--color-head), 1), 
+              0 0 24px rgba(var(--color-1), 1), 
+              0 0 40px rgba(var(--color-2), 1);
+}
+
+.comet-trail-dim {
+  --angle: 150deg;
+  filter: drop-shadow(0 0 3px rgba(var(--color-2), 0.4));
+}
+.comet-trail-dim::after {
+  background: rgba(var(--color-head), 0.7);
+  box-shadow: 0 0 6px rgba(var(--color-head), 1), 
+              0 0 10px rgba(var(--color-1), 1);
+}
+
+/* Comet Color Variations */
+.comet-purple {
+  --color-1: 171, 122, 255; 
+  --color-2: 139, 73, 255; 
+  --color-3: 106, 0, 255; 
+}
+.comet-blue {
+  --color-1: 150, 220, 255; 
+  --color-2: 100, 180, 255; 
+  --color-3: 40, 120, 255; 
+}
+.comet-green {
+  --color-1: 150, 255, 180; 
+  --color-2: 80, 220, 130; 
+  --color-3: 20, 180, 80; 
+}
+.comet-yellow {
+  --color-1: 255, 240, 150; 
+  --color-2: 255, 210, 80; 
+  --color-3: 255, 170, 20; 
+}
+.comet-pink {
+  --color-1: 122, 162, 255;
+  --color-2: 255, 134, 209;
+  --color-3: 255, 84, 180;
+}
+

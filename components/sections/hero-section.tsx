@@ -13,13 +13,24 @@ const navItems = [
 
 /* All comets — behind content (z-[2]) */
 const allComets = [
-  { top: "10%", right: "7%", width: "180px", duration: "20s", delay: "-3.4s", className: "comet-trail comet-trail-lg" },
-  { top: "23%", right: "64%", width: "140px", duration: "22s", delay: "-7.2s", className: "comet-trail" },
-  { top: "60%", right: "2%", width: "160px", duration: "21s", delay: "-5.1s", className: "comet-trail comet-trail-lg" },
-  { top: "69%", right: "69%", width: "150px", duration: "23s", delay: "-9.8s", className: "comet-trail" },
-  { top: "43%", right: "26%", width: "110px", duration: "24s", delay: "-4.1s", className: "comet-trail comet-trail-dim" },
-  { top: "54%", right: "46%", width: "90px", duration: "25s", delay: "-11.3s", className: "comet-trail comet-trail-dim" },
+  { top: "10%", right: "7%", width: "180px", duration: "20s", delay: "-3.4s", className: "comet-trail comet-trail-lg comet-pink" },
+  { top: "23%", right: "64%", width: "140px", duration: "22s", delay: "-7.2s", className: "comet-trail comet-blue" },
+  { top: "60%", right: "2%", width: "160px", duration: "21s", delay: "-5.1s", className: "comet-trail comet-trail-lg comet-purple" },
+  { top: "69%", right: "69%", width: "150px", duration: "23s", delay: "-9.8s", className: "comet-trail comet-green" },
+  { top: "43%", right: "26%", width: "110px", duration: "24s", delay: "-4.1s", className: "comet-trail comet-trail-dim comet-yellow" },
+  { top: "54%", right: "46%", width: "90px", duration: "25s", delay: "-11.3s", className: "comet-trail comet-trail-dim comet-pink" },
 ] as const;
+
+/* Foreground comets — in front of content (z-[50]) */
+const foregroundComets = [
+  { top: "15%", right: "-10%", width: "220px", duration: "16s", delay: "-8.4s", className: "comet-trail comet-trail-lg comet-blue" },
+  { top: "35%", right: "12%", width: "190px", duration: "18s", delay: "-2.2s", className: "comet-trail comet-yellow" },
+  { top: "72%", right: "40%", width: "170px", duration: "19s", delay: "-13.1s", className: "comet-trail comet-trail-lg comet-pink" },
+  { top: "85%", right: "-5%", width: "240px", duration: "15s", delay: "-6.8s", className: "comet-trail comet-green" },
+  { top: "8%", right: "80%", width: "200px", duration: "17s", delay: "-1.1s", className: "comet-trail comet-purple" },
+] as const;
+
+
 
 const EVENT_START_TIMESTAMP = new Date("2026-03-24T09:00:00+08:00").getTime();
 
@@ -171,29 +182,49 @@ export default function HeroSection() {
         {/* Sparky — Left mascot */}
         <div className="absolute left-[0%] top-[20%] hidden w-56 opacity-95 md:block lg:left-[7%] lg:top-[15%] lg:w-[21rem] xl:left-[9%] xl:w-[24rem] 2xl:w-[26rem]">
           <div className="relative">
+            {/* Twinkling glow points BEHIND Sparky */}
+            {[
+              { top: "8%",  left: "32%", size: 8,  delay: "0s" },    /* Left ear tip */
+              { top: "3%",  left: "54%", size: 10, delay: "0.8s" },   /* Right ear tip */
+              { top: "25%", left: "75%", size: 8,  delay: "0.4s" },   /* Right cheek */
+              { top: "62%", left: "18%", size: 10, delay: "1.8s" },   /* Left paw */
+              { top: "78%", left: "46%", size: 7,  delay: "2.4s" },   /* Tail tip */
+            ].map((glow, i) => (
+              <span
+                key={`sparky-glow-bg-${i}`}
+                className="absolute rounded-full -z-10"
+                style={{
+                  top: glow.top,
+                  left: glow.left,
+                  width: glow.size,
+                  height: glow.size,
+                  background: "radial-gradient(circle, rgba(194,235,255,1) 0%, rgba(194,235,255,0.6) 40%, transparent 70%)",
+                  boxShadow: `0 0 ${glow.size * 2}px rgba(194,235,255,0.9), 0 0 ${glow.size * 4}px rgba(194,235,255,0.5)`,
+                  animation: `mascot-twinkle 3s ease-in-out ${glow.delay} infinite`,
+                  transform: "translate(-50%, -50%)",
+                }}
+              />
+            ))}
+
             <Image
               src="/assets/hero/sparky.webp"
               alt=""
               width={512}
               height={512}
-              className="h-auto w-full astro-float-a drop-shadow-[0_0_28px_rgba(194,235,255,0.82)]"
+              className="h-auto w-full astro-float-a drop-shadow-[0_0_28px_rgba(194,235,255,0.82)] relative z-0"
             />
-            {/* Twinkling glow points */}
+
+            {/* Twinkling glow points IN FRONT of Sparky */}
             {[
-              { top: "8%",  left: "32%", size: 8,  delay: "0s" },    /* Left ear tip */
-              { top: "3%",  left: "54%", size: 10, delay: "0.8s" },   /* Right ear tip */
               { top: "18%", left: "42%", size: 6,  delay: "1.6s" },   /* Forehead */
-              { top: "25%", left: "75%", size: 8,  delay: "0.4s" },   /* Right cheek */
               { top: "30%", left: "30%", size: 7,  delay: "2.1s" },   /* Left eye */
               { top: "28%", left: "56%", size: 9,  delay: "1.2s" },   /* Right eye */
               { top: "50%", left: "48%", size: 6,  delay: "0.6s" },   /* Chin */
-              { top: "62%", left: "18%", size: 10, delay: "1.8s" },   /* Left paw */
-              { top: "78%", left: "46%", size: 7,  delay: "2.4s" },   /* Tail tip */
               { top: "70%", left: "68%", size: 8,  delay: "1.0s" },   /* Belly bottom */
             ].map((glow, i) => (
               <span
-                key={`sparky-glow-${i}`}
-                className="absolute rounded-full"
+                key={`sparky-glow-fg-${i}`}
+                className="absolute rounded-full z-10"
                 style={{
                   top: glow.top,
                   left: glow.left,
@@ -212,29 +243,49 @@ export default function HeroSection() {
         {/* Cirby — Right mascot */}
         <div className="absolute right-[0%] top-[31%] hidden w-56 opacity-95 md:block lg:right-[7%] lg:top-[27%] lg:w-[22rem] xl:right-[9%] xl:w-[25rem] 2xl:w-[27rem]">
           <div className="relative">
+            {/* Twinkling glow points BEHIND Cirby */}
+            {[
+              { top: "5%",  left: "42%", size: 8,  delay: "0.3s" },   /* Cap top */
+              { top: "22%", left: "18%", size: 7,  delay: "2.0s" },   /* Left head */
+              { top: "20%", left: "78%", size: 8,  delay: "0.7s" },   /* Right head */
+              { top: "55%", left: "28%", size: 9,  delay: "0.5s" },   /* Body left */
+              { top: "48%", left: "72%", size: 7,  delay: "2.3s" },   /* Body right */
+              { top: "85%", left: "42%", size: 10, delay: "1.6s" },   /* Tail tip */
+            ].map((glow, i) => (
+              <span
+                key={`cirby-glow-bg-${i}`}
+                className="absolute rounded-full -z-10"
+                style={{
+                  top: glow.top,
+                  left: glow.left,
+                  width: glow.size,
+                  height: glow.size,
+                  background: "radial-gradient(circle, rgba(194,235,255,1) 0%, rgba(194,235,255,0.6) 40%, transparent 70%)",
+                  boxShadow: `0 0 ${glow.size * 2}px rgba(194,235,255,0.9), 0 0 ${glow.size * 4}px rgba(194,235,255,0.5)`,
+                  animation: `mascot-twinkle 3s ease-in-out ${glow.delay} infinite`,
+                  transform: "translate(-50%, -50%)",
+                }}
+              />
+            ))}
+
             <Image
               src="/assets/hero/cirby.webp"
               alt=""
               width={512}
               height={512}
-              className="h-auto w-full astro-float-b drop-shadow-[0_0_28px_rgba(194,235,255,0.82)]"
+              className="h-auto w-full astro-float-b drop-shadow-[0_0_28px_rgba(194,235,255,0.82)] relative z-0"
             />
-            {/* Twinkling glow points */}
+
+            {/* Twinkling glow points IN FRONT of Cirby */}
             {[
-              { top: "5%",  left: "42%", size: 8,  delay: "0.3s" },   /* Cap top */
               { top: "12%", left: "62%", size: 10, delay: "1.4s" },   /* Cap visor tip */
-              { top: "22%", left: "18%", size: 7,  delay: "2.0s" },   /* Left head */
-              { top: "20%", left: "78%", size: 8,  delay: "0.7s" },   /* Right head */
               { top: "42%", left: "52%", size: 6,  delay: "1.8s" },   /* Chin center */
-              { top: "55%", left: "28%", size: 9,  delay: "0.5s" },   /* Body left */
-              { top: "48%", left: "72%", size: 7,  delay: "2.3s" },   /* Body right */
               { top: "65%", left: "38%", size: 8,  delay: "1.1s" },   /* Tail start */
               { top: "78%", left: "48%", size: 6,  delay: "0.9s" },   /* Tail mid-curve */
-              { top: "85%", left: "42%", size: 10, delay: "1.6s" },   /* Tail tip */
             ].map((glow, i) => (
               <span
-                key={`cirby-glow-${i}`}
-                className="absolute rounded-full"
+                key={`cirby-glow-fg-${i}`}
+                className="absolute rounded-full z-10"
                 style={{
                   top: glow.top,
                   left: glow.left,
@@ -330,28 +381,29 @@ export default function HeroSection() {
                 target={isExternalRegistrationUrl ? "_blank" : undefined}
                 rel={isExternalRegistrationUrl ? "noopener noreferrer" : undefined}
                 onClick={handleRegistrationClick}
-                className="relative z-10 rounded-full border px-5 py-2 text-[11px] uppercase tracking-[0.26em] text-white/85 transition-colors duration-200 hover:border-white/85 hover:bg-white/10 hover:text-white"
+                className="group relative z-10 flex h-9 items-center justify-center overflow-hidden rounded-full border px-6 text-[11px] font-bold uppercase tracking-[0.26em] text-white transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_22px_rgba(86,164,255,0.7)]"
                 style={{
-                  borderColor: "rgba(202, 218, 255, 0.6)",
-                  background: "linear-gradient(180deg, rgba(44, 62, 130, 0.55), rgba(18, 27, 64, 0.9))",
-                  boxShadow: "inset 0 1px 0 rgba(255, 255, 255, 0.2)",
+                  borderColor: "rgba(255, 255, 255, 0.4)",
+                  background: "linear-gradient(180deg, #4da3ff 0%, #1e56cf 100%)",
+                  boxShadow: "0 8px 20px rgba(11, 23, 71, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.6)",
+                  textShadow: "0 1px 3px rgba(0, 0, 0, 0.4)",
                 }}
               >
                 <span
-                  className="pointer-events-none absolute inset-0 rounded-full"
+                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   style={{
-                    boxShadow: "0 0 0 1px rgba(164, 192, 255, 0.32), 0 0 14px rgba(128, 164, 255, 0.34)",
+                    background: "linear-gradient(180deg, #6cafff 0%, #2f6de5 100%)",
                   }}
                 />
                 <span
-                  className="pointer-events-none absolute -inset-2 rounded-full"
+                  className="pointer-events-none absolute -inset-2 rounded-full opacity-60 transition-all duration-300 group-hover:scale-110 group-hover:opacity-80"
                   style={{
-                    background: "radial-gradient(circle, rgba(122, 160, 255, 0.45), rgba(122, 160, 255, 0) 72%)",
-                    filter: "blur(7px)",
-                    opacity: 0.6,
+                    background: "radial-gradient(circle, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 72%)",
+                    filter: "blur(6px)",
+                    transform: "translateY(-60%)",
                   }}
                 />
-                <span className="relative">Register</span>
+                <span className="relative z-10">Register</span>
               </a>
             </div>
           </div>
@@ -526,6 +578,22 @@ export default function HeroSection() {
         </div>
       </div>
 
+      {/* Foreground comets — IN FRONT of all content (z-[50]) */}
+      <div className="pointer-events-none absolute inset-0 z-[50] overflow-hidden" aria-hidden="true">
+        {foregroundComets.map((comet) => (
+          <div
+            key={`comet-fg-${comet.top}-${comet.right}-${comet.delay}`}
+            className={comet.className}
+            style={{
+              top: comet.top,
+              right: comet.right,
+              width: comet.width,
+              animationDuration: comet.duration,
+              animationDelay: comet.delay,
+            }}
+          />
+        ))}
+      </div>
     </section>
   );
 }
