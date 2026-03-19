@@ -58,10 +58,10 @@ Make sure you have Node.js and a package manager like `pnpm`, `npm`, or `yarn` i
 
 This project exists thanks to the structural dedication and incredible talent of the GDG PUP community:
 
-- **Design Leads**: [Nyzel Cayat](https://www.linkedin.com/in/nyzel-cayat0/)
-- **Development Leads**:
-  - [Aurold John Sadullo](https://www.linkedin.com/in/ajsadullo/)
-  - [Carlos Jerico Dela Torre](https://www.linkedin.com/in/delatorrecj/)
+- **Design**: [Nyzel Cayat (DCTO for Development and Experience)](https://www.linkedin.com/in/nyzel-cayat0/)
+- **Development**:
+  - [Aurold John Sadullo (DCTO for Infrastructure and Intelligence)](https://www.linkedin.com/in/ajsadullo/)
+  - [Carlos Jerico Dela Torre (Chief Technology Officer)](https://www.linkedin.com/in/delatorrecj/)
 
 ## 🔗 Connect with GDG PUP
 
