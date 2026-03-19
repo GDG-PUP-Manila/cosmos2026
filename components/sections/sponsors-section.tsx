@@ -1,13 +1,16 @@
+"use client";
+
 import Image from "next/image";
 
 import AmbientStarfield from "@/components/ui/ambient-starfield";
+import GlareHover from "@/components/ui/glare-hover";
 
 const PARTNER_ICONS = [
-  { src: "/assets/sponsors/Cisco-Logo.webp", alt: "Cisco logo" },
-  { src: "/assets/sponsors/jbecp-logo.webp", alt: "JBECP logo" },
-  { src: "/assets/sponsors/SG-Logo.webp", alt: "SG logo" },
-  { src: "/assets/sponsors/TPG-logo.webp", alt: "TPG logo" },
-  { src: "/assets/sponsors/ASCII-Logo.webp", alt: "ASCII logo" },
+  { src: "/assets/sponsors/Cisco-Logo.webp", alt: "Cisco logo", href: "https://www.facebook.com/cisconetconnectpup/" },
+  { src: "/assets/sponsors/jbecp-logo.webp", alt: "JBECP logo", href: "https://www.facebook.com/jbecp.pupmnl/" },
+  { src: "/assets/sponsors/SG-Logo.webp", alt: "SG logo", href: "https://www.facebook.com/seekersguildcommunity" },
+  { src: "/assets/sponsors/TPG-logo.webp", alt: "TPG logo", href: "https://www.facebook.com/PUPTPG" },
+  { src: "/assets/sponsors/ASCII-Logo.webp", alt: "ASCII logo", href: "https://www.facebook.com/PUPASCII/" },
 ];
 
 export default function SponsorsSection() {
@@ -48,13 +51,43 @@ export default function SponsorsSection() {
         </div>
 
         <div className="absolute -left-[-7%] top-[42%] hidden w-[330px] opacity-74 mix-blend-screen md:block lg:w-[420px] ">
-          <Image
-            src="/assets/sponsors/sparky-constellation-1.webp"
-            alt=""
-            width={736}
-            height={736}
-            className="h-auto w-full [filter:sepia(1)_hue-rotate(150deg)_saturate(5)_brightness(0.72)] drop-shadow-[0_0_26px_rgba(87,174,255,0.34)]"
-          />
+          <div className="relative">
+            <Image
+              src="/assets/hero/cirby.webp"
+              alt=""
+              width={736}
+              height={736}
+              className="h-auto w-full [filter:sepia(1)_hue-rotate(150deg)_saturate(5)_brightness(0.72)] drop-shadow-[0_0_26px_rgba(87,174,255,0.34)]"
+            />
+            {/* Twinkling glow points */}
+            {[
+              { top: "5%",  left: "42%", size: 8,  delay: "0.3s" },   /* Cap top */
+              { top: "12%", left: "62%", size: 10, delay: "1.4s" },   /* Cap visor tip */
+              { top: "22%", left: "18%", size: 7,  delay: "2.0s" },   /* Left head */
+              { top: "20%", left: "78%", size: 8,  delay: "0.7s" },   /* Right head */
+              { top: "42%", left: "52%", size: 6,  delay: "1.8s" },   /* Chin center */
+              { top: "55%", left: "28%", size: 9,  delay: "0.5s" },   /* Body left */
+              { top: "48%", left: "72%", size: 7,  delay: "2.3s" },   /* Body right */
+              { top: "65%", left: "38%", size: 8,  delay: "1.1s" },   /* Tail start */
+              { top: "78%", left: "48%", size: 6,  delay: "0.9s" },   /* Tail mid-curve */
+              { top: "85%", left: "42%", size: 10, delay: "1.6s" },   /* Tail tip */
+            ].map((glow, i) => (
+              <span
+                key={`cirby-glow-${i}`}
+                className="absolute rounded-full"
+                style={{
+                  top: glow.top,
+                  left: glow.left,
+                  width: glow.size,
+                  height: glow.size,
+                  background: "radial-gradient(circle, rgba(194,235,255,1) 0%, rgba(194,235,255,0.6) 40%, transparent 70%)",
+                  boxShadow: `0 0 ${glow.size * 2}px rgba(194,235,255,0.9), 0 0 ${glow.size * 4}px rgba(194,235,255,0.5)`,
+                  animation: `mascot-twinkle 3s ease-in-out ${glow.delay} infinite`,
+                  transform: "translate(-50%, -50%)",
+                }}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
@@ -71,89 +104,187 @@ export default function SponsorsSection() {
 
         <div className="mt-14 w-full">
           <p className="text-[11px] uppercase tracking-[0.24em] text-[#8ba5d6]/85">In Collaboration With</p>
-          <div className="mx-auto mt-4 flex w-full max-w-[430px] items-center justify-center rounded-[22px] border border-[#7597d4]/24 bg-[linear-gradient(160deg,rgba(19,34,74,0.54),rgba(9,17,44,0.48))] px-5 py-6 shadow-[0_18px_42px_rgba(4,12,38,0.56)]">
-            <Image src="/assets/sponsors/Icon-1.webp" alt="TBIDO logo" width={1024} height={768} className="h-auto w-[280px]" />
-          </div>
+          <a
+            href="https://www.facebook.com/DOSTPUPPYLONTBI"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-auto mt-4 block w-full max-w-[430px] transition-all duration-300 hover:scale-[1.03]"
+          >
+            <GlareHover borderRadius="22px" glareOpacity={0.3} glareAngle={-30} glareSize={300} transitionDuration={800}>
+              <div className="flex w-full items-center justify-center rounded-[22px] border border-[#7597d4]/24 bg-[linear-gradient(160deg,rgba(19,34,74,0.54),rgba(9,17,44,0.48))] px-5 py-6 shadow-[0_18px_42px_rgba(4,12,38,0.56)]">
+                <Image
+                  src="/assets/sponsors/Icon-1.webp"
+                  alt="TBIDO logo"
+                  width={1024}
+                  height={768}
+                  className="h-auto w-[280px]"
+                />
+              </div>
+            </GlareHover>
+          </a>
         </div>
 
         <div className="mt-12 w-full">
           <p className="text-[11px] uppercase tracking-[0.24em] text-[#8ba5d6]/85">Sponsored By</p>
           <div className="mx-auto mt-5 grid w-full max-w-[580px] grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
-            <div className="flex min-h-[286px] flex-col rounded-[22px] border border-[#7597d4]/24 bg-[linear-gradient(160deg,rgba(19,34,74,0.54),rgba(9,17,44,0.48))] px-4 py-5 text-center shadow-[0_18px_42px_rgba(4,12,38,0.56)]">
-              <div className="flex h-[180px] items-center justify-center">
-                <Image src="/assets/sponsors/Icon-2.webp" alt="OpsWerks logo" width={672} height={672} className="h-auto w-[185px]" />
-              </div>
-              <p className="mt-2 text-base text-[#90a4c8]">Platinum Sponsor</p>
-            </div>
-            <div className="flex min-h-[286px] flex-col rounded-[22px] border border-[#7597d4]/24 bg-[linear-gradient(160deg,rgba(19,34,74,0.54),rgba(9,17,44,0.48))] px-4 py-5 text-center shadow-[0_18px_42px_rgba(4,12,38,0.56)]">
-              <div className="flex h-[180px] items-center justify-center">
-                <Image
-                  src="/assets/sponsors/Icon-3.webp"
-                  alt="CCIS Student Council logo"
-                  width={1120}
-                  height={768}
-                  className="h-auto w-[300px]"
-                />
-              </div>
-              <p className="mt-2 text-base text-[#90a4c8]">Gold Sponsor</p>
-            </div>
+            <a
+              href="https://www.facebook.com/opswerks/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block transition-all duration-300 hover:scale-[1.03]"
+            >
+              <GlareHover
+                borderRadius="22px"
+                glareOpacity={0.3}
+                glareAngle={-30}
+                glareSize={300}
+                transitionDuration={800}
+              >
+                <div className="flex min-h-[286px] flex-col rounded-[22px] border border-[#7597d4]/24 bg-[linear-gradient(160deg,rgba(19,34,74,0.54),rgba(9,17,44,0.48))] px-4 py-5 text-center shadow-[0_18px_42px_rgba(4,12,38,0.56)]">
+                  <div className="flex h-[180px] items-center justify-center">
+                    <Image
+                      src="/assets/sponsors/Icon-2.webp"
+                      alt="OpsWerks logo"
+                      width={672}
+                      height={672}
+                      className="h-auto w-[185px]"
+                    />
+                  </div>
+                  <p className="mt-2 text-base text-[#90a4c8]">Platinum Sponsor</p>
+                </div>
+              </GlareHover>
+            </a>
+            <a
+              href="https://www.facebook.com/PUPCCISSC/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block transition-all duration-300 hover:scale-[1.03]"
+            >
+              <GlareHover
+                borderRadius="22px"
+                glareOpacity={0.3}
+                glareAngle={-30}
+                glareSize={300}
+                transitionDuration={800}
+              >
+                <div className="flex min-h-[286px] flex-col rounded-[22px] border border-[#7597d4]/24 bg-[linear-gradient(160deg,rgba(19,34,74,0.54),rgba(9,17,44,0.48))] px-4 py-5 text-center shadow-[0_18px_42px_rgba(4,12,38,0.56)]">
+                  <div className="flex h-[180px] items-center justify-center">
+                    <Image
+                      src="/assets/sponsors/Icon-3.webp"
+                      alt="CCIS Student Council logo"
+                      width={1120}
+                      height={768}
+                      className="h-auto w-[300px]"
+                    />
+                  </div>
+                  <p className="mt-2 text-base text-[#90a4c8]">Gold Sponsor</p>
+                </div>
+              </GlareHover>
+            </a>
           </div>
         </div>
 
         <div className="mt-12 w-full">
           <p className="text-[11px] uppercase tracking-[0.24em] text-[#8ba5d6]/85">Media Partner</p>
-          <div className="mx-auto mt-4 flex w-full max-w-[230px] items-center justify-center rounded-[18px] border border-[#7597d4]/24 bg-[linear-gradient(160deg,rgba(19,34,74,0.54),rgba(9,17,44,0.48))] px-4 py-5 shadow-[0_18px_42px_rgba(4,12,38,0.56)]">
-            <Image
-              src="/assets/sponsors/Icon-4.webp"
-              alt="When In Manila logo"
-              width={447}
-              height={448}
-              className="h-auto w-[140px]"
-            />
-          </div>
+          <a
+            href="https://www.wheninmanila.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-auto mt-4 block w-full max-w-[230px] transition-all duration-300 hover:scale-[1.03]"
+          >
+            <GlareHover borderRadius="18px" glareOpacity={0.3} glareAngle={-30} glareSize={300} transitionDuration={800}>
+              <div className="flex w-full items-center justify-center rounded-[18px] border border-[#7597d4]/24 bg-[linear-gradient(160deg,rgba(19,34,74,0.54),rgba(9,17,44,0.48))] px-4 py-5 shadow-[0_18px_42px_rgba(4,12,38,0.56)]">
+                <Image
+                  src="/assets/sponsors/Icon-4.webp"
+                  alt="When In Manila logo"
+                  width={447}
+                  height={448}
+                  className="h-auto w-[140px]"
+                />
+              </div>
+            </GlareHover>
+          </a>
         </div>
 
         <div className="mt-12 w-full">
           <p className="text-[11px] uppercase tracking-[0.24em] text-[#8ba5d6]/85">Partnered With</p>
 
           <div className="mt-5 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-            {PARTNER_ICONS.map((logo) => (
-              <Image
-                key={logo.src}
-                src={logo.src}
-                alt={logo.alt}
-                width={320}
-                height={320}
-                className="h-24 w-24 object-contain sm:h-28 sm:w-28"
-              />
-            ))}
+            {PARTNER_ICONS.map((logo) => {
+              const ImageWrapper = (props: { children: React.ReactNode }) =>
+                logo.href ? (
+                  <a
+                    href={logo.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-all duration-300 hover:scale-[1.08]"
+                  >
+                    {props.children}
+                  </a>
+                ) : (
+                  <div className="transition-all duration-300 hover:scale-[1.08]">{props.children}</div>
+                );
+
+              return (
+                <ImageWrapper key={logo.src}>
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={320}
+                    height={320}
+                    className="h-18 w-auto max-w-[120px] object-contain sm:h-22 sm:max-w-[135px]"
+                  />
+                </ImageWrapper>
+              );
+            })}
           </div>
 
           <div className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-10">
-            <Image
-              src="/assets/sponsors/GDG-TUP.webp"
-              alt="Google Developer Groups on Campus TUP Manila"
-              width={1048}
-              height={152}
-              className="h-15 w-auto object-contain sm:h-16"
-            />
-            <Image
-              src="/assets/sponsors/GDG-NU-MANILA.webp"
-              alt="Google Developer Groups on Campus NU Manila"
-              width={1048}
-              height={152}
-              className="h-15 w-auto object-contain sm:h-16"
-            />
+            <a
+              href="https://www.facebook.com/GDGonCampusTUPManila/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-all duration-300 hover:scale-[1.06]"
+            >
+              <Image
+                src="/assets/sponsors/GDG-TUP.webp"
+                alt="Google Developer Groups on Campus TUP Manila"
+                width={1048}
+                height={152}
+                className="h-15 w-auto object-contain sm:h-16"
+              />
+            </a>
+            <a
+              href="https://www.facebook.com/gdgoc.numanila"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-all duration-300 hover:scale-[1.06]"
+            >
+              <Image
+                src="/assets/sponsors/GDG-NU-MANILA.webp"
+                alt="Google Developer Groups on Campus NU Manila"
+                width={1048}
+                height={152}
+                className="h-15 w-auto object-contain sm:h-16"
+              />
+            </a>
           </div>
 
           <div className="mt-3 flex justify-center">
-            <Image
-              src="/assets/sponsors/GDG-DLSU.webp"
-              alt="Google Developer Group De La Salle University"
-              width={635}
-              height={107}
-              className="h-18 w-auto object-contain sm:h-22"
-            />
+            <a
+              href="https://www.facebook.com/GDGoCDLSU/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-all duration-300 hover:scale-[1.06]"
+            >
+              <Image
+                src="/assets/sponsors/GDG-DLSU.webp"
+                alt="Google Developer Group De La Salle University"
+                width={635}
+                height={107}
+                className="h-18 w-auto object-contain sm:h-22"
+              />
+            </a>
           </div>
         </div>
       </div>

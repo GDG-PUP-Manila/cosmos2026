@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 export default function CustomCursor() {
   const cursorDotRef = useRef<HTMLDivElement>(null);
-  const cursorOutlineRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     // Disable on touch devices
@@ -15,8 +15,6 @@ export default function CustomCursor() {
 
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
-    let outlineX = mouseX;
-    let outlineY = mouseY;
     let isHovering = false;
 
     const onMouseMove = (e: MouseEvent) => {
@@ -25,23 +23,9 @@ export default function CustomCursor() {
 
       if (cursorDotRef.current) {
         cursorDotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate3d(-50%, -50%, 0) scale(${
-          isHovering ? 1.25 : 1
+          isHovering ? 1.75 : 1
         })`;
       }
-    };
-
-    const animateLoop = () => {
-      // Lerp for smooth trailing outline
-      outlineX += (mouseX - outlineX) * 0.15;
-      outlineY += (mouseY - outlineY) * 0.15;
-
-      if (cursorOutlineRef.current) {
-        cursorOutlineRef.current.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0) translate3d(-50%, -50%, 0) scale(${
-          isHovering ? 1.25 : 1
-        })`;
-      }
-
-      requestAnimationFrame(animateLoop);
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -56,15 +40,8 @@ export default function CustomCursor() {
 
       isHovering = !!isInteractive;
       
-      if (cursorOutlineRef.current) {
-        if (isHovering) {
-          cursorOutlineRef.current.style.borderColor = "rgba(155, 231, 255, 0.8)";
-          cursorOutlineRef.current.style.backgroundColor = "rgba(155, 231, 255, 0.1)";
-        } else {
-          cursorOutlineRef.current.style.borderColor = "rgba(122, 162, 255, 0.4)";
-          cursorOutlineRef.current.style.backgroundColor = "rgba(122, 162, 255, 0.05)";
-        }
-      }
+      setIsHovered((prev) => (prev !== isHovering ? isHovering : prev));
+      
       // Instantly update dot scale since it's driven in onMouseMove, but mouse might not move
       if (cursorDotRef.current) {
          cursorDotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate3d(-50%, -50%, 0) scale(${isHovering ? 1.75 : 1})`;
@@ -73,35 +50,55 @@ export default function CustomCursor() {
 
     window.addEventListener("mousemove", onMouseMove);
     window.addEventListener("mouseover", handleMouseOver);
-    const frameId = requestAnimationFrame(animateLoop);
 
     return () => {
       document.documentElement.classList.remove("custom-cursor-enabled");
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseover", handleMouseOver);
-      cancelAnimationFrame(frameId);
     };
   }, []);
 
   return (
-    <>
-      <div
-        ref={cursorDotRef}
-        className="pointer-events-none fixed left-0 top-0 z-[999999] hidden h-8 w-8 transition-transform duration-100 ease-out will-change-transform lg:block drop-shadow-[0_0_8px_rgba(155,231,255,0.6)]"
-      >
-        <Image
-          src="/assets/CIRBY.png"
-          alt="Cursor"
-          width={32}
-          height={32}
-          className="h-full w-full object-contain"
-          priority
-        />
-      </div>
-      <div
-        ref={cursorOutlineRef}
-        className="pointer-events-none fixed left-0 top-0 z-[999998] hidden h-10 w-10 rounded-full border border-[rgba(122,162,255,0.4)] bg-[rgba(122,162,255,0.05)] mix-blend-screen transition-colors duration-200 ease-out will-change-transform lg:block"
+    <div
+      ref={cursorDotRef}
+      className="pointer-events-none fixed left-0 top-0 z-[999999] h-8 w-8 transition-transform duration-100 ease-out will-change-transform drop-shadow-[0_0_8px_rgba(155,231,255,0.6)]"
+    >
+      {isHovered && (
+        <>
+          <div 
+            className="absolute inset-[-20%] -z-10 rounded-full opacity-40 mix-blend-screen animate-ping" 
+            style={{ 
+              animationDuration: "2s", 
+              animationDelay: "0s", 
+              background: "radial-gradient(circle, transparent 30%, rgba(135,206,250,0.6) 65%, rgba(255,255,255,0.9) 85%, transparent 100%)" 
+            }} 
+          />
+          <div 
+            className="absolute inset-[-20%] -z-10 rounded-full opacity-40 mix-blend-screen animate-ping" 
+            style={{ 
+              animationDuration: "2s", 
+              animationDelay: "0.6s", 
+              background: "radial-gradient(circle, transparent 30%, rgba(135,206,250,0.6) 65%, rgba(255,255,255,0.9) 85%, transparent 100%)" 
+            }} 
+          />
+          <div 
+            className="absolute inset-[-20%] -z-10 rounded-full opacity-40 mix-blend-screen animate-ping" 
+            style={{ 
+              animationDuration: "2s", 
+              animationDelay: "1.2s", 
+              background: "radial-gradient(circle, transparent 30%, rgba(135,206,250,0.6) 65%, rgba(255,255,255,0.9) 85%, transparent 100%)" 
+            }} 
+          />
+        </>
+      )}
+      <Image
+        src="/assets/CIRBY.webp"
+        alt="Cursor"
+        width={32}
+        height={32}
+        className="h-full w-full object-contain"
+        priority
       />
-    </>
+    </div>
   );
 }

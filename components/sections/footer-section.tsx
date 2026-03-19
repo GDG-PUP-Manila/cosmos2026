@@ -11,44 +11,45 @@ const COSMOS_LINKS = [
 
 const GDG_LINKS = [
   { label: "About GDG PUP", href: "https://gdg.community.dev/gdg-on-campus-polytechnic-university-of-the-philippines-manila-philippines/" },
-  { label: "NEXUS Platform", href: "#program" },
-  { label: "GDG ID Platform", href: "https://developers.google.com/community/gdg" },
-  { label: "GDG PUP Photobooth", href: "#" },
+  { label: "NEXUS Platform", href: "https://id.gdgpup.org/comingsoon" },
+  { label: "GDG ID Platform", href: "https://id.gdgpup.org/" },
+  { label: "GDG PUP Photobooth", href: "https://photo.gdgpup.org/" },
+  { label: "GDG PUP DP Platform", href: "https://frame.gdgpup.org/" },
 ];
 
 const SOCIAL_LINKS = [
   {
     label: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/company/gdgpup/",
     icon: <Linkedin className="h-[28px] w-[28px] stroke-[1.9]" aria-hidden="true" />,
   },
   {
     label: "Instagram",
-    href: "https://www.instagram.com/gdg.pupmnl",
+    href: "https://www.instagram.com/gdg.pupmnl/",
     icon: <Instagram className="h-[28px] w-[28px] stroke-[1.9]" aria-hidden="true" />,
   },
   {
     label: "Facebook",
-    href: "https://www.facebook.com/gdg.pupmnl",
+    href: "https://www.facebook.com/gdg.pupmnl/",
     icon: <Facebook className="h-[28px] w-[28px] stroke-[1.9]" aria-hidden="true" />,
   },
   {
-    label: "X",
-    href: "#",
+    label: "TikTok",
+    href: "https://www.tiktok.com/@gdg.pupmnl/",
     icon: (
-      <svg viewBox="0 0 24 24" className="h-[28px] w-[28px]" aria-hidden="true">
-        <path d="M4 3h4.2l4.1 5.5L17 3h3l-6 7.1L20.2 21H16l-4.7-6.3L6 21H3l6.7-7.9L4 3z" fill="currentColor" />
+      <svg viewBox="0 0 24 24" className="h-[24px] w-[24px]" aria-hidden="true">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" fill="currentColor" />
       </svg>
     ),
   },
   {
     label: "GitHub",
-    href: "#",
+    href: "https://github.com/GDG-PUP-Manila/",
     icon: <Github className="h-[28px] w-[28px] stroke-[1.9]" aria-hidden="true" />,
   },
   {
     label: "YouTube",
-    href: "#",
+    href: "https://youtube.com/@gdg.pupmnl",
     icon: <Youtube className="h-[28px] w-[28px] stroke-[1.9]" aria-hidden="true" />,
   },
 ];
@@ -82,13 +83,21 @@ export default function FooterSection() {
       <div className="mx-auto w-full max-w-[1380px]">
         <div className="grid gap-9 lg:grid-cols-[1.55fr_1fr_1fr_1fr] lg:gap-10">
           <section>
-            <Image
-              src="/assets/gdg-pup-logo.svg"
-              alt="Google Developer Group Polytechnic University of the Philippines"
-              width={260}
-              height={55}
-              className="h-auto w-[260px] sm:w-[320px]"
-            />
+            <a 
+              href="https://gdg.community.dev/gdg-on-campus-polytechnic-university-of-the-philippines-manila-philippines/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block transition-transform duration-300 hover:scale-[1.04]"
+              aria-label="Visit GDG PUP on the official GDG Community Platform"
+            >
+              <Image
+                src="/assets/gdg-pup-logo.svg"
+                alt="Google Developer Group Polytechnic University of the Philippines"
+                width={260}
+                height={55}
+                className="h-auto w-[260px] sm:w-[320px]"
+              />
+            </a>
 
             <p className="mt-6 max-w-[330px] text-justify text-[0.83rem] leading-[1.4] tracking-[0.01em] text-[#8e9ebc]">
               GDG PUP is a student-led technology community supported by Google. We exist to grow the next generation of
@@ -138,19 +147,28 @@ export default function FooterSection() {
             <ul className="mt-5 space-y-4">
               <li>
                 <a
-                  href="mailto:hello@gdgpup.org"
+                  href="mailto:gdg.pupmnl@gmail.com"
                   className="text-[0.83rem] font-light tracking-[0.01em] text-[#95a7c5] underline decoration-[#95a7c5] underline-offset-[4px] transition-colors duration-200 hover:text-[#d8e7ff] hover:decoration-[#d8e7ff]"
                 >
-                  hello@gdgpup.org
+                  gdg.pupmnl@gmail.com
                 </a>
               </li>
+            </ul>
+
+            <h3 className="mt-10 text-[0.95rem] font-semibold uppercase tracking-[0.028em] text-white">
+              CONTRIBUTORS
+            </h3>
+            <ul className="mt-5 space-y-4 text-[0.83rem] font-light tracking-[0.01em] text-[#95a7c5]">
               <li>
-                <a
-                  href="mailto:support@gdgpup.org"
-                  className="text-[0.83rem] font-light tracking-[0.01em] text-[#95a7c5] underline decoration-[#95a7c5] underline-offset-[4px] transition-colors duration-200 hover:text-[#d8e7ff] hover:decoration-[#d8e7ff]"
-                >
-                  support@gdgpup.org
-                </a>
+                <span className="block text-[#667d9e] text-[0.7rem] uppercase font-medium tracking-wider mb-1">Design</span>
+                <a href="https://www.linkedin.com/in/nyzel-cayat0/" target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-[#d8e7ff]">Nyzel Cayat</a>
+              </li>
+              <li>
+                <span className="block text-[#667d9e] text-[0.7rem] uppercase font-medium tracking-wider mb-1">Development</span>
+                <div className="flex flex-col space-y-2">
+                  <a href="https://www.linkedin.com/in/ajsadullo/" target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-[#d8e7ff]">Aurold John Sadullo</a>
+                  <a href="https://www.linkedin.com/in/delatorrecj/" target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-[#d8e7ff]">Carlos Jerico Dela Torre</a>
+                </div>
               </li>
             </ul>
           </section>

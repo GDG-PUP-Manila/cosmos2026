@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import {
   BookOpen,
@@ -24,9 +24,11 @@ import {
   useReducedMotion,
   useScroll,
   useTransform,
+  useMotionValueEvent,
   type MotionValue,
 } from "framer-motion";
 import AmbientStarfield from "@/components/ui/ambient-starfield";
+import { TracingBeam } from "@/components/ui/tracing-beam";
 
 type ProgramItem = {
   time: string;
@@ -57,98 +59,98 @@ const programItems: ProgramItem[] = [
   {
     time: "09:00 AM - 09:30 AM",
     title: "Registration & Immersive Welcome",
-    detail: "Get to know the people early and explore what is waiting for you inside the venue.",
+    detail: "Get to know the people early and explore what’s waiting for you inside the venue",
     side: "left",
     icon: "book",
   },
   {
     time: "09:30 AM",
     title: "Welcoming Keynotes",
-    detail: "Dr. Cherry D. Casuat and Shunrenn Locaylocay open COSMOS 2026.",
+    detail: "Dr. Cherry D. Casuat and Mr. Shunrenn Locaylocay takes the stage for their warm opening remarks for COSMOS 2026",
     side: "right",
     icon: "mic",
   },
   {
     time: "10:10 AM",
     title: "Beyond the Code: Building Confidence and Systems in an AI World",
-    detail: "Sermil Matoto, Chief Engineer at Kollab.",
+    detail: "Sermil Matoto, Chief Engineer at Kollab",
     side: "left",
     icon: "lightbulb",
   },
   {
     time: "10:50 AM",
     title: "Catalyzing Change: The Role of Student Organizations in Building Purpose-Driven Communities",
-    detail: "Jazmine Calma, Head of Quality Assurance at Kollab.",
+    detail: "Jazmine Calma, Head of Quality Assurance at Kollab",
     side: "right",
     icon: "users",
   },
   {
     time: "11:30 AM",
     title: "Panel Discussion: Part 1",
-    detail: "Sermil Matoto and Jazmin Calma.",
+    detail: "Sermil Matoto & Jazmin Calma",
     side: "left",
     icon: "panel",
   },
   {
     time: "11:50 AM",
     title: "Presentation of Tech-xhibit",
-    detail: "Aurold John Sadullo, Deputy Chief Technology Officer.",
+    detail: "Aurold John Sadullo, Deputy Chief Technology Officer",
     side: "right",
     icon: "presentation",
   },
   {
     time: "12:00 NN",
     title: "Lunch Break With Intermission Number",
-    detail: "Solomon Nadonga, Chief Community Relations Officer.",
+    detail: "Solomon Nadonga, Chief Community Relations Officer",
     side: "left",
     icon: "lunch",
   },
   {
     time: "01:10 PM",
     title: "Have You Ever Tried This One? Trying, Failing, and Building Anyway",
-    detail: "Julianne Cera, Tech Community and Partnerships Relations Officer.",
+    detail: "Julianne Cera, Tech Community and Partnerships Relations Officer",
     side: "right",
     icon: "chat",
   },
   {
     time: "01:50 PM",
     title: "Starters to Supernovas: Shaping Leaders in Student Communities",
-    detail: "John Dustin Santos, Chairperson of Department of Information Technology.",
+    detail: "John Dustin Santos, Chairperson of Department of Information Technology",
     side: "left",
     icon: "learn",
   },
   {
     time: "02:20 PM",
     title: "Ice Breaker",
-    detail: "Master of Ceremony, COSMOS 2026.",
+    detail: "Master of Ceremony, COSMOS 2026",
     side: "right",
     icon: "ice",
   },
   {
     time: "02:30 PM",
     title: "Limitless Possibilities: Reverse-Engineering Your Way to a Startup",
-    detail: "Carlos Jerico Dela Torre, Chief Technology Officer.",
+    detail: "Carlos Jerico Dela Torre, Chief Technology Officer",
     side: "left",
     icon: "launch",
   },
   {
     time: "03:10 PM",
     title: "Panel Discussion: Part 2",
-    detail: "Julianne Cera, John Dustin Santos, and Carlos Jerico Dela Torre.",
+    detail: "Julianne Cera, John Dustin Santos & Carlos Jerico Dela Torre",
     side: "right",
     icon: "panel",
   },
   {
     time: "03:30 PM",
     title: "Partner Talks - TBIDO",
-    detail: "Technology Business Incubation and Development Office.",
+    detail: "Technology Business Incubation and Development Office",
     side: "left",
     icon: "partner",
   },
   {
     time: "03:50 PM - 05:00 PM",
     title: "Closing Ceremony & Final Remarks",
-    detail: "Booths, networking sessions, raffles, and closing remarks from GDG PUP leadership.",
+    detail: "Booths and Networking Sessions, Raffles & Closing Remarks from GDG PUP ‘26 Chapter Lead, Randy Carlos Lorenzo",
     side: "right",
     icon: "flag",
   },
@@ -218,47 +220,93 @@ function StoryTimelineItem({ item }: StoryTimelineItemProps) {
   const isLeft = item.side === "left";
   const reduceMotion = useReducedMotion();
   const itemRef = useRef<HTMLElement | null>(null);
+  const [isRevealed, setIsRevealed] = useState(false);
+  
+  // The shooting star is exactly at 60% of viewport. 
   const { scrollYProgress: itemProgress } = useScroll({
     target: itemRef,
-    offset: ["start 88%", "start 64%"],
+    offset: ["start 60%", "start 45%"],
   });
 
-  const entryOpacity = useTransform(itemProgress, [0, 1], [reduceMotion ? 1 : 0, 1], { clamp: true });
-  const entryY = useTransform(itemProgress, [0, 1], [reduceMotion ? 0 : 46, 0], { clamp: true });
-  const entryScale = useTransform(itemProgress, [0, 1], [reduceMotion ? 1 : 0.95, 1], { clamp: true });
-  const entryBlur = useTransform(itemProgress, [0, 1], [reduceMotion ? 0 : 12, 0], { clamp: true });
-  const entryFilter = useMotionTemplate`blur(${entryBlur}px)`;
-
-  const markerOpacity = useTransform(itemProgress, [0, 1], [0.34, 1], { clamp: true });
-  const markerScale = useTransform(itemProgress, [0, 1], [reduceMotion ? 1 : 0.82, 1], { clamp: true });
+  useMotionValueEvent(itemProgress, "change", (latest) => {
+    // Reveal item when star passes down, hide when star passes back up
+    if (latest > 0 && !isRevealed) {
+      setIsRevealed(true);
+    } else if (latest <= 0 && isRevealed) {
+      setIsRevealed(false);
+    }
+  });
 
   return (
     <motion.article
       ref={itemRef}
       className="relative md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-24"
-      style={{ opacity: entryOpacity }}
     >
       <motion.div
         className={[
           "pl-16 md:pl-0",
           isLeft ? "md:col-start-1 md:pr-12 md:text-right lg:pr-14" : "md:col-start-2 md:pl-12 md:text-left lg:pl-14",
         ].join(" ")}
-        style={{ y: entryY, scale: entryScale, filter: entryFilter }}
+        initial={false}
+        animate={{
+          opacity: isRevealed ? 1 : 0,
+          y: isRevealed ? 0 : (reduceMotion ? 0 : 30),
+          filter: isRevealed ? "blur(0px)" : (reduceMotion ? "blur(0px)" : "blur(12px)"),
+        }}
+        transition={{
+          duration: 0.8,
+          ease: [0.16, 1, 0.3, 1],
+        }}
       >
         <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#58a4ff]">{item.time}</p>
-        <h3 className="mt-1 text-[1.26rem] font-bold leading-[1.18] tracking-[-0.01em] text-white sm:text-[1.42rem]">
+        
+        {/* Minimal breathing glow on title after revealed */}
+        <motion.h3 
+          className="mt-1 text-[1.26rem] font-bold leading-[1.18] tracking-[-0.01em] text-white sm:text-[1.42rem]"
+          animate={isRevealed ? {
+            textShadow: [
+              "0px 0px 4px rgba(255,255,255,0.0)", 
+              "0px 0px 10px rgba(88,164,255,0.45)", 
+              "0px 0px 4px rgba(255,255,255,0.0)"
+            ]
+          } : { textShadow: "0px 0px 0px rgba(0,0,0,0)" }}
+          transition={isRevealed ? {
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.8 // Start breathing after the reveal animation finishes
+          } : {}}
+        >
           {item.title}
-        </h3>
+        </motion.h3>
+        
         <p className="mt-2 text-xs leading-relaxed text-[#9db4e2]/86 sm:text-sm">{item.detail}</p>
       </motion.div>
 
       <motion.div
         className="absolute left-6 top-[6px] z-10 -translate-x-1/2 md:left-1/2"
-        style={{ opacity: markerOpacity, scale: markerScale }}
       >
-        <div className="relative grid h-10 w-10 place-items-center rounded-full border border-[#58a4ff]/45 bg-[radial-gradient(circle_at_50%_35%,rgba(27,78,170,0.46),rgba(8,21,60,0.9)_66%)] shadow-[0_0_0_1px_rgba(88,164,255,0.18),0_0_20px_rgba(56,138,255,0.28)]">
-          <Icon className="h-4 w-4 text-[#7fc3ff]" strokeWidth={1.8} />
-          <div className="absolute inset-[4px] rounded-full border border-[#78b9ff]/28" />
+        <div className="relative grid h-10 w-10 place-items-center rounded-full border border-[#58a4ff]/20 bg-[#08153c]/50 backdrop-blur-sm shadow-[0_0_10px_rgba(8,21,60,0.8)]">
+          {/* Active Glow Layer (Solid State) with intense breathing sequence */}
+          <motion.div 
+            className="absolute inset-0 rounded-full bg-[#1b4eaa] border border-[#58a4ff]"
+            initial={false}
+            animate={{
+              opacity: isRevealed ? 1 : 0,
+              boxShadow: isRevealed 
+                ? [
+                    "0px 0px 20px rgba(88,164,255,0.8), 0px 0px 30px rgba(88,164,255,0.4)",
+                    "0px 0px 35px rgba(141,226,255,1), 0px 0px 60px rgba(88,164,255,0.8)",
+                    "0px 0px 20px rgba(88,164,255,0.8), 0px 0px 30px rgba(88,164,255,0.4)"
+                  ] 
+                : "0px 0px 0px rgba(0,0,0,0)"
+            }}
+            transition={{
+              opacity: { duration: 0.2 },
+              boxShadow: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.2 }
+            }}
+          />
+          <Icon className="relative h-4 w-4 text-white z-10" strokeWidth={1.8} />
         </div>
       </motion.div>
     </motion.article>
@@ -504,36 +552,36 @@ export default function ProgramFlowSection() {
       <AmbientStarfield className="z-[1]" density={1.1} />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
-        <header className="mx-auto max-w-2xl text-center">
-          <div className="mb-3 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#68b6ff]">
-            <span className="h-px w-8 bg-[#68b6ff]/65" />
-            <span>Agenda</span>
-            <span className="h-px w-8 bg-[#68b6ff]/65" />
+        <header className="mb-16 md:mb-24 flex flex-col items-center justify-center relative z-10 w-full max-w-4xl mx-auto px-4">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-8 h-px bg-[#4285f4]/50" />
+            <span className="text-[#4285f4] text-sm font-semibold uppercase tracking-[1.4px]">Agenda</span>
+            <div className="w-8 h-px bg-[#4285f4]/50" />
           </div>
-          <h2 className="bg-[linear-gradient(180deg,#ffffff_0%,#d6f4ff_28%,#8de2ff_54%,#8ea9ff_100%)] bg-clip-text text-3xl font-black uppercase leading-[0.95] tracking-tight text-transparent drop-shadow-[0_0_22px_rgba(124,201,255,0.7)] sm:text-4xl md:text-5xl">
-            Program Flow
-          </h2>
-          <p className="mx-auto mt-5 max-w-lg text-xs leading-relaxed text-[#c9d9ff]/88 sm:text-sm">
+          
+          <div className="relative w-full max-w-[514px] h-[75px] mb-6 md:mb-8">
+            <Image 
+              src="/assets/program/program-flow-title.webp" 
+              alt="Program Flow" 
+              fill 
+              className="object-contain"
+            />
+          </div>
+          
+          <p className="text-[#90a1b9] text-[16px] md:text-[18px] font-light leading-[28px] text-center max-w-[599px]">
             A day designed to move you. From the opening countdown to the final send-off, every hour is intentional.
           </p>
         </header>
 
-        <div className="relative mx-auto mt-12 max-w-5xl">
-          <div className="absolute bottom-0 left-6 top-2 w-px bg-[linear-gradient(180deg,rgba(89,148,255,0.08),rgba(89,148,255,0.35)_15%,rgba(89,148,255,0.28)_85%,rgba(89,148,255,0.08))] md:left-1/2 md:-translate-x-1/2" />
-          <motion.div
-            className="absolute bottom-0 left-6 top-2 w-px bg-[linear-gradient(180deg,rgba(127,190,255,0),rgba(127,190,255,0.94)_20%,rgba(127,190,255,0.78)_82%,rgba(127,190,255,0))] md:left-1/2 md:-translate-x-1/2"
-            style={{
-              scaleY: reduceMotion ? 1 : timelineDraw,
-              transformOrigin: "top center",
-            }}
-          />
-
-          <div className="space-y-7 sm:space-y-8">
-            {programItems.map((item) => (
-              <StoryTimelineItem key={`${item.time}-${item.title}`} item={item} />
-            ))}
+        <TracingBeam className="px-0">
+          <div className="relative mx-auto mt-12 max-w-5xl">
+            <div className="space-y-12 md:space-y-24 lg:space-y-32">
+              {programItems.map((item) => (
+                <StoryTimelineItem key={`${item.time}-${item.title}`} item={item} />
+              ))}
+            </div>
           </div>
-        </div>
+        </TracingBeam>
       </div>
     </section>
   );

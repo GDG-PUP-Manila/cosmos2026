@@ -123,7 +123,7 @@ export default function SpeakersSection() {
 
           <div className="relative h-20 md:h-24 w-full max-w-[778px]">
             <Image
-              src="/assets/speakers/meet-the-speakers-title.png"
+              src="/assets/speakers/meet-the-speakers-title.webp"
               alt="Meet the Speakers"
               width={778}
               height={96}
@@ -181,7 +181,7 @@ function SpeakerCard({ speaker }: { speaker: typeof speakersData[0] }) {
         {/* Hover State Backdrop Base (Simple Fade Transition) */}
         <div className="absolute inset-0 h-full w-full bg-slate-950/90 z-20 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
           <Image
-            src="/assets/speakers/v2-bg.png"
+            src="/assets/speakers/v2-bg.webp"
             alt="V2 Background overlay"
             fill
             unoptimized

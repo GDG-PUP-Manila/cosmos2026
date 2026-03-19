@@ -57,7 +57,7 @@ export default function AboutSection() {
             {/* Figma-Driven Title Image */}
             <div className="relative w-full aspect-[600/85] mix-blend-screen -ml-2 md:-ml-3 mt-4 mb-8">
               <Image 
-                src="/assets/about/what-is-cosmos-title.png"
+                src="/assets/about/what-is-cosmos-title.webp"
                 alt="WHAT IS COSMOS"
                 fill
                 priority
@@ -122,7 +122,7 @@ export default function AboutSection() {
                   {/* Top - Cloud */}
                   <div className="absolute top-[2%] left-1/2 -translate-x-1/2 w-[55%] transition-all duration-500 hover:-translate-y-4 hover:scale-[1.08] z-30 group-hover:-translate-y-2">
                     <Image
-                      src="/assets/about/tech-icon-cloud.png"
+                      src="/assets/about/tech-icon-cloud.webp"
                       alt="Cloud Technology Icon"
                       width={400}
                       height={400}
@@ -133,7 +133,7 @@ export default function AboutSection() {
                   {/* Bottom Left - AI */}
                   <div className="absolute bottom-[2%] left-[2%] w-[55%] transition-all duration-500 hover:-translate-x-4 hover:translate-y-4 hover:scale-[1.08] z-20 group-hover:-translate-x-2 group-hover:translate-y-2">
                     <Image
-                      src="/assets/about/tech-icon-ai.png"
+                      src="/assets/about/tech-icon-ai.webp"
                       alt="AI Technology Icon"
                       width={400}
                       height={400}
@@ -144,7 +144,7 @@ export default function AboutSection() {
                   {/* Bottom Right - Dev */}
                   <div className="absolute bottom-[2%] right-[2%] w-[55%] transition-all duration-500 hover:translate-x-4 hover:translate-y-4 hover:scale-[1.08] z-10 group-hover:translate-x-2 group-hover:translate-y-2">
                     <Image
-                      src="/assets/about/tech-icon-dev.png"
+                      src="/assets/about/tech-icon-dev.webp"
                       alt="Development Technology Icon"
                       width={400}
                       height={400}
@@ -166,7 +166,7 @@ export default function AboutSection() {
             </div>
             
             <Image
-              src="/assets/about/why-cosmos-title.png"
+              src="/assets/about/why-cosmos-title.webp"
               alt="WHY COSMOS 2026 EXISTS"
               width={577}
               height={54}

@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌌 COSMOS 2026 - GDG PUP
 
-## Getting Started
+Welcome to the official repository for the **COSMOS 2026** event website, proudly developed by **Google Developer Group (GDG) on Campus Polytechnic University of the Philippines (PUP)**.
 
-First, run the development server:
+COSMOS is a premier, student-led flagship technology conference aimed at bridging the gap between theoretical knowledge and practical industry applications for the next generation of developers, designers, and innovators.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 The Event
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Date**: March 24, 2026
+- **Location**: PUP Bulawagang Balagtas
+- **Registration**: [GDG Community Platform](https://gdg.community.dev/e/my7pyr/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 💻 Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project is built using modern, highly-performant web technologies to deliver a stunning, cosmic-themed interactive experience:
 
-## Learn More
+- **Framework**: [Next.js 15+](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/) & Custom CSS Keyframes
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Language**: TypeScript
 
-To learn more about Next.js, take a look at the following resources:
+## ✨ Key Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Dynamic Mascots**: Featuring our custom mascots, _Sparky_ and _Cirby_, surrounded by custom glowing constellation and twinkling animations.
+- **Performant Architecture**: Extensive asset optimization using `next/image` and modern `.webp` formats. We keep the massive graphics payloads loading seamlessly via lazy-loading and efficient viewport checks.
+- **Interactive UI**:
+  - Cosmic-themed neon buttons with responsive scaling and multi-layered radial gradients.
+  - Interactive 3D Flip Cards for the "Meet the Speakers" section.
+  - Glare hover effects applied via custom hooks and Framer Motion context.
+  - Real-time event countdown timer.
+  - Animated, responsive FAQ accordions.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠️ Getting Started
 
-## Deploy on Vercel
+### Prerequisites
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Make sure you have Node.js and a package manager like `pnpm`, `npm`, or `yarn` installed.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/GDG-PUP-Manila/cosmos2026.git
+   cd cosmos2026
+   ```
+2. Install dependencies using `pnpm`:
+   ```bash
+   pnpm install
+   ```
+3. Run the local development server:
+   ```bash
+   pnpm run dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to interact with the cosmic UI.
+
+## 🤝 Contributors
+
+This project exists thanks to the structural dedication and incredible talent of the GDG PUP community:
+
+- **Design Leads**: [Nyzel Cayat](https://www.linkedin.com/in/nyzel-cayat0/)
+- **Development Leads**:
+  - [Aurold John Sadullo](https://www.linkedin.com/in/ajsadullo/)
+  - [Carlos Jerico Dela Torre](https://www.linkedin.com/in/delatorrecj/)
+
+## 🔗 Connect with GDG PUP
+
+- [Official GDG Community Platform](https://gdg.community.dev/gdg-on-campus-polytechnic-university-of-the-philippines-manila-philippines/)
+- [NEXUS Platform](https://id.gdgpup.org/comingsoon)
+- [LinkedIn](https://www.linkedin.com/company/gdgpup/)
+- [Facebook](https://www.facebook.com/gdg.pupmnl/)
+- [Instagram](https://www.instagram.com/gdg.pupmnl/)
+- [TikTok](https://www.tiktok.com/@gdg.pupmnl/)
+
+---
+
+_Built with 💙 by GDG PUP. Designed by Nyzel Cayat. Developed by Aurold John Sadullo and Carlos Jerico Dela Torre._

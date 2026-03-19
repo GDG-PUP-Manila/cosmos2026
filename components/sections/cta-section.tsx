@@ -3,8 +3,8 @@ import Image from "next/image";
 import AmbientStarfield from "@/components/ui/ambient-starfield";
 
 export default function CtaSection() {
-  const registrationUrl = process.env.NEXT_PUBLIC_REGISTRATION_URL?.trim() || "#cta";
-  const isExternalRegistrationUrl = /^https?:\/\//i.test(registrationUrl);
+  const registrationUrl = "https://gdg.community.dev/e/my7pyr/";
+  const isExternalRegistrationUrl = true;
 
   return (
     <section id="cta" className="relative overflow-hidden px-4 py-16 text-white sm:py-20 md:px-6 md:py-24">
@@ -28,19 +28,13 @@ export default function CtaSection() {
           />
         </div>
 
-        <h2
-          className="mx-auto max-w-[740px] text-[clamp(1.7rem,4.8vw,3.55rem)] font-extrabold uppercase leading-[0.99] tracking-[0.03em] text-transparent"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(224,246,255,1) 36%, rgba(140,224,255,1) 68%, rgba(111,165,255,0.98) 100%)",
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-            textShadow: "0 0 18px rgba(173, 234, 255, 0.65), 0 0 36px rgba(101, 172, 255, 0.44)",
-            textWrap: "balance",
-          }}
-        >
-          READY TO JOIN US?
-        </h2>
+        <Image
+          src="/assets/CTA/ready-to-join-us.webp"
+          alt="READY TO JOIN US?"
+          width={717}
+          height={94}
+          className="mx-auto h-auto w-full max-w-[717px]"
+        />
 
         <p
           className="mx-auto mt-6 max-w-[670px] text-[clamp(0.95rem,1.35vw,1.03rem)] font-light leading-[1.72] tracking-[0.008em] text-[#c4d4ee]/92"
