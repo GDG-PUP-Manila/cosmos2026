@@ -197,12 +197,13 @@ function StoryTimelineItem({ item }: StoryTimelineItemProps) {
   return (
     <motion.article
       ref={itemRef}
-      className="relative md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-24"
+      className="relative md:grid md:grid-cols-2 md:gap-x-8 lg:gap-x-16"
     >
       <motion.div
         className={[
-          "pl-16 md:pl-0",
-          isLeft ? "md:col-start-1 md:pr-12 md:text-right lg:pr-14" : "md:col-start-2 md:pl-12 md:text-left lg:pl-14",
+          "pl-12 md:pl-0",
+          isLeft ? "md:col-start-1 md:pr-0.5 md:text-right lg:pr-1" : "md:col-start-2 md:pl-0.5 md:text-left lg:pl-1",
+          "mt-2 md:mt-3 lg:mt-4",
         ].join(" ")}
         initial={false}
         animate={{
@@ -237,7 +238,7 @@ function StoryTimelineItem({ item }: StoryTimelineItemProps) {
           {item.title}
         </motion.h3>
         
-        <p className="mt-2 text-xs leading-relaxed text-[#9db4e2]/86 sm:text-sm">{item.detail}</p>
+        <p className="mt-2 text-[9px] sm:text-[11px] lg:text-xs leading-relaxed text-[#9db4e2]/86 opacity-80">{item.detail}</p>
       </motion.div>
 
       <motion.div
@@ -277,7 +278,7 @@ export default function ProgramFlowSection() {
     <section
       ref={sectionRef}
       id="program"
-      className="relative isolate overflow-hidden px-4 py-24 text-white md:px-6 md:py-28"
+      className="relative isolate overflow-hidden px-1 py-24 text-white md:px-2 md:py-28"
     >
       <div className="absolute inset-0 z-0">
         <Image
