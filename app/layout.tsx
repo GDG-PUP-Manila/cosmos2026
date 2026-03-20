@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_BASE_URL || "https://cosmos2026.gdgpup.org"}/assets/infinity.png`,
+        url: `${process.env.NEXT_PUBLIC_BASE_URL || "https://cosmos.gdgpup.org"}/assets/infinity.png`,
         width: 1200,
         height: 630,
         alt: "COSMOS 2026 Logo",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "COSMOS 2026",
     description: "GDG PUP's biggest tech event of the year",
-    images: [`${process.env.NEXT_PUBLIC_BASE_URL || "https://cosmos2026.gdgpup.org"}/assets/infinity.png`],
+    images: [`${process.env.NEXT_PUBLIC_BASE_URL || "https://cosmos.gdgpup.org"}/assets/infinity.png`],
   },
 };
 
