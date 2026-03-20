@@ -79,14 +79,23 @@ export default function SplashCursor({
 
     let pointers: Pointer[] = [pointerPrototype()];
 
+    // Performance detection
+    const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const concurrency = navigator.hardwareConcurrency || 4;
+    // @ts-ignore
+    const ram = navigator.deviceMemory || 4;
+    
+    // Low tier: Reduced motion ON, OR (Low cores AND Low RAM)
+    const isLowTier = isReducedMotion || (concurrency <= 4 && ram <= 4);
+
     let config = {
-      SIM_RESOLUTION: SIM_RESOLUTION!,
-      DYE_RESOLUTION: DYE_RESOLUTION!,
-      CAPTURE_RESOLUTION: CAPTURE_RESOLUTION!,
+      SIM_RESOLUTION: isLowTier ? 64 : SIM_RESOLUTION!,
+      DYE_RESOLUTION: isLowTier ? 512 : DYE_RESOLUTION!,
+      CAPTURE_RESOLUTION: isLowTier ? 256 : CAPTURE_RESOLUTION!,
       DENSITY_DISSIPATION: DENSITY_DISSIPATION!,
       VELOCITY_DISSIPATION: VELOCITY_DISSIPATION!,
       PRESSURE: PRESSURE!,
-      PRESSURE_ITERATIONS: PRESSURE_ITERATIONS!,
+      PRESSURE_ITERATIONS: isLowTier ? 5 : PRESSURE_ITERATIONS!,
       CURL: CURL!,
       SPLAT_RADIUS: SPLAT_RADIUS!,
       SPLAT_FORCE: SPLAT_FORCE!,

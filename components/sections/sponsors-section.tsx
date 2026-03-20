@@ -30,7 +30,7 @@ export default function SponsorsSection() {
           <Image src="/assets/sponsors/Cloud-mid-1.webp" alt="" width={895} height={768} draggable={false} className="h-auto w-full" />
         </div>
         <div className="absolute left-[2%] bottom-[1%] w-[480px] opacity-98 sm:left-[6%] sm:w-[560px] lg:left-[-2%] lg:w-[700px]">
-          <Image src="/assets/sponsors/Cloud-Front-2.webp" alt="" width={690} height={768} draggable={false} className="h-auto w-full" />
+          <Image src="/assets/sponsors/Cloud-Front-2.webp" alt="" width={690} height={768} draggable={false} className="h-auto w-full hidden lg:block" />
         </div>
 
         <div className="absolute -right-14 top-[18%] hidden w-[330px] opacity-74 mix-blend-screen md:block lg:w-[420px]">
@@ -97,7 +97,7 @@ export default function SponsorsSection() {
           <Image src="/assets/sponsors/Cloud-mid-2.webp" alt="" width={658} height={640} draggable={false} className="h-auto w-full" />
         </div>
         <div className="absolute right-[2%] bottom-[23%] w-[480px] opacity-98 sm:right-[6%] sm:w-[560px] lg:right-[0%] lg:w-[700px]">
-          <Image src="/assets/sponsors/Cloud-Front-1.webp" alt="" width={690} height={768} draggable={false} className="h-auto w-full" />
+          <Image src="/assets/sponsors/Cloud-Front-1.webp" alt="" width={690} height={768} draggable={false} className="h-auto w-full hidden lg:block" />
         </div>
 
         <div className="absolute -left-[-7%] top-[42%] hidden w-[330px] opacity-74 mix-blend-screen md:block lg:w-[420px] ">

@@ -174,7 +174,6 @@ function SpeakerCard({ speaker }: { speaker: typeof speakersData[0] }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleTap = useCallback((e: React.MouseEvent) => {
-    // Only toggle on touch/mobile — desktop relies on CSS hover
     if (window.matchMedia("(hover: none)").matches) {
       e.stopPropagation();
       setIsFlipped((prev) => !prev);
@@ -213,7 +212,7 @@ function SpeakerCard({ speaker }: { speaker: typeof speakersData[0] }) {
 
         {/* Hover / Tapped State Overlay */}
         <div
-          className={`absolute inset-0 h-full w-full bg-slate-950 z-20 transition-opacity duration-300 will-change-opacity ${
+          className={`absolute inset-0 h-full w-full z-20 transition-opacity duration-300 will-change-opacity ${
             isFlipped ? "opacity-100" : "opacity-0 group-hover:opacity-100"
           }`}
         >
@@ -222,7 +221,7 @@ function SpeakerCard({ speaker }: { speaker: typeof speakersData[0] }) {
             alt="V2 Background overlay"
             fill
             draggable={false}
-            className="absolute inset-0 h-full w-full object-cover opacity-40"
+            className="absolute inset-0 h-full w-full object-cover opacity-100"
           />
 
           {/* Close button — only visible on mobile tap */}
@@ -255,8 +254,8 @@ function SpeakerCard({ speaker }: { speaker: typeof speakersData[0] }) {
               </div>
             </div>
 
-            {/* Bio with scrollbar */}
-            <div className="w-full flex-grow text-justify text-white text-[12px] sm:text-[13px] font-normal font-['Google_Sans'] leading-relaxed overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent pr-2">
+            {/* Bio text — sized to fit without scrolling */}
+            <div className="w-full flex-grow text-justify text-white text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] font-normal font-['Google_Sans'] leading-[1.55] lg:leading-relaxed overflow-hidden">
               {speaker.bio}
             </div>
           </div>
