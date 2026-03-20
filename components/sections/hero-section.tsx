@@ -333,7 +333,7 @@ export default function HeroSection() {
               <a
                 href="#hero"
                 onClick={handleLogoClick}
-                className="relative z-10 flex items-center gap-3"
+                className="relative z-10 flex items-center gap-3 transition-transform duration-300 hover:scale-[1.04]"
                 aria-label="Go to hero section"
               >
                 <Image
@@ -351,7 +351,7 @@ export default function HeroSection() {
                 {navItems.map((item, index) => (
                   <li key={item.label} className="flex items-center gap-3">
                     <a 
-                      className="transition hover:text-white" 
+                      className="transition-all duration-300 hover:scale-[1.08] hover:text-white" 
                       href={item.href} 
                       onClick={handleNavItemClick(item.href)}
                       target={item.href.startsWith("#") ? undefined : "_blank"}
@@ -385,27 +385,18 @@ export default function HeroSection() {
                 target={isExternalRegistrationUrl ? "_blank" : undefined}
                 rel={isExternalRegistrationUrl ? "noopener noreferrer" : undefined}
                 onClick={handleRegistrationClick}
-                className="group relative z-10 flex h-9 items-center justify-center overflow-hidden rounded-full border px-6 text-[11px] font-bold uppercase tracking-[0.26em] text-[#0a1332] shadow-[0_8px_20px_rgba(11,23,71,0.6),inset_0_1px_2px_rgba(255,255,255,1)] transition-all duration-300 hover:scale-[1.06] hover:shadow-[0_8px_20px_rgba(11,23,71,0.6),inset_0_1px_2px_rgba(255,255,255,1),0_0_20px_4px_rgba(255,255,255,0.65)]"
+                className="group relative z-10 inline-flex h-9 items-center justify-center overflow-hidden rounded-full border px-5 text-[11px] font-bold uppercase tracking-[0.26em] text-[#0d2370] shadow-[0_4px_16px_rgba(74,125,255,0.35)] transition-all duration-300 hover:scale-[1.06] hover:shadow-[0_4px_22px_rgba(74,125,255,0.55)]"
                 style={{
-                  borderColor: "rgba(255, 255, 255, 0.7)",
-                  background: "linear-gradient(90deg, #1738a4ff 0%, #f1f1f1 30%, #ffffff 70%)",
+                  borderColor: "rgba(100, 150, 255, 0.5)",
+                  background: "linear-gradient(120deg, #4a7dff 0%, #a8c4ff 40%, #ffffff 100%)",
                 }}
               >
+                {/* Hover: slightly deeper blue */}
                 <span
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                  style={{
-                    background: "linear-gradient(90deg, #446bedff 0%, #f1f1f1 30%, #ffffff 70%)",
-                  }}
+                  style={{ background: "linear-gradient(120deg, #3366ee 0%, #90b4ff 40%, #f0f5ff 100%)" }}
                 />
-                <span
-                  className="pointer-events-none absolute -inset-2 rounded-full opacity-60 transition-all duration-300 group-hover:scale-110 group-hover:opacity-80"
-                  style={{
-                    background: "radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 72%)",
-                    filter: "blur(6px)",
-                    transform: "translateY(-60%)",
-                  }}
-                />
-                <span className="relative z-10">Register</span>
+                <span className="relative z-10 tracking-widest">Register</span>
               </a>
             </div>
           </div>
