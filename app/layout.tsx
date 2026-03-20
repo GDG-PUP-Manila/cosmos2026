@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import CustomCursor from "@/components/ui/custom-cursor";
-import SplashCursor from "@/components/ui/splash-cursor";
+import CustomEffect from "@/components/ui/custom-effect";
 
 export const metadata: Metadata = {
   title: "COSMOS 2026",
@@ -31,8 +30,7 @@ export default function RootLayout({
         </style>
       </head>
       <body className="font-sans antialiased">
-        <SplashCursor />
-        <CustomCursor />
+        <CustomEffect />
         {children}
       </body>
     </html>
