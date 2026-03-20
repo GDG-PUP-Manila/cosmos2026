@@ -53,6 +53,8 @@ function pointerPrototype(): Pointer {
   };
 }
 
+const DEFAULT_BACK_COLOR = { r: 0.5, g: 0, b: 0 };
+
 export default function CustomEffect({
   SIM_RESOLUTION = 128,
   DYE_RESOLUTION = 1440,
@@ -66,7 +68,7 @@ export default function CustomEffect({
   SPLAT_FORCE = 6000,
   SHADING = true,
   COLOR_UPDATE_SPEED = 10,
-  BACK_COLOR = { r: 0.5, g: 0, b: 0 },
+  BACK_COLOR = DEFAULT_BACK_COLOR,
   TRANSPARENT = true
 }: CustomEffectProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -1356,6 +1358,8 @@ export default function CustomEffect({
         window.removeEventListener('touchstart', onTouchStartFluid);
         window.removeEventListener('touchmove', onTouchMoveFluid);
         window.removeEventListener('touchend', onTouchEndFluid);
+        document.body.removeEventListener('mousemove', handleFirstMouseMoveFluid);
+        document.body.removeEventListener('touchstart', handleFirstTouchStartFluid);
         cancelAnimationFrame(animationFrameId);
     }
   }, [
@@ -1371,7 +1375,9 @@ export default function CustomEffect({
     SPLAT_FORCE,
     SHADING,
     COLOR_UPDATE_SPEED,
-    BACK_COLOR,
+    BACK_COLOR.r,
+    BACK_COLOR.g,
+    BACK_COLOR.b,
     TRANSPARENT
   ]);
 
