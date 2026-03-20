@@ -47,9 +47,14 @@ const RootLayout = ({
     dostuff();
   }, []);
 
+  const RAM_THRESHOLD = 2;
+  const isLowEnd =
+    (specs && specs.ram !== "Unknown" && specs.ram < RAM_THRESHOLD) ||
+    (specs && specs.gpuvendor === "Unknown");
+
   return (
     <>
-      <CustomEffect />
+      {specs && !isLowEnd && <CustomEffect />}
       {children}
     </>
   );
