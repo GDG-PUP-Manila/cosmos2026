@@ -1,6 +1,9 @@
+
+
 import type { Metadata } from "next";
 import "./globals.css";
-import CustomEffect from "@/components/ui/custom-effect";
+import RootLayout from "@/components/layouts/RootLayout";
+
 
 export const metadata: Metadata = {
   title: "COSMOS 2026",
@@ -17,11 +20,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default function RootLayoutt({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en" className="scroll-smooth">
       <head>
@@ -30,8 +34,11 @@ export default function RootLayout({
         </style>
       </head>
       <body className="font-sans antialiased">
-        <CustomEffect />
-        {children}
+        {/* <CustomEffect />
+        {children} */}
+        <RootLayout>
+          {children}
+        </RootLayout>
       </body>
     </html>
   );
