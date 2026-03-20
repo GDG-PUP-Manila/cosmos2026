@@ -84,7 +84,7 @@ export const TracingBeam = ({
 
       {/* The Shooting Star Head */}
       <motion.div
-        className="absolute left-6 md:left-1/2 -ml-[3px] w-[6px] h-[6px] bg-white rounded-full shadow-[0_0_15px_3px_#ffffff,0_0_25px_6px_#8de2ff,0_0_45px_12px_#58a4ff] z-20 pointer-events-none"
+          className="absolute left-[1.55rem] md:left-1/2 -ml-[3px] w-[6px] h-[6px] bg-white rounded-full shadow-[0_0_15px_3px_#ffffff,0_0_25px_6px_#8de2ff,0_0_45px_12px_#58a4ff] z-20 pointer-events-none"
         style={{ 
           top: beamTopPx,
           opacity 
