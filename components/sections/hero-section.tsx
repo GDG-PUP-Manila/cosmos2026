@@ -440,7 +440,7 @@ export default function HeroSection() {
             ))}
 
             <Image
-              src="/assets/hero/cosmos-header.svg"
+              src="/assets/hero/cosmos-header.png"
               alt="Cosmos 2026"
               width={672}
               height={386}

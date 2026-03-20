@@ -6,31 +6,27 @@ import Image from "next/image";
 export default function CustomCursor() {
   const cursorDotRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const cursorState = useRef({ x: -100, y: -100, isHovering: false });
 
   useEffect(() => {
-    // Disable on touch devices
-    if (window.matchMedia("(hover: none)").matches) return;
+    if (
+      typeof window === "undefined" ||
+      window.matchMedia("(hover: none)").matches
+    )
+      return;
 
     document.documentElement.classList.add("custom-cursor-enabled");
 
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let isHovering = false;
+    let rafId: number;
 
     const onMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-
-      if (cursorDotRef.current) {
-        cursorDotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate3d(-50%, -50%, 0) scale(${
-          isHovering ? 1.75 : 1
-        })`;
-      }
+      cursorState.current.x = e.clientX;
+      cursorState.current.y = e.clientY;
     };
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      // Check if target is interactive (has pointer cursor class, is an anchor, or is a button)
+      // Check if target is interactive
       const isInteractive =
         target.classList?.contains("cursor-pointer") ||
         target.tagName.toLowerCase() === "a" ||
@@ -39,68 +35,68 @@ export default function CustomCursor() {
         target.closest("button") ||
         target.closest(".cursor-pointer");
 
-      isHovering = !!isInteractive;
-      
-      setIsHovered((prev) => (prev !== isHovering ? isHovering : prev));
-      
-      // Instantly update dot scale since it's driven in onMouseMove, but mouse might not move
-      if (cursorDotRef.current) {
-         cursorDotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate3d(-50%, -50%, 0) scale(${isHovering ? 1.75 : 1})`;
-      }
+      cursorState.current.isHovering = !!isInteractive;
+      setIsHovered(!!isInteractive);
     };
 
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("mouseover", handleMouseOver);
+    let currentScale = 1;
+
+    const animate = () => {
+      if (cursorDotRef.current) {
+        const { x, y, isHovering } = cursorState.current;
+        const targetScale = isHovering ? 1.75 : 1;
+        // Smoothly interpolate scale (lerp)
+        currentScale += (targetScale - currentScale) * 0.15;
+
+        cursorDotRef.current.style.transform = `translate3d(${x}px, ${y}px, 0) translate3d(-50%, -50%, 0) scale(${currentScale})`;
+      }
+      rafId = requestAnimationFrame(animate);
+    };
+
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
+    window.addEventListener("mouseover", handleMouseOver, { passive: true });
+    rafId = requestAnimationFrame(animate);
 
     return () => {
       document.documentElement.classList.remove("custom-cursor-enabled");
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseover", handleMouseOver);
+      cancelAnimationFrame(rafId);
     };
   }, []);
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         .custom-cursor-enabled,
         .custom-cursor-enabled * {
           cursor: none !important;
         }
-      `}} />
+      `,
+        }}
+      />
       <div
         ref={cursorDotRef}
-        className="pointer-events-none fixed left-0 top-0 z-[999999] h-8 w-8 will-change-transform drop-shadow-[0_0_8px_rgba(155,231,255,0.6)]"
+        className="pointer-events-none fixed left-0 top-0 z-[999999] h-8 w-8 will-change-transform transition-none duration-0"
+        style={{
+          filter: "drop-shadow(0 0 2px rgba(155,231,255,0.4))",
+          backfaceVisibility: "hidden",
+          transform: "translate3d(-100px, -100px, 0)", // Initial position off-screen
+        }}
       >
         {isHovered && (
-          <>
-            <div 
-              className="absolute inset-[-20%] -z-10 rounded-full opacity-40 mix-blend-screen animate-ping" 
-              style={{ 
-                animationDuration: "2s", 
-                animationDelay: "0s", 
-                background: "radial-gradient(circle, transparent 30%, rgba(135,206,250,0.6) 65%, rgba(255,255,255,0.9) 85%, transparent 100%)" 
-              }} 
-            />
-            <div 
-              className="absolute inset-[-20%] -z-10 rounded-full opacity-40 mix-blend-screen animate-ping" 
-              style={{ 
-                animationDuration: "2s", 
-                animationDelay: "0.6s", 
-                background: "radial-gradient(circle, transparent 30%, rgba(135,206,250,0.6) 65%, rgba(255,255,255,0.9) 85%, transparent 100%)" 
-              }} 
-            />
-            <div 
-              className="absolute inset-[-20%] -z-10 rounded-full opacity-40 mix-blend-screen animate-ping" 
-              style={{ 
-                animationDuration: "2s", 
-                animationDelay: "1.2s", 
-                background: "radial-gradient(circle, transparent 30%, rgba(135,206,250,0.6) 65%, rgba(255,255,255,0.9) 85%, transparent 100%)" 
-              }} 
-            />
-          </>
+          <div
+            className="absolute inset-[-10%] -z-10 rounded-full opacity-20 animate-ping"
+            style={{
+              animationDuration: "1.5s",
+              background: "rgba(135,206,250,0.4)",
+            }}
+          />
         )}
         <Image
-          src="/assets/CIRBY.png"
+          src="/assets/CIRBY.webp"
           alt="Cursor"
           width={32}
           height={32}
