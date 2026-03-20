@@ -120,6 +120,7 @@ export default function HeroSection() {
 
     isScrollingProgrammatically.current = true;
     window.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
+
     window.history.replaceState(null, "", hash);
     
     setTimeout(() => {
