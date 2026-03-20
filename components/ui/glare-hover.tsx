@@ -30,7 +30,7 @@ const GlareHover: React.FC<GlareHoverProps> = ({
   glareOpacity = 0.2,
   glareAngle = -45,
   glareSize = 250,
-  transitionDuration = 1000,
+  transitionDuration = 1800,
   playOnce = false,
   className = "",
   style = {},
@@ -57,7 +57,7 @@ const GlareHover: React.FC<GlareHoverProps> = ({
 
     el.style.transition = "none";
     el.style.backgroundPosition = "-100% -100%, 0 0";
-    el.style.transition = `${transitionDuration}ms ease`;
+    el.style.transition = `${transitionDuration}ms cubic-bezier(0.4, 0.2, 0.2, 1)`;
     el.style.backgroundPosition = "100% 100%, 0 0";
   };
 
@@ -69,7 +69,7 @@ const GlareHover: React.FC<GlareHoverProps> = ({
       el.style.transition = "none";
       el.style.backgroundPosition = "-100% -100%, 0 0";
     } else {
-      el.style.transition = `${transitionDuration}ms ease`;
+      el.style.transition = `${transitionDuration}ms cubic-bezier(0.4, 0.2, 0.2, 1)`;
       el.style.backgroundPosition = "-100% -100%, 0 0";
     }
   };
@@ -77,7 +77,7 @@ const GlareHover: React.FC<GlareHoverProps> = ({
   const overlayStyle: React.CSSProperties = {
     position: "absolute",
     inset: 0,
-    background: `linear-gradient(${glareAngle}deg,
+    backgroundImage: `linear-gradient(${glareAngle}deg,
         hsla(0,0%,0%,0) 60%,
         ${rgba} 70%,
         hsla(0,0%,0%,0) 100%)`,
