@@ -30,13 +30,16 @@ export default function RootLayoutt({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ backgroundColor: "#000" }}>
       <head>
         <style>
           {`@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');`}
         </style>
       </head>
-      <body className="font-sans antialiased">
+      <body
+        className="font-sans antialiased bg-black"
+        style={{ backgroundColor: "#000" }}
+      >
         <SmoothScrollProvider>
           <SplashCursor />
           <CustomCursor />

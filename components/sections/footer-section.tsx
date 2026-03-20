@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Facebook, Github, Instagram, Linkedin, Youtube } from "lucide-react";
+import { Facebook, Github, Instagram, Linkedin, Youtube, Mail } from "lucide-react";
 
 const COSMOS_LINKS = [
   { label: "About the Event", href: "#about" },
@@ -52,6 +52,11 @@ const SOCIAL_LINKS = [
     href: "https://youtube.com/@gdg.pupmnl",
     icon: <Youtube className="h-[28px] w-[28px] stroke-[1.9]" aria-hidden="true" />,
   },
+  {
+    label: "Email",
+    href: "mailto:gdg.pupmnl@gmail.com",
+    icon: <Mail className="h-[28px] w-[28px] stroke-[1.9]" aria-hidden="true" />,
+  }
 ];
 
 function FooterLinkList({ links }: { links: Array<{ label: string; href: string }> }) {
@@ -90,7 +95,7 @@ export default function FooterSection() {
               className="inline-block transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#7597d4]/50 rounded-lg"
             >
               <Image 
-          draggable={false}
+                draggable={false}
                 src="/assets/gdg-pup-logo.svg"
                 alt="Google Developer Group Polytechnic University of the Philippines"
                 width={260}
@@ -142,20 +147,6 @@ export default function FooterSection() {
 
           <section>
             <h3 className="text-[0.95rem] font-semibold uppercase tracking-[0.028em] text-white">
-              CONTACT
-            </h3>
-            <ul className="mt-5 space-y-4">
-              <li>
-                <a
-                  href="mailto:gdg.pupmnl@gmail.com"
-                  className="text-[0.83rem] font-light tracking-[0.01em] text-[#95a7c5] underline decoration-[#95a7c5] underline-offset-[4px] transition-colors duration-200 hover:text-[#d8e7ff] hover:decoration-[#d8e7ff]"
-                >
-                  gdg.pupmnl@gmail.com
-                </a>
-              </li>
-            </ul>
-
-            <h3 className="mt-10 text-[0.95rem] font-semibold uppercase tracking-[0.028em] text-white">
               CONTRIBUTORS
             </h3>
             <ul className="mt-5 space-y-4 text-[0.83rem] font-light tracking-[0.01em] text-[#95a7c5]">
@@ -168,6 +159,8 @@ export default function FooterSection() {
                 <div className="flex flex-col space-y-2">
                   <a href="https://www.linkedin.com/in/geraldberongoy/" target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-[#d8e7ff]">Gerald Berongoy</a>
                   <a href="https://www.linkedin.com/in/rhandie-sales/" target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-[#d8e7ff]">Rhandie Sales Jr.</a>
+                  <a href="https://www.linkedin.com/in/erwin-daguinotas" target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-[#d8e7ff]">Erwin Daguinotas</a>
+                  <a href="https://www.linkedin.com/in/aidan-tiu-58650520b" target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-[#d8e7ff]">Aidan Tui</a>
                   <a href="https://www.linkedin.com/in/ajsadullo/" target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-[#d8e7ff]">Aurold John Sadullo</a>
                   <a href="https://www.linkedin.com/in/delatorrecj/" target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-[#d8e7ff]">Carlos Jerico Dela Torre</a>
                 </div>

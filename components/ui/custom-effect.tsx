@@ -1442,14 +1442,14 @@ export default function CustomEffect({
       />
       
       {/* Fluid Canvas */}
-      <div className="fixed top-0 left-0 z-50 pointer-events-none w-full h-full">
+      <div className="fixed top-0 left-0 -z-10 pointer-events-none w-full h-full">
         <canvas ref={canvasRef} id="fluid" className="w-screen h-screen block"></canvas>
       </div>
 
       {/* Custom Cursor UI */}
       <div
         ref={cursorDotRef}
-        className="pointer-events-none fixed left-0 top-0 z-[999999] h-8 w-8 will-change-transform transition-none duration-0"
+        className="pointer-events-none fixed left-0 top-0 z-999999 h-8 w-8 will-change-transform transition-none duration-0"
         style={{
           filter: "drop-shadow(0 0 2px rgba(155,231,255,0.4))",
           backfaceVisibility: "hidden",

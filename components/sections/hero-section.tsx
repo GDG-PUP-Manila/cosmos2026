@@ -514,7 +514,7 @@ export default function HeroSection() {
                   <div
                     className={`w-full h-full py-2 sm:py-3 absolute left-0 top-0 rounded-[14px] sm:rounded-[20px] outline outline-1 outline-offset-[-1px] flex flex-col justify-center items-center gap-1 sm:gap-2 backdrop-blur-md transition-all duration-300 ${
                       item.active 
-                        ? "bg-slate-900/60 shadow-[0px_0px_35px_0px_rgba(168,85,247,0.35),inset_0px_1px_8px_0px_rgba(255,255,255,0.15)] outline-purple-400/50 border border-purple-500/30" 
+                        ? "bg-slate-900/60 shadow-[0px_0px_35px_0px_rgba(168,85,247,0.35),inset_0px_1px_8px_0px_rgba(255,255,255,0.15)] outline-[#4285F4]0/50 border border-[#4285F4]/30" 
                         : "bg-slate-900/40 shadow-[inset_0px_1px_5px_0px_rgba(255,255,255,0.05)] outline-white/5 border border-white/5"
                     }`}
                   >

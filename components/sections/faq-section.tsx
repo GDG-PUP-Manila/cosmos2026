@@ -171,8 +171,8 @@ const FAQ_ITEMS: FaqItem[] = [
         <p>We would love to hear from you. Reach out to the GDG PUP team through any of our official channels:</p>
         <p>
           <span className="font-semibold text-[#9fb8df]">Email:</span>{" "}
-          <a href="mailto:hello@gdgpup.org" className="font-semibold text-[#5db3ff] underline underline-offset-2">
-            hello@gdgpup.org
+          <a href="mailto:gdg.pupmnl@gmail.com" className="font-semibold text-[#5db3ff] underline underline-offset-2">
+            gdg.pupmnl@gmail.com
           </a>
         </p>
         <p>

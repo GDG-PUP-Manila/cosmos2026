@@ -56,7 +56,7 @@ const RootLayout = ({
     <>
       {/* {specs && !isLowEnd && <CustomEffect />} */}
       <CustomEffect />
-      {children}
+      <div className="relative z-10">{children}</div>
     </>
   );
 };
