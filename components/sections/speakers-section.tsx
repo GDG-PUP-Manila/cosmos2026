@@ -68,48 +68,48 @@ export default function SpeakersSection() {
       </div>
 
       <div className="pointer-events-none absolute inset-0 z-[1]" aria-hidden="true">
-        <div className="absolute left-1 top-[16%] hidden w-56 -rotate-6 opacity-95 md:block lg:left-6 lg:w-72">
+        <div className="absolute left-1 top-[16%] hidden w-56 -rotate-6 opacity-95 md:block lg:left-6 lg:w-72 will-change-transform">
           <Image
             src="/assets/speakers/astro-1.webp"
             alt=""
             width={783}
             height={993}
-            className="h-auto w-full astro-float-a drop-shadow-[0_0_18px_rgba(174,236,255,0.55)]"
+            className="h-auto w-full"
           />
         </div>
 
-        <div className="absolute right-1 top-[9%] hidden w-56 rotate-8 opacity-95 md:block lg:right-6 lg:w-72">
+        <div className="absolute right-1 top-[9%] hidden w-56 rotate-8 opacity-95 md:block lg:right-6 lg:w-72 will-change-transform">
           <Image
             src="/assets/speakers/astro-4.webp"
             alt=""
             width={1098}
             height={1154}
-            className="h-auto w-full astro-float-b drop-shadow-[0_0_16px_rgba(174,236,255,0.52)]"
+            className="h-auto w-full"
           />
         </div>
 
-        <div className="absolute right-1 top-[44%] hidden w-60 -rotate-10 opacity-95 md:block lg:right-5 lg:w-80">
+        <div className="absolute right-1 top-[44%] hidden w-60 -rotate-10 opacity-95 md:block lg:right-5 lg:w-80 will-change-transform">
           <Image
             src="/assets/speakers/astro-2.webp"
             alt=""
             width={852}
             height={828}
-            className="h-auto w-full astro-float-c drop-shadow-[0_0_18px_rgba(174,236,255,0.56)]"
+            className="h-auto w-full"
           />
         </div>
 
-        <div className="absolute left-1 bottom-[8%] hidden w-60 rotate-2 opacity-95 md:block lg:left-5 lg:w-80">
+        <div className="absolute left-1 bottom-[8%] hidden w-60 rotate-2 opacity-95 md:block lg:left-5 lg:w-80 will-change-transform">
           <Image
             src="/assets/speakers/astro-3.webp"
             alt=""
             width={867}
             height={795}
-            className="h-auto w-full astro-float-b drop-shadow-[0_0_18px_rgba(174,236,255,0.56)]"
+            className="h-auto w-full"
           />
         </div>
       </div>
 
-      <AmbientStarfield className="z-[2]" density={1.2} />
+      <AmbientStarfield className="z-[2]" density={0.8} />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 lg:px-8">
         {/* Header Section from Figma */}
@@ -128,6 +128,7 @@ export default function SpeakersSection() {
               width={778}
               height={96}
               className="object-contain object-left ml-[-22px] md:ml-[-18px]"
+              priority
             />
           </div>
 
@@ -162,12 +163,12 @@ export default function SpeakersSection() {
 
 function SpeakerCard({ speaker }: { speaker: typeof speakersData[0] }) {
   return (
-    <div className="group relative mx-auto w-full max-w-[384px] aspect-[395/526]">
-      {/* Ambient Backlight Glow (Seamless connection to background) */}
-      <div className="absolute -inset-4 z-0 bg-sky-500/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+    <div className="group relative mx-auto w-full max-w-[384px] aspect-[395/526] transform-gpu">
+      {/* Ambient Backlight Glow (Simplified for performance) */}
+      <div className="absolute -inset-2 z-0 bg-sky-500/5 blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       
       <div
-        className="relative z-10 h-full w-full overflow-hidden rounded-2xl bg-slate-900/80 backdrop-blur-sm border border-white/10 shadow-xl shadow-sky-950/20 transition-transform duration-300 hover:-translate-y-1 cursor-pointer"
+        className="relative z-10 h-full w-full overflow-hidden rounded-2xl bg-slate-900 border border-white/10 shadow-xl transition-transform duration-300 hover:-translate-y-1 cursor-pointer will-change-transform"
       >
         {/* Default Front Image */}
         <Image
@@ -175,21 +176,20 @@ function SpeakerCard({ speaker }: { speaker: typeof speakersData[0] }) {
           alt={speaker.alt}
           fill
           sizes="(min-width: 1280px) 384px, (min-width: 768px) 45vw, 85vw"
-          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-0 z-10"
+          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-0 z-10 will-change-opacity"
         />
 
         {/* Hover State Backdrop Base (Simple Fade Transition) */}
-        <div className="absolute inset-0 h-full w-full bg-slate-950/90 z-20 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+        <div className="absolute inset-0 h-full w-full bg-slate-950 z-20 opacity-0 transition-opacity duration-300 group-hover:opacity-100 will-change-opacity">
           <Image
             src="/assets/speakers/v2-bg.webp"
             alt="V2 Background overlay"
             fill
-            unoptimized
-            className="absolute inset-0 h-full w-full object-cover mix-blend-screen opacity-100"
+            className="absolute inset-0 h-full w-full object-cover opacity-40"
           />
 
           {/* Text Content Fade In Container (Lowered starting point) */}
-          <div className="absolute inset-0 z-30 flex flex-col items-center pt-20 pb-6 px-6 sm:px-7 opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 translate-y-8">
+          <div className="absolute inset-0 z-30 flex flex-col items-center pt-20 pb-6 px-6 sm:px-7 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 translate-y-4 will-change-[opacity,transform]">
             
             <div className="w-full flex flex-col justify-start items-center space-y-0 mb-3 shrink-0">
               <h3 className="w-full text-center text-white text-[22px] md:text-[24px] font-semibold font-['Inter'] leading-tight tracking-tight break-words">
