@@ -197,11 +197,11 @@ function StoryTimelineItem({ item }: StoryTimelineItemProps) {
   return (
     <motion.article
       ref={itemRef}
-      className="relative md:grid md:grid-cols-2 md:gap-x-8 lg:gap-x-16"
+      className="relative md:grid md:grid-cols-2 gap-y-6 md:gap-x-8 lg:gap-x-16"
     >
       <motion.div
         className={[
-          "pl-12 md:pl-0",
+          "pl-20 md:pl-0", // more left padding on mobile
           isLeft ? "md:col-start-1 md:pr-0.5 md:text-right lg:pr-1" : "md:col-start-2 md:pl-0.5 md:text-left lg:pl-1",
           "mt-2 md:mt-3 lg:mt-4",
         ].join(" ")}
@@ -278,7 +278,7 @@ export default function ProgramFlowSection() {
     <section
       ref={sectionRef}
       id="program"
-      className="relative isolate overflow-hidden px-1 py-24 text-white md:px-2 md:py-28"
+      className="relative isolate overflow-hidden px-4 py-12 text-white sm:px-6 md:px-8 md:py-28"
     >
       <div className="absolute inset-0 z-0">
         <Image
@@ -346,31 +346,31 @@ export default function ProgramFlowSection() {
           src="/assets/program/clouds-1.webp"
           width={1391}
           height={1670}
-          className="absolute left-[-5rem] top-2 w-[21rem] opacity-95 md:hidden"
+          className="hidden"
         />
         <StoryCloud
           src="/assets/program/clouds-2.webp"
           width={1928}
           height={2124}
-          className="absolute right-[-5rem] top-8 w-[21rem] opacity-95 md:hidden"
+          className="hidden"
         />
         <StoryCloud
           src="/assets/program/clouds-4.webp"
           width={1032}
           height={969}
-          className="absolute right-[-2rem] top-[33%] w-[20rem] opacity-90 md:hidden"
+          className="hidden"
         />
         <StoryCloud
           src="/assets/program/clouds-8.webp"
           width={1143}
           height={1386}
-          className="absolute left-[-2rem] bottom-[1%] w-[24rem] opacity-95 md:hidden"
+          className="hidden"
         />
         <StoryCloud
           src="/assets/program/clouds-5.webp"
           width={831}
           height={975}
-          className="absolute right-[-2rem] bottom-[19%] w-[22rem] opacity-95 md:hidden"
+          className="hidden"
         />
       </div>
 

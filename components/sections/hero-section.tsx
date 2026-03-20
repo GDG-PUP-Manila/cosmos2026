@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import { useEffect, useState, useRef, type MouseEvent } from "react";
 import AmbientStarfield from "@/components/ui/ambient-starfield";
@@ -150,7 +151,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-[100svh] bg-slate-950 text-white font-sans [--cosmos-cyan:#9be7ff] [--cosmos-blue:#7aa2ff] [--cosmos-pink:#ff86d1] [--cosmos-purple:#8f7bff]"
+      className="relative min-h-svh bg-slate-950 text-white font-sans [--cosmos-cyan:#9be7ff] [--cosmos-blue:#7aa2ff] [--cosmos-pink:#ff86d1] [--cosmos-purple:#8f7bff]"
     >
       <div className="absolute inset-0 z-0 opacity-60">
         <div className="absolute inset-0 bg-[url('/assets/hero/BG-hero.webp')] bg-cover bg-top bg-no-repeat opacity-80 mix-blend-lighten" />
@@ -158,12 +159,12 @@ export default function HeroSection() {
       
       {/* 1:1 Figma gradients */}
       <div className="absolute inset-0 z-0 bg-indigo-900/20 mix-blend-overlay" />
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-gray-950/10 via-gray-950/60 to-gray-950 pointer-events-none" />
+      <div className="absolute inset-0 z-0 bg-linear-to-b from-gray-950/10 via-gray-950/60 to-gray-950 pointer-events-none" />
 
-      <AmbientStarfield className="z-[1] opacity-70 mix-blend-screen" density={1} />
+      <AmbientStarfield className="z-1 opacity-70 mix-blend-screen" density={1} />
       
       {/* Background comets — BEHIND content */}
-      <div className="pointer-events-none absolute inset-0 z-[2]" aria-hidden="true">
+      <div className="pointer-events-none absolute inset-0 z-2" aria-hidden="true">
         {allComets.map((comet) => (
           <div
             key={`comet-${comet.top}-${comet.right}-${comet.delay}`}
@@ -179,9 +180,9 @@ export default function HeroSection() {
         ))}
       </div>
       
-      <div className="pointer-events-none absolute inset-0 z-[5]" aria-hidden="true">
+      <div className="pointer-events-none absolute inset-0 z-5" aria-hidden="true">
         {/* Sparky — Left mascot */}
-        <div className="absolute left-[0%] top-[20%] hidden w-56 opacity-95 md:block lg:left-[7%] lg:top-[15%] lg:w-[21rem] xl:left-[9%] xl:w-[24rem] 2xl:w-[26rem]">
+        <div className="absolute left-[0%] top-[20%] hidden w-56 opacity-95 md:block lg:left-[7%] lg:top-[15%] lg:w-84 xl:left-[9%] xl:w-96 2xl:w-104">
           <div className="relative">
             {/* Twinkling glow points BEHIND Sparky */}
             {[
@@ -243,7 +244,7 @@ export default function HeroSection() {
         </div>
 
         {/* Cirby — Right mascot */}
-        <div className="absolute right-[0%] top-[31%] hidden w-56 opacity-95 md:block lg:right-[7%] lg:top-[27%] lg:w-[22rem] xl:right-[9%] xl:w-[25rem] 2xl:w-[27rem]">
+        <div className="absolute right-[0%] top-[31%] hidden w-56 opacity-95 md:block lg:right-[7%] lg:top-[27%] lg:w-88 xl:right-[9%] xl:w-100 2xl:w-108">
           <div className="relative">
             {/* Twinkling glow points BEHIND Cirby */}
             {[
@@ -305,9 +306,9 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="relative flex min-h-[100svh] flex-col">
+      <div className="relative flex min-h-svh flex-col">
         <nav
-          className={`fixed inset-x-0 top-6 z-[9999] transition-all duration-300 ease-in-out ${
+          className={`fixed inset-x-0 top-6 z-9999 transition-all duration-300 ease-in-out ${
             isNavVisible ? "translate-y-0 opacity-100" : "-translate-y-[150%] opacity-0 pointer-events-none"
           }`}
         >
@@ -406,7 +407,7 @@ export default function HeroSection() {
         <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 pt-24 pb-8 text-center sm:pt-28 sm:pb-12 min-h-0">
           
           {/* GROUP 1: Cosmos 2026 and Subtext */}
-          <div className="relative flex flex-col items-center justify-center gap-2 sm:gap-3 w-[80vw] max-w-[280px] sm:max-w-[340px] md:max-w-[420px] lg:max-w-[500px] xl:max-w-[580px] 2xl:max-w-[660px]">
+          <div className="relative flex flex-col items-center justify-center gap-2 sm:gap-3 w-[80vw] max-w-70 sm:max-w-85 md:max-w-105 lg:max-w-125 xl:max-w-145 2xl:max-w-165">
             {/* Twinkling glow points BEHIND the text */}
             {[
               { top: "-2%",  left: "12%", size: 7,  delay: "0.2s" },
@@ -495,13 +496,11 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Bottom: Countdown container */}
-            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
-              {countdownItems.map((item) => (
-                <div key={item.label} className="relative w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32">
-                  {item.active && (
-                     <div className="w-full h-full left-0 top-0 absolute bg-purple-500/20 rounded-full blur-xl pointer-events-none" />
-                  )}
+            {/* Bottom: Countdown container - single line, rectangle, glow, border */}
+            <div className="flex justify-center gap-4">
+              {countdownItems.map((item, idx) => {
+                const isSeconds = idx === countdownItems.length - 1;
+                return (
                   <div
                     className={`w-full h-full py-2 sm:py-3 absolute left-0 top-0 rounded-[14px] sm:rounded-[20px] outline outline-1 outline-offset-[-1px] flex flex-col justify-center items-center gap-1 sm:gap-2 backdrop-blur-md transition-all duration-300 ${
                       item.active 
@@ -509,28 +508,25 @@ export default function HeroSection() {
                         : "bg-slate-900/40 shadow-[inset_0px_1px_5px_0px_rgba(255,255,255,0.05)] outline-white/5 border border-white/5"
                     }`}
                   >
-                    <div className="w-full flex items-center justify-center opacity-95 h-6 sm:h-10 md:h-12 overflow-hidden">
-                      <span 
-                        className={`text-center text-2xl sm:text-4xl md:text-[42px] font-bold font-['Consolas'] leading-none drop-shadow-lg ${
-                          item.active ? "text-purple-300" : "text-white"
-                        }`}
-                        style={item.active ? { textShadow: "0 0 15px rgba(216,180,254,0.6)" } : {}}
-                      >
-                        {item.value}
-                      </span>
-                    </div>
-                    <div className="w-full flex items-center justify-center h-3 sm:h-4 relative">
-                      <span 
-                        className={`text-center text-[8px] sm:text-[10px] md:text-xs font-normal inter-var uppercase leading-none tracking-[0.15em] sm:tracking-[0.2em] ${
-                          item.active ? "text-purple-200" : "text-slate-400"
-                        }`}
-                      >
-                        {item.label}
-                      </span>
-                    </div>
+                    <span
+                      className={`text-center text-2xl sm:text-4xl md:text-[42px] font-bold font-['Consolas'] leading-none drop-shadow-lg ${
+                        isSeconds ? "" : item.active ? "text-purple-300" : "text-white"
+                      }`}
+                      style={isSeconds ? { color: "#4285F4", textShadow: "0 0 15px #4285F4" } : item.active ? { textShadow: "0 0 15px rgba(216,180,254,0.6)" } : {}}
+                    >
+                      {item.value}
+                    </span>
+                    <span
+                      className={`text-center text-[8px] sm:text-[10px] md:text-xs font-normal inter-var uppercase leading-none tracking-[0.15em] sm:tracking-[0.2em] ${
+                        isSeconds ? "" : item.active ? "text-purple-200" : "text-slate-400"
+                      }`}
+                      style={isSeconds ? { color: "#4285F4" } : {}}
+                    >
+                      {item.label}
+                    </span>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -540,13 +536,13 @@ export default function HeroSection() {
             target={isExternalRegistrationUrl ? "_blank" : undefined}
             rel={isExternalRegistrationUrl ? "noopener noreferrer" : undefined}
             onClick={handleRegistrationClick}
-            className="group relative mt-8 sm:mt-10 md:mt-12 inline-flex items-center justify-center rounded-full p-[1px] transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.015]"
+            className="group relative mt-8 sm:mt-10 md:mt-12 inline-flex items-center justify-center rounded-full p-px transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.015]"
             style={{
               boxShadow: "0 0 0 1px rgba(167, 199, 255, 0.28), 0 0 20px rgba(108, 156, 255, 0.48)",
             }}
           >
             <span
-              className="pointer-events-none absolute inset-[-2px] rounded-full opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100"
+              className="pointer-events-none absolute -inset-0.5 rounded-full opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100"
               style={{ background: "rgba(111, 154, 255, 0.72)" }}
             />
             <span
@@ -573,7 +569,7 @@ export default function HeroSection() {
       </div>
 
       {/* Foreground comets — IN FRONT of all content (z-[50]) */}
-      <div className="pointer-events-none absolute inset-0 z-[50] overflow-hidden" aria-hidden="true">
+      <div className="pointer-events-none absolute inset-0 z-50 overflow-hidden" aria-hidden="true">
         {foregroundComets.map((comet) => (
           <div
             key={`comet-fg-${comet.top}-${comet.right}-${comet.delay}`}
