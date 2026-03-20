@@ -7,6 +7,22 @@ export default function CustomCursor() {
   const cursorDotRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const cursorState = useRef({ x: -100, y: -100, isHovering: false });
+  const [shouldShowPing, setShouldShowPing] = useState(true);
+
+  useEffect(() => {
+    // Check performance/preference once on mount
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const concurrency = navigator.hardwareConcurrency || 4;
+    // @ts-ignore
+    const ram = navigator.deviceMemory || 4;
+    const isLowTier = reducedMotion || (concurrency <= 4 && ram <= 4);
+
+    if (isLowTier) {
+      setShouldShowPing(false);
+    }
+  }, []);
 
   useEffect(() => {
     if (
@@ -86,7 +102,7 @@ export default function CustomCursor() {
           transform: "translate3d(-100px, -100px, 0)", // Initial position off-screen
         }}
       >
-        {isHovered && (
+        {isHovered && shouldShowPing && (
           <div
             className="absolute inset-[-10%] -z-10 rounded-full opacity-20 animate-ping"
             style={{

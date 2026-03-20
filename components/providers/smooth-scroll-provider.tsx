@@ -7,11 +7,15 @@ type SmoothScrollProviderProps = {
   children: React.ReactNode;
 };
 
-export default function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
+export default function SmoothScrollProvider({
+  children,
+}: SmoothScrollProviderProps) {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const reducedMotionMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const reducedMotionMedia = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
     const coarsePointerMedia = window.matchMedia("(pointer: coarse)");
     let lenis: Lenis | null = null;
 
@@ -24,9 +28,9 @@ export default function SmoothScrollProvider({ children }: SmoothScrollProviderP
         autoRaf: true,
         smoothWheel: true,
         syncTouch: true,
-        duration: isTouchDevice ? 0.95 : 1.2,
-        touchMultiplier: isTouchDevice ? 1.08 : 1,
-        wheelMultiplier: isTouchDevice ? 0.95 : 1,
+        duration: isTouchDevice ? 0.2 : 0.4,
+        touchMultiplier: isTouchDevice ? 0.8 : 0.8,
+        wheelMultiplier: isTouchDevice ? 0.7 : 0.7,
       });
     };
 
