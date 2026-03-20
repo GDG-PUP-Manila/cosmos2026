@@ -59,7 +59,7 @@ export default function RootLayoutt({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) { 
   return (
     <html lang="en" style={{ backgroundColor: "#000" }}>
       <head>
