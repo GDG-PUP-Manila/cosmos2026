@@ -55,30 +55,76 @@ function pointerPrototype(): Pointer {
 
 const DEFAULT_BACK_COLOR = { r: 0.5, g: 0, b: 0 };
 
+type PerformanceTier = 'low' | 'medium' | 'high';
+
 export default function CustomEffect({
-  SIM_RESOLUTION = 128,
-  DYE_RESOLUTION = 1440,
+  SIM_RESOLUTION,
+  DYE_RESOLUTION,
   CAPTURE_RESOLUTION = 512,
   DENSITY_DISSIPATION = 3.5,
   VELOCITY_DISSIPATION = 2,
   PRESSURE = 0.1,
-  PRESSURE_ITERATIONS = 20,
+  PRESSURE_ITERATIONS,
   CURL = 3,
   SPLAT_RADIUS = 0.2,
   SPLAT_FORCE = 6000,
-  SHADING = true,
+  SHADING,
   COLOR_UPDATE_SPEED = 10,
   BACK_COLOR = DEFAULT_BACK_COLOR,
   TRANSPARENT = true
 }: CustomEffectProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [tier, setTier] = useState<PerformanceTier>('medium');
+  const [isInitialized, setIsInitialized] = useState(false);
   
   // Custom Cursor State
   const cursorDotRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const cursorState = useRef({ x: -100, y: -100, isHovering: false });
 
+  // Performance Detection
   useEffect(() => {
+    const detectPerformance = (): PerformanceTier => {
+      // 1. RAM Check (navigator.deviceMemory is in GB)
+      const ram = (navigator as any).deviceMemory || 8;
+      
+      // 2. CPU Check
+      const cores = navigator.hardwareConcurrency || 4;
+
+      // 3. GPU Check via WebGL
+      let isHighEndGPU = false;
+      try {
+        const canvas = document.createElement('canvas');
+        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        if (gl) {
+          const debugInfo = (gl as any).getExtension('WEBGL_debug_renderer_info');
+          if (debugInfo) {
+            const renderer = (gl as any).getParameter(debugInfo.UNMASKED_RENDERER_WEBGL).toLowerCase();
+            // Basic heuristic for high-end GPUs
+            if (renderer.includes('rtx') || renderer.includes('gtx') || renderer.includes('radeon') || (renderer.includes('apple') && !renderer.includes('mobile'))) {
+              isHighEndGPU = true;
+            }
+          }
+        }
+      } catch (e) {}
+
+      if (ram <= 4 || cores <= 4) return 'low';
+      if (isHighEndGPU && ram >= 8 && cores >= 8) return 'high';
+      return 'medium';
+    };
+
+    setTier(detectPerformance());
+    setIsInitialized(true);
+  }, []);
+
+  // Performance-based defaults
+  const currentSimRes = SIM_RESOLUTION ?? (tier === 'low' ? 64 : tier === 'high' ? 160 : 128);
+  const currentDyeRes = DYE_RESOLUTION ?? (tier === 'low' ? 512 : tier === 'high' ? 1440 : 1024);
+  const currentPressureIter = PRESSURE_ITERATIONS ?? (tier === 'low' ? 10 : tier === 'high' ? 30 : 20);
+  const currentShading = SHADING ?? (tier !== 'low');
+
+  useEffect(() => {
+    if (!isInitialized) return;
     // Check if the device is a touch screen (mobile)
     if (window.matchMedia("(hover: none)").matches) return;
 
@@ -112,17 +158,17 @@ export default function CustomEffect({
     let pointers: Pointer[] = [pointerPrototype()];
 
     let config = {
-      SIM_RESOLUTION: SIM_RESOLUTION!,
-      DYE_RESOLUTION: DYE_RESOLUTION!,
+      SIM_RESOLUTION: currentSimRes,
+      DYE_RESOLUTION: currentDyeRes,
       CAPTURE_RESOLUTION: CAPTURE_RESOLUTION!,
       DENSITY_DISSIPATION: DENSITY_DISSIPATION!,
       VELOCITY_DISSIPATION: VELOCITY_DISSIPATION!,
       PRESSURE: PRESSURE!,
-      PRESSURE_ITERATIONS: PRESSURE_ITERATIONS!,
+      PRESSURE_ITERATIONS: currentPressureIter,
       CURL: CURL!,
       SPLAT_RADIUS: SPLAT_RADIUS!,
       SPLAT_FORCE: SPLAT_FORCE!,
-      SHADING,
+      SHADING: currentShading,
       COLOR_UPDATE_SPEED: COLOR_UPDATE_SPEED!,
       PAUSED: false,
       BACK_COLOR,
@@ -1363,17 +1409,18 @@ export default function CustomEffect({
         cancelAnimationFrame(animationFrameId);
     }
   }, [
-    SIM_RESOLUTION,
-    DYE_RESOLUTION,
+    isInitialized,
+    currentSimRes,
+    currentDyeRes,
     CAPTURE_RESOLUTION,
     DENSITY_DISSIPATION,
     VELOCITY_DISSIPATION,
     PRESSURE,
-    PRESSURE_ITERATIONS,
+    currentPressureIter,
     CURL,
     SPLAT_RADIUS,
     SPLAT_FORCE,
-    SHADING,
+    currentShading,
     COLOR_UPDATE_SPEED,
     BACK_COLOR.r,
     BACK_COLOR.g,
