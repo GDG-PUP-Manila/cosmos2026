@@ -204,7 +204,7 @@ const FAQ_ITEMS: FaqItem[] = [
 ];
 
 export default function FaqSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <section id="faq" className="relative overflow-hidden px-4 py-24 text-white md:px-6 md:py-28">
