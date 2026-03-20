@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
@@ -70,20 +69,23 @@ export default function CustomEffect({
   BACK_COLOR = { r: 0.5, g: 0, b: 0 },
   TRANSPARENT = true
 }: CustomEffectProps) {
-  // Fluid Refs
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
-  // Custom Cursor Refs & State
+  // Custom Cursor State
   const cursorDotRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const cursorState = useRef({ x: -100, y: -100, isHovering: false });
 
   useEffect(() => {
-    // Check if the device is a touch screen (mobile) - Disable both if touch
+    // Check if the device is a touch screen (mobile)
     if (window.matchMedia("(hover: none)").matches) return;
 
-    // --- Custom Cursor Setup ---
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    // Custom Cursor Logic
     document.documentElement.classList.add("custom-cursor-enabled");
+    let currentScale = 1;
 
     const onMouseMoveCursor = (e: MouseEvent) => {
       cursorState.current.x = e.clientX;
@@ -104,12 +106,7 @@ export default function CustomEffect({
       setIsHovered(!!isInteractive);
     };
 
-    let currentScale = 1;
-
-    // --- Fluid Logic Setup ---
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
+    // Splash Fluid Logic (Exactly as in original splash-cursor.tsx)
     let pointers: Pointer[] = [pointerPrototype()];
 
     let config = {
@@ -598,7 +595,7 @@ export default function CustomEffect({
 
       void main () {
           float L = texture2D(uCurl, vL).x;
-          float R = texture2D(uCurl, v.x);
+          float R = texture2D(uCurl, vR).x;
           float T = texture2D(uCurl, vT).x;
           float B = texture2D(uCurl, vB).x;
           float C = texture2D(uCurl, vUv).x;
@@ -901,7 +898,7 @@ export default function CustomEffect({
       step(dt);
       render(null);
 
-      // --- Custom Cursor Animation Merge ---
+      // Custom Cursor Animation
       if (cursorDotRef.current) {
         const { x, y, isHovering } = cursorState.current;
         const targetScale = isHovering ? 1.75 : 1;
@@ -1244,7 +1241,7 @@ export default function CustomEffect({
       return ((value - min) % range) + min;
     }
 
-    // --- Shared Event Listeners ---
+    // Event Listeners for both Splash and Cursor
     const onMouseDown = (e: MouseEvent) => {
       const pointer = pointers[0];
       const posX = scaleByPixelRatio(e.clientX);
@@ -1260,11 +1257,11 @@ export default function CustomEffect({
       const color = pointer.color;
       updatePointerMoveData(pointer, posX, posY, color);
       
-      // Cursor logic
+      // Cursor Position Update
       onMouseMoveCursor(e);
     };
 
-    function handleFirstMouseMove(e: MouseEvent) {
+    function handleFirstMouseMoveFluid(e: MouseEvent) {
       const pointer = pointers[0];
       const posX = scaleByPixelRatio(e.clientX);
       const posY = scaleByPixelRatio(e.clientY);
@@ -1275,8 +1272,59 @@ export default function CustomEffect({
       // Cursor logic
       onMouseMoveCursor(e);
       
-      document.body.removeEventListener('mousemove', handleFirstMouseMove);
+      document.body.removeEventListener('mousemove', handleFirstMouseMoveFluid);
     }
+
+    window.addEventListener('mousedown', onMouseDown);
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseover', handleMouseOver, { passive: true });
+    document.body.addEventListener('mousemove', handleFirstMouseMoveFluid);
+
+    // Touch Listeners
+    const onTouchStartFluid = (e: TouchEvent) => {
+      const touches = e.targetTouches;
+      const pointer = pointers[0];
+      for (let i = 0; i < touches.length; i++) {
+        const posX = scaleByPixelRatio(touches[i].clientX);
+        const posY = scaleByPixelRatio(touches[i].clientY);
+        updatePointerDownData(pointer, touches[i].identifier, posX, posY);
+      }
+    };
+
+    const onTouchMoveFluid = (e: TouchEvent) => {
+      const touches = e.targetTouches;
+      const pointer = pointers[0];
+      for (let i = 0; i < touches.length; i++) {
+        const posX = scaleByPixelRatio(touches[i].clientX);
+        const posY = scaleByPixelRatio(touches[i].clientY);
+        updatePointerMoveData(pointer, posX, posY, pointer.color);
+      }
+    };
+
+    const onTouchEndFluid = (e: TouchEvent) => {
+      const touches = e.changedTouches;
+      const pointer = pointers[0];
+      for (let i = 0; i < touches.length; i++) {
+        updatePointerUpData(pointer);
+      }
+    };
+
+    function handleFirstTouchStartFluid(e: TouchEvent) {
+      const touches = e.targetTouches;
+      const pointer = pointers[0];
+      for (let i = 0; i < touches.length; i++) {
+        const posX = scaleByPixelRatio(touches[i].clientX);
+        const posY = scaleByPixelRatio(touches[i].clientY);
+        updateFrame();
+        updatePointerDownData(pointer, touches[i].identifier, posX, posY);
+      }
+      document.body.removeEventListener('touchstart', handleFirstTouchStartFluid);
+    }
+
+    window.addEventListener('touchstart', onTouchStartFluid, { passive: false });
+    window.addEventListener('touchmove', onTouchMoveFluid, { passive: false });
+    window.addEventListener('touchend', onTouchEndFluid);
+    document.body.addEventListener('touchstart', handleFirstTouchStartFluid);
 
     function onScroll() {
        const sy = window.scrollY;
@@ -1297,58 +1345,7 @@ export default function CustomEffect({
            );
        }
     }
-
-    window.addEventListener('mousedown', onMouseDown);
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('mouseover', handleMouseOver, { passive: true });
     window.addEventListener('scroll', onScroll, { passive: true });
-    document.body.addEventListener('mousemove', handleFirstMouseMove);
-
-    // --- Touch Listeners (Still kept for fluid, but cursor is hidden for touch) ---
-    function handleFirstTouchStart(e: TouchEvent) {
-      const touches = e.targetTouches;
-      const pointer = pointers[0];
-      for (let i = 0; i < touches.length; i++) {
-        const posX = scaleByPixelRatio(touches[i].clientX);
-        const posY = scaleByPixelRatio(touches[i].clientY);
-        updateFrame();
-        updatePointerDownData(pointer, touches[i].identifier, posX, posY);
-      }
-      document.body.removeEventListener('touchstart', handleFirstTouchStart);
-    }
-    document.body.addEventListener('touchstart', handleFirstTouchStart);
-
-    const onTouchStart = (e: TouchEvent) => {
-        const touches = e.targetTouches;
-        const pointer = pointers[0];
-        for (let i = 0; i < touches.length; i++) {
-          const posX = scaleByPixelRatio(touches[i].clientX);
-          const posY = scaleByPixelRatio(touches[i].clientY);
-          updatePointerDownData(pointer, touches[i].identifier, posX, posY);
-        }
-    };
-
-    const onTouchMove = (e: TouchEvent) => {
-        const touches = e.targetTouches;
-        const pointer = pointers[0];
-        for (let i = 0; i < touches.length; i++) {
-          const posX = scaleByPixelRatio(touches[i].clientX);
-          const posY = scaleByPixelRatio(touches[i].clientY);
-          updatePointerMoveData(pointer, posX, posY, pointer.color);
-        }
-    };
-
-    const onTouchEnd = (e: TouchEvent) => {
-      const touches = e.changedTouches;
-      const pointer = pointers[0];
-      for (let i = 0; i < touches.length; i++) {
-        updatePointerUpData(pointer);
-      }
-    };
-
-    window.addEventListener('touchstart', onTouchStart, { passive: false });
-    window.addEventListener('touchmove', onTouchMove, { passive: false });
-    window.addEventListener('touchend', onTouchEnd);
     
     return () => {
         document.documentElement.classList.remove("custom-cursor-enabled");
@@ -1356,9 +1353,9 @@ export default function CustomEffect({
         window.removeEventListener('mousemove', onMouseMove);
         window.removeEventListener('mouseover', handleMouseOver);
         window.removeEventListener('scroll', onScroll);
-        window.removeEventListener('touchstart', onTouchStart);
-        window.removeEventListener('touchmove', onTouchMove);
-        window.removeEventListener('touchend', onTouchEnd);
+        window.removeEventListener('touchstart', onTouchStartFluid);
+        window.removeEventListener('touchmove', onTouchMoveFluid);
+        window.removeEventListener('touchend', onTouchEndFluid);
         cancelAnimationFrame(animationFrameId);
     }
   }, [
@@ -1391,19 +1388,19 @@ export default function CustomEffect({
         }}
       />
       
-      {/* Splash Fluid Canvas */}
+      {/* Fluid Canvas */}
       <div className="fixed top-0 left-0 z-50 pointer-events-none w-full h-full">
         <canvas ref={canvasRef} id="fluid" className="w-screen h-screen block"></canvas>
       </div>
 
-      {/* Custom Cursor */}
+      {/* Custom Cursor UI */}
       <div
         ref={cursorDotRef}
         className="pointer-events-none fixed left-0 top-0 z-[999999] h-8 w-8 will-change-transform transition-none duration-0"
         style={{
           filter: "drop-shadow(0 0 2px rgba(155,231,255,0.4))",
           backfaceVisibility: "hidden",
-          transform: "translate3d(-100px, -100px, 0)", // Initial position off-screen
+          transform: "translate3d(-100px, -100px, 0)", 
         }}
       >
         {isHovered && (
