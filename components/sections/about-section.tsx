@@ -14,6 +14,7 @@ export default function AboutSection() {
           alt="About background"
           fill
           priority
+          draggable={false}
           className="object-cover object-center"
         />
       </div>
@@ -26,6 +27,7 @@ export default function AboutSection() {
             alt=""
             width={783}
             height={993}
+            draggable={false}
             className="h-auto w-full astro-float-b drop-shadow-[0_0_18px_rgba(174,236,255,0.56)]"
           />
         </div>
@@ -36,6 +38,7 @@ export default function AboutSection() {
             alt=""
             width={852}
             height={828}
+            draggable={false}
             className="h-auto w-full astro-float-a drop-shadow-[0_0_18px_rgba(174,236,255,0.56)]"
           />
         </div>
@@ -61,6 +64,7 @@ export default function AboutSection() {
                 alt="WHAT IS COSMOS"
                 fill
                 priority
+                draggable={false}
                 className="object-contain object-left drop-shadow-[0_0_15px_rgba(186,230,253,0.3)]"
               />
             </div>
@@ -89,6 +93,7 @@ export default function AboutSection() {
                   alt="Infinity Logo"
                   width={559}
                   height={227}
+                  draggable={false}
                   className="relative z-10 w-full max-w-[500px] drop-shadow-[0_0_20px_rgba(206,234,255,0.58)] transition-all duration-500 ease-out group-hover:scale-[1.035] group-hover:drop-shadow-[0_0_34px_rgba(206,234,255,0.84)]"
                 />
               </ParallaxTilt>
@@ -126,6 +131,7 @@ export default function AboutSection() {
                       alt="Cloud Technology Icon"
                       width={400}
                       height={400}
+                      draggable={false}
                       className="w-full h-auto drop-shadow-[0_12px_24px_rgba(132,204,255,0.25)] transition-all duration-300 hover:drop-shadow-[0_20px_45px_rgba(132,204,255,0.6)] hover:brightness-[1.15]"
                       quality={90}
                     />
@@ -137,6 +143,7 @@ export default function AboutSection() {
                       alt="AI Technology Icon"
                       width={400}
                       height={400}
+                      draggable={false}
                       className="w-full h-auto drop-shadow-[0_12px_24px_rgba(192,132,255,0.25)] transition-all duration-300 hover:drop-shadow-[0_20px_45px_rgba(192,132,255,0.6)] hover:brightness-[1.15]"
                       quality={90}
                     />
@@ -148,6 +155,7 @@ export default function AboutSection() {
                       alt="Development Technology Icon"
                       width={400}
                       height={400}
+                      draggable={false}
                       className="w-full h-auto drop-shadow-[0_12px_24px_rgba(132,255,204,0.25)] transition-all duration-300 hover:drop-shadow-[0_20px_45px_rgba(132,255,204,0.6)] hover:brightness-[1.15]"
                       quality={90}
                     />
@@ -170,6 +178,7 @@ export default function AboutSection() {
               alt="WHY COSMOS 2026 EXISTS"
               width={577}
               height={54}
+              draggable={false}
               className="w-full h-auto max-w-[320px] sm:max-w-[420px] lg:max-w-[577px] object-contain object-left drop-shadow-2xl"
               priority
             />

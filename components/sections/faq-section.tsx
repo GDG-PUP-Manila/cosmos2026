@@ -1,10 +1,12 @@
 "use client";
 
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useState, useMemo, memo } from "react";
 import Image from "next/image";
 import { Minus, Plus } from "lucide-react";
 
 import AmbientStarfield from "@/components/ui/ambient-starfield";
+
+const MemoizedAmbientStarfield = memo(AmbientStarfield);
 
 type FaqItem = {
   question: string;
@@ -169,8 +171,8 @@ const FAQ_ITEMS: FaqItem[] = [
         <p>We would love to hear from you. Reach out to the GDG PUP team through any of our official channels:</p>
         <p>
           <span className="font-semibold text-[#9fb8df]">Email:</span>{" "}
-          <a href="mailto:hello@gdgpup.org" className="font-semibold text-[#5db3ff] underline underline-offset-2">
-            hello@gdgpup.org
+          <a href="mailto:gdg.pupmnl@gmail.com" className="font-semibold text-[#5db3ff] underline underline-offset-2">
+            gdg.pupmnl@gmail.com
           </a>
         </p>
         <p>
@@ -216,11 +218,12 @@ export default function FaqSection() {
         sizes="100vw"
       />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,10,32,0.2)_0%,rgba(3,9,30,0.38)_42%,rgba(2,8,24,0.62)_100%)]" />
-      <AmbientStarfield className="z-[1] opacity-65" density={0.72} />
+      <MemoizedAmbientStarfield className="z-[1] opacity-65" density={0.72} />
 
       <div className="pointer-events-none absolute inset-0 z-[2] overflow-hidden" aria-hidden="true">
         <div className="absolute left-[1%] top-[12%] hidden w-[240px] md:block lg:left-[5%] lg:w-[300px]">
-          <Image
+          <Image 
+          draggable={false}
             src="/assets/FAQ/astro-4.webp"
             alt=""
             width={618}
@@ -229,7 +232,8 @@ export default function FaqSection() {
           />
         </div>
         <div className="absolute right-[1%] top-[3%] hidden w-[235px] md:block lg:right-[5%] lg:w-[300px]">
-          <Image
+          <Image 
+          draggable={false}
             src="/assets/FAQ/astro-1.webp"
             alt=""
             width={672}
@@ -238,7 +242,8 @@ export default function FaqSection() {
           />
         </div>
         <div className="absolute left-[3%] bottom-[23%] hidden w-[220px] md:block lg:left-[7%] lg:w-[275px]">
-          <Image
+          <Image 
+          draggable={false}
             src="/assets/FAQ/astro-2.webp"
             alt=""
             width={608}
@@ -247,7 +252,8 @@ export default function FaqSection() {
           />
         </div>
         <div className="absolute right-[2%] bottom-[16%] hidden w-[255px] md:block lg:right-[6%] lg:w-[330px]">
-          <Image
+          <Image 
+          draggable={false}
             src="/assets/FAQ/astro-3.webp"
             alt=""
             width={479}

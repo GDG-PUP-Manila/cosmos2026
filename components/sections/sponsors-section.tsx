@@ -18,6 +18,7 @@ export default function SponsorsSection() {
         src="/assets/sponsors/BG-sponsors.webp"
         alt="Sponsors section background"
         fill
+        draggable={false}
         className="object-cover object-[center_1%]"
         sizes="100vw"
       />
@@ -26,10 +27,10 @@ export default function SponsorsSection() {
 
       <div className="pointer-events-none absolute inset-0 z-[2] overflow-hidden" aria-hidden="true">
         <div className="absolute -left-45 bottom-[15%] hidden w-[590px] opacity-88 md:block lg:w-[700px]">
-          <Image src="/assets/sponsors/Cloud-mid-1.webp" alt="" width={895} height={768} className="h-auto w-full" />
+          <Image src="/assets/sponsors/Cloud-mid-1.webp" alt="" width={895} height={768} draggable={false} className="h-auto w-full" />
         </div>
         <div className="absolute left-[2%] bottom-[1%] w-[480px] opacity-98 sm:left-[6%] sm:w-[560px] lg:left-[-2%] lg:w-[700px]">
-          <Image src="/assets/sponsors/Cloud-Front-2.webp" alt="" width={690} height={768} className="h-auto w-full" />
+          <Image src="/assets/sponsors/Cloud-Front-2.webp" alt="" width={690} height={768} draggable={false} className="h-auto w-full" />
         </div>
 
         <div className="absolute -right-14 top-[18%] hidden w-[330px] opacity-74 mix-blend-screen md:block lg:w-[420px]">
@@ -63,6 +64,7 @@ export default function SponsorsSection() {
               alt=""
               width={736}
               height={736}
+              draggable={false}
               className="relative z-0 h-auto w-full [filter:sepia(1)_hue-rotate(150deg)_saturate(5)_brightness(0.72)] drop-shadow-[0_0_26px_rgba(87,174,255,0.34)]"
             />
 
@@ -92,10 +94,10 @@ export default function SponsorsSection() {
           </div>
         </div>
         <div className="absolute -right-45 bottom-[30%] hidden w-[590px] opacity-88 md:block lg:w-[700px]">
-          <Image src="/assets/sponsors/Cloud-mid-2.webp" alt="" width={658} height={640} className="h-auto w-full" />
+          <Image src="/assets/sponsors/Cloud-mid-2.webp" alt="" width={658} height={640} draggable={false} className="h-auto w-full" />
         </div>
         <div className="absolute right-[2%] bottom-[23%] w-[480px] opacity-98 sm:right-[6%] sm:w-[560px] lg:right-[0%] lg:w-[700px]">
-          <Image src="/assets/sponsors/Cloud-Front-1.webp" alt="" width={690} height={768} className="h-auto w-full" />
+          <Image src="/assets/sponsors/Cloud-Front-1.webp" alt="" width={690} height={768} draggable={false} className="h-auto w-full" />
         </div>
 
         <div className="absolute -left-[-7%] top-[42%] hidden w-[330px] opacity-74 mix-blend-screen md:block lg:w-[420px] ">
@@ -130,6 +132,7 @@ export default function SponsorsSection() {
               alt="Cirby Constellation"
               width={736}
               height={736}
+              draggable={false}
               className="relative z-0 h-auto w-full [filter:sepia(1)_hue-rotate(150deg)_saturate(5)_brightness(0.72)] drop-shadow-[0_0_26px_rgba(87,174,255,0.34)]"
             />
 
@@ -178,7 +181,7 @@ export default function SponsorsSection() {
               background="linear-gradient(160deg,rgba(19,34,74,0.54),rgba(9,17,44,0.48))"
               className="flex w-full items-center justify-center border border-[#7597d4]/24 px-5 py-6 shadow-[0_18px_42px_rgba(4,12,38,0.56)]"
             >
-              <Image src="/assets/sponsors/Icon-1.webp" alt="TBIDO logo" width={1024} height={768} className="h-auto w-[280px]" />
+              <Image src="/assets/sponsors/Icon-1.webp" alt="TBIDO logo" width={1024} height={768} draggable={false} className="h-auto w-[280px]" />
             </GlareHover>
           </a>
         </div>
@@ -193,7 +196,7 @@ export default function SponsorsSection() {
                 className="flex min-h-[286px] w-full flex-col border border-[#7597d4]/24 px-4 py-5 text-center shadow-[0_18px_42px_rgba(4,12,38,0.56)]"
               >
                 <div className="flex flex-1 items-center justify-center">
-                  <Image src="/assets/sponsors/Icon-2.webp" alt="OpsWerks logo" width={672} height={672} className="h-auto w-[185px]" />
+                  <Image src="/assets/sponsors/Icon-2.webp" alt="OpsWerks logo" width={672} height={672} draggable={false} className="h-auto w-[185px]" />
                 </div>
                 <p className="mt-2 text-base text-[#90a4c8]">Platinum Sponsor</p>
               </GlareHover>
@@ -210,6 +213,7 @@ export default function SponsorsSection() {
                     alt="CCIS Student Council logo"
                     width={1120}
                     height={768}
+                    draggable={false}
                     className="h-auto w-[300px]"
                   />
                 </div>
@@ -232,6 +236,7 @@ export default function SponsorsSection() {
                 alt="When In Manila logo"
                 width={447}
                 height={448}
+                draggable={false}
                 className="h-auto w-[140px]"
               />
             </GlareHover>

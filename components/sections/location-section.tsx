@@ -32,6 +32,7 @@ export default function LocationSection() {
         src="/assets/location/BG-location.webp"
         alt="Location section background"
         fill
+        draggable={false}
         className="object-cover object-[center_30%]"
         sizes="100vw"
       />
@@ -80,6 +81,7 @@ export default function LocationSection() {
                   src="/assets/location/NALLRC-building.webp"
                   alt="NALLRC building exterior"
                   fill
+                  draggable={false}
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, 50vw"
                 />
@@ -96,6 +98,7 @@ export default function LocationSection() {
                   src="/assets/location/inside-bulwagant-balagtas.webp"
                   alt="Bulwagang Balagtas interior"
                   fill
+                  draggable={false}
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, 50vw"
                 />
@@ -118,7 +121,7 @@ export default function LocationSection() {
 
           <h2 className="text-3xl font-bold leading-[1.06] text-white sm:text-[2.85rem]">
             More Than Just
-            <span className="block font-light italic text-[#7894c4]">an Event</span>
+            <span className="block font-light italic text-[#4285F4]">an Event</span>
           </h2>
 
           <p className="mt-4 max-w-lg text-sm leading-relaxed text-[#b3c5e3] sm:text-base">

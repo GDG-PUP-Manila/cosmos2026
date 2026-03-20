@@ -62,6 +62,8 @@ This project exists thanks to the structural dedication and incredible talent of
 - **Development**:
   - [Gerald Berongoy (Web Development Learning Head)](https://www.linkedin.com/in/geraldberongoy/)
   - [Rhandie Sales Jr. (Web Development Co-Lead)](https://www.linkedin.com/in/rhandie-sales/)
+  - [Erwin Daguinotas (Web Development Lead)](https://www.linkedin.com/in/erwin-daguinotas/)
+  - [Aidan Tiu (DevOps Lead)](https://www.linkedin.com/in/aidan-tiu-58650520b/)
   - [Aurold John Sadullo (DCTO for Infrastructure and Intelligence)](https://www.linkedin.com/in/ajsadullo/)
   - [Carlos Jerico Dela Torre (Chief Technology Officer)](https://www.linkedin.com/in/delatorrecj/)
 
