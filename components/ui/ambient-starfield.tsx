@@ -161,10 +161,14 @@ export default function AmbientStarfield({ className, density = 1.22 }: AmbientS
         const alpha = clamp(star.alpha * (0.45 + twinkle * 0.95 + influence * 0.75), 0.05, 0.98);
         const size = star.size * (1 + influence * 0.65);
 
-        context.beginPath();
         context.fillStyle = `rgba(187, 220, 255, ${alpha})`;
-        context.arc(drawX, drawY, size, 0, Math.PI * 2);
-        context.fill();
+        if (size < 1.4) {
+          context.fillRect(drawX - size, drawY - size, size * 2, size * 2);
+        } else {
+          context.beginPath();
+          context.arc(drawX, drawY, size, 0, Math.PI * 2);
+          context.fill();
+        }
 
         if (size > 1.4) {
           context.beginPath();

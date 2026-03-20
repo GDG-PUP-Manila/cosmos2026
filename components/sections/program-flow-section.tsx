@@ -20,12 +20,9 @@ import {
 } from "lucide-react";
 import {
   motion,
-  useMotionTemplate,
   useReducedMotion,
   useScroll,
-  useTransform,
   useMotionValueEvent,
-  type MotionValue,
 } from "framer-motion";
 import AmbientStarfield from "@/components/ui/ambient-starfield";
 import { TracingBeam } from "@/components/ui/tracing-beam";
@@ -156,58 +153,18 @@ const programItems: ProgramItem[] = [
   },
 ];
 
-type Range = [number, number];
-
 type StoryCloudProps = {
   src: string;
   width: number;
   height: number;
   className: string;
-  scrollYProgress: MotionValue<number>;
-  side: "left" | "right";
-  enterDistance?: number;
-  enterRange?: Range;
-  driftRange?: Range;
-  driftX?: number;
-  driftY?: number;
-  scaleRange?: Range;
 };
 
-function StoryCloud({
-  src,
-  width,
-  height,
-  className,
-  scrollYProgress,
-  side,
-  enterDistance = 220,
-  enterRange = [0.08, 0.28],
-  driftRange = [0.28, 1],
-  driftX = 0,
-  driftY = 0,
-  scaleRange = [1, 1.05],
-}: StoryCloudProps) {
-  const reduceMotion = useReducedMotion();
-  const enterX = useTransform(
-    scrollYProgress,
-    enterRange,
-    reduceMotion ? [0, 0] : [side === "left" ? -enterDistance : enterDistance, 0],
-    { clamp: true }
-  );
-  const driftMotionX = useTransform(scrollYProgress, driftRange, reduceMotion ? [0, 0] : [0, driftX], {
-    clamp: true,
-  });
-  const driftMotionY = useTransform(scrollYProgress, driftRange, reduceMotion ? [0, 0] : [0, driftY], {
-    clamp: true,
-  });
-  const scale = useTransform(scrollYProgress, driftRange, reduceMotion ? [1, 1] : scaleRange, { clamp: true });
-  const opacity = useTransform(scrollYProgress, enterRange, reduceMotion ? [1, 1] : [0, 1], { clamp: true });
-  const x = useTransform(() => enterX.get() + driftMotionX.get());
-
+function StoryCloud({ src, width, height, className }: StoryCloudProps) {
   return (
-    <motion.div className={className} style={{ x, y: driftMotionY, scale, opacity }}>
-      <Image src={src} alt="" width={width} height={height} className="h-auto w-full" />
-    </motion.div>
+    <div className={className}>
+      <Image src={src} alt="" width={width} height={height} className="h-auto w-full" priority={false} loading="lazy" />
+    </div>
   );
 }
 
@@ -315,12 +272,6 @@ function StoryTimelineItem({ item }: StoryTimelineItemProps) {
 
 export default function ProgramFlowSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start 97%", "end 58%"],
-  });
-  const reduceMotion = useReducedMotion();
-  const timelineDraw = useTransform(scrollYProgress, [0.06, 0.86], [0, 1]);
 
   return (
     <section
@@ -344,184 +295,80 @@ export default function ProgramFlowSection() {
           src="/assets/program/clouds-1.webp"
           width={1391}
           height={1670}
-          className="absolute left-[-6rem] top-[0%] hidden w-[31rem] opacity-95 will-change-transform md:block lg:w-[35rem]"
-          scrollYProgress={scrollYProgress}
-          side="left"
-          enterDistance={260}
-          enterRange={[0.06, 0.22]}
-          driftRange={[0.22, 1]}
-          driftX={70}
-          driftY={180}
-          scaleRange={[1, 1.08]}
+          className="absolute left-[-6rem] top-[0%] hidden w-[31rem] opacity-95 md:block lg:w-[35rem]"
         />
         <StoryCloud
           src="/assets/program/clouds-2.webp"
           width={1928}
           height={2124}
-          className="absolute right-[-6rem] top-[1%] hidden w-[31rem] opacity-95 will-change-transform md:block lg:w-[35rem]"
-          scrollYProgress={scrollYProgress}
-          side="right"
-          enterDistance={260}
-          enterRange={[0.06, 0.22]}
-          driftRange={[0.22, 1]}
-          driftX={-66}
-          driftY={190}
-          scaleRange={[1, 1.08]}
+          className="absolute right-[-6rem] top-[1%] hidden w-[31rem] opacity-95 md:block lg:w-[35rem]"
         />
         <StoryCloud
           src="/assets/program/clouds-3.webp"
           width={1092}
           height={906}
-          className="absolute left-[4%] top-[38%] hidden w-[24rem] opacity-90 will-change-transform md:block lg:w-[27rem]"
-          scrollYProgress={scrollYProgress}
-          side="left"
-          enterDistance={200}
-          enterRange={[0.24, 0.42]}
-          driftRange={[0.42, 1]}
-          driftX={52}
-          driftY={130}
-          scaleRange={[1, 1.06]}
+          className="absolute left-[4%] top-[38%] hidden w-[24rem] opacity-90 md:block lg:w-[27rem]"
         />
         <StoryCloud
           src="/assets/program/clouds-4.webp"
           width={1032}
           height={969}
-          className="absolute right-[-4rem] top-[28%] hidden w-[27rem] opacity-92 will-change-transform md:block lg:w-[30rem]"
-          scrollYProgress={scrollYProgress}
-          side="right"
-          enterDistance={220}
-          enterRange={[0.24, 0.42]}
-          driftRange={[0.42, 1]}
-          driftX={-48}
-          driftY={140}
-          scaleRange={[1, 1.07]}
+          className="absolute right-[-4rem] top-[28%] hidden w-[27rem] opacity-92 md:block lg:w-[30rem]"
         />
         <StoryCloud
           src="/assets/program/clouds-6.webp"
           width={1071}
           height={906}
-          className="absolute right-[4%] top-[49%] hidden w-[23rem] opacity-92 will-change-transform md:block lg:w-[26rem]"
-          scrollYProgress={scrollYProgress}
-          side="right"
-          enterDistance={180}
-          enterRange={[0.44, 0.62]}
-          driftRange={[0.62, 1]}
-          driftX={-38}
-          driftY={105}
-          scaleRange={[1, 1.05]}
+          className="absolute right-[4%] top-[49%] hidden w-[23rem] opacity-92 md:block lg:w-[26rem]"
         />
         <StoryCloud
           src="/assets/program/clouds-5.webp"
           width={1191}
           height={1314}
-          className="absolute left-[-4rem] top-[52%] hidden w-[29rem] opacity-92 will-change-transform md:block lg:w-[32rem]"
-          scrollYProgress={scrollYProgress}
-          side="left"
-          enterDistance={210}
-          enterRange={[0.44, 0.62]}
-          driftRange={[0.62, 1]}
-          driftX={42}
-          driftY={90}
-          scaleRange={[1, 1.05]}
+          className="absolute left-[-4rem] top-[52%] hidden w-[29rem] opacity-92 md:block lg:w-[32rem]"
         />
         <StoryCloud
           src="/assets/program/clouds-8.webp"
           width={1143}
           height={1386}
-          className="absolute left-[-3rem] bottom-[-2%] hidden w-[33rem] opacity-95 will-change-transform md:block lg:w-[37rem]"
-          scrollYProgress={scrollYProgress}
-          side="left"
-          enterDistance={210}
-          enterRange={[0.66, 0.84]}
-          driftRange={[0.84, 1]}
-          driftX={30}
-          driftY={72}
-          scaleRange={[1, 1.04]}
+          className="absolute left-[-3rem] bottom-[-2%] hidden w-[33rem] opacity-95 md:block lg:w-[37rem]"
         />
         <StoryCloud
           src="/assets/program/clouds-7.webp"
           width={831}
           height={975}
-          className="absolute right-[-3rem] bottom-[13%] hidden w-[29rem] opacity-95 will-change-transform md:block lg:w-[32rem]"
-          scrollYProgress={scrollYProgress}
-          side="right"
-          enterDistance={200}
-          enterRange={[0.66, 0.84]}
-          driftRange={[0.84, 1]}
-          driftX={-30}
-          driftY={76}
-          scaleRange={[1, 1.04]}
+          className="absolute right-[-3rem] bottom-[13%] hidden w-[29rem] opacity-95 md:block lg:w-[32rem]"
         />
 
         <StoryCloud
           src="/assets/program/clouds-1.webp"
           width={1391}
           height={1670}
-          className="absolute left-[-5rem] top-2 w-[21rem] opacity-95 will-change-transform md:hidden"
-          scrollYProgress={scrollYProgress}
-          side="left"
-          enterDistance={180}
-          enterRange={[0.06, 0.22]}
-          driftRange={[0.22, 1]}
-          driftX={36}
-          driftY={110}
-          scaleRange={[1, 1.05]}
+          className="absolute left-[-5rem] top-2 w-[21rem] opacity-95 md:hidden"
         />
         <StoryCloud
           src="/assets/program/clouds-2.webp"
           width={1928}
           height={2124}
-          className="absolute right-[-5rem] top-8 w-[21rem] opacity-95 will-change-transform md:hidden"
-          scrollYProgress={scrollYProgress}
-          side="right"
-          enterDistance={180}
-          enterRange={[0.06, 0.22]}
-          driftRange={[0.22, 1]}
-          driftX={-34}
-          driftY={118}
-          scaleRange={[1, 1.06]}
+          className="absolute right-[-5rem] top-8 w-[21rem] opacity-95 md:hidden"
         />
         <StoryCloud
           src="/assets/program/clouds-4.webp"
           width={1032}
           height={969}
-          className="absolute right-[-2rem] top-[33%] w-[20rem] opacity-90 will-change-transform md:hidden"
-          scrollYProgress={scrollYProgress}
-          side="right"
-          enterDistance={140}
-          enterRange={[0.38, 0.58]}
-          driftRange={[0.58, 1]}
-          driftX={-24}
-          driftY={90}
-          scaleRange={[1, 1.05]}
+          className="absolute right-[-2rem] top-[33%] w-[20rem] opacity-90 md:hidden"
         />
         <StoryCloud
           src="/assets/program/clouds-8.webp"
           width={1143}
           height={1386}
-          className="absolute left-[-2rem] bottom-[1%] w-[24rem] opacity-95 will-change-transform md:hidden"
-          scrollYProgress={scrollYProgress}
-          side="left"
-          enterDistance={150}
-          enterRange={[0.64, 0.84]}
-          driftRange={[0.84, 1]}
-          driftX={20}
-          driftY={66}
-          scaleRange={[1, 1.04]}
+          className="absolute left-[-2rem] bottom-[1%] w-[24rem] opacity-95 md:hidden"
         />
         <StoryCloud
           src="/assets/program/clouds-5.webp"
           width={831}
           height={975}
-          className="absolute right-[-2rem] bottom-[19%] w-[22rem] opacity-95 will-change-transform md:hidden"
-          scrollYProgress={scrollYProgress}
-          side="right"
-          enterDistance={150}
-          enterRange={[0.64, 0.84]}
-          driftRange={[0.84, 1]}
-          driftX={-20}
-          driftY={70}
-          scaleRange={[1, 1.04]}
+          className="absolute right-[-2rem] bottom-[19%] w-[22rem] opacity-95 md:hidden"
         />
       </div>
 
@@ -549,7 +396,7 @@ export default function ProgramFlowSection() {
         />
       </div>
 
-      <AmbientStarfield className="z-[1]" density={1.1} />
+      <AmbientStarfield className="z-[1]" density={0.8} />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
         <header className="mb-16 md:mb-24 flex flex-col items-center justify-center relative z-10 w-full max-w-4xl mx-auto px-4">
