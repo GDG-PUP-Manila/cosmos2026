@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState, useCallback } from "react";
 import AmbientStarfield from "@/components/ui/ambient-starfield";
 
 const speakersData = [
@@ -168,12 +171,31 @@ export default function SpeakersSection() {
 }
 
 function SpeakerCard({ speaker }: { speaker: typeof speakersData[0] }) {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const handleTap = useCallback((e: React.MouseEvent) => {
+    if (window.matchMedia("(hover: none)").matches) {
+      e.stopPropagation();
+      setIsFlipped((prev) => !prev);
+    }
+  }, []);
+
+  const handleClose = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsFlipped(false);
+  }, []);
+
   return (
     <div className="group relative mx-auto w-full max-w-[384px] aspect-[395/526] transform-gpu">
-      {/* Ambient Backlight Glow (Simplified for performance) */}
-      <div className="absolute -inset-2 z-0 bg-sky-500/5 blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-      
+      {/* Ambient Backlight Glow */}
       <div
+        className={`absolute -inset-2 z-0 bg-sky-500/5 blur-2xl transition-opacity duration-300 ${
+          isFlipped ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+        }`}
+      />
+
+      <div
+        onClick={handleTap}
         className="relative z-10 h-full w-full overflow-hidden rounded-2xl bg-slate-900 border border-white/10 shadow-xl transition-transform duration-300 hover:-translate-y-1 cursor-pointer will-change-transform"
       >
         {/* Default Front Image */}
@@ -183,38 +205,59 @@ function SpeakerCard({ speaker }: { speaker: typeof speakersData[0] }) {
           fill
           draggable={false}
           sizes="(min-width: 1280px) 384px, (min-width: 768px) 45vw, 85vw"
-          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-0 z-10 will-change-opacity"
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 z-10 will-change-opacity ${
+            isFlipped ? "opacity-0" : "group-hover:opacity-0"
+          }`}
         />
 
-        {/* Hover State Backdrop Base (Simple Fade Transition) */}
-        <div className="absolute inset-0 h-full w-full bg-slate-950 z-20 opacity-0 transition-opacity duration-300 group-hover:opacity-100 will-change-opacity">
+        {/* Hover / Tapped State Overlay */}
+        <div
+          className={`absolute inset-0 h-full w-full z-20 transition-opacity duration-300 will-change-opacity ${
+            isFlipped ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+          }`}
+        >
           <Image
             src="/assets/speakers/v2-bg.webp"
             alt="V2 Background overlay"
             fill
             draggable={false}
-            className="absolute inset-0 h-full w-full object-cover opacity-40"
+            className="absolute inset-0 h-full w-full object-cover opacity-100"
           />
 
-          {/* Text Content Fade In Container (Lowered starting point) */}
-          <div className="absolute inset-0 z-30 flex flex-col items-center pt-20 pb-6 px-6 sm:px-7 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 translate-y-4 will-change-[opacity,transform]">
-            
+          {/* Close button — only visible on mobile tap */}
+          {isFlipped && (
+            <button
+              onClick={handleClose}
+              aria-label="Close"
+              className="absolute top-3 right-3 z-50 flex items-center justify-center w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm transition-colors md:hidden"
+            >
+              ✕
+            </button>
+          )}
+
+          {/* Text Content */}
+          <div
+            className={`absolute inset-0 z-30 flex flex-col items-center pt-20 pb-6 px-6 sm:px-7 transition-all duration-300 will-change-[opacity,transform] ${
+              isFlipped
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0"
+            }`}
+          >
             <div className="w-full flex flex-col justify-start items-center space-y-0 mb-3 shrink-0">
               <h3 className="w-full text-center text-white text-[22px] md:text-[24px] font-semibold font-['Inter'] leading-tight tracking-tight break-words">
                 {speaker.name}
               </h3>
-              
+
               <div className="w-full max-w-[320px] text-center text-sky-400 font-normal font-['Inter'] leading-snug pt-1 flex flex-col items-center space-y-0.5">
                 <span className="text-xs sm:text-[13px]">{speaker.position}</span>
                 <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider opacity-80">{speaker.entity}</span>
               </div>
             </div>
 
-            {/* Biographies are contained in a smooth CSS scrollbar field */}
-            <div className="w-full flex-grow text-justify text-white text-[12px] sm:text-[13px] font-normal font-['Google_Sans'] leading-relaxed overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent pr-2">
+            {/* Bio text — sized to fit without scrolling */}
+            <div className="w-full flex-grow text-justify text-white text-[11px] sm:text-[12px] md:text-[13px] lg:text-[14px] font-normal font-['Google_Sans'] leading-[1.55] lg:leading-relaxed overflow-hidden">
               {speaker.bio}
             </div>
-
           </div>
         </div>
       </div>
