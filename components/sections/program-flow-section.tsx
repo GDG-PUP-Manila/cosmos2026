@@ -66,7 +66,7 @@ const programItems: ProgramItem[] = [
   {
     time: "09:30 AM",
     title: "Welcoming Keynotes",
-    detail: "Dr. Cherry D. Casuat and Mr. Shunrenn Locaylocay takes the stage for their warm opening remarks for COSMOS 2026",
+    detail: "Engr. Julius Cansino and Mr. Shunrenn Locaylocay takes the stage for their warm opening remarks for COSMOS 2026",
     side: "right",
     icon: "mic",
   },

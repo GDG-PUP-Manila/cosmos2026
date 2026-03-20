@@ -61,6 +61,7 @@ This project exists thanks to the structural dedication and incredible talent of
 - **Design**: [Nyzel Cayat (DCTO for Development and Experience)](https://www.linkedin.com/in/nyzel-cayat0/)
 - **Development**:
   - [Gerald Berongoy (Web Development Learning Head)](https://www.linkedin.com/in/geraldberongoy/)
+  - [Rhandie Sales Jr. (Web Development Co-Lead)](https://www.linkedin.com/in/rhandie-sales/)
   - [Aurold John Sadullo (DCTO for Infrastructure and Intelligence)](https://www.linkedin.com/in/ajsadullo/)
   - [Carlos Jerico Dela Torre (Chief Technology Officer)](https://www.linkedin.com/in/delatorrecj/)
 
@@ -75,4 +76,4 @@ This project exists thanks to the structural dedication and incredible talent of
 
 ---
 
-_Built with 💙 by GDG PUP. Designed by Nyzel Cayat. Developed by Aurold John Sadullo and Carlos Jerico Dela Torre. Optimized by Gerald Berongoy._
+_Built with 💙 by GDG PUP. Designed by Nyzel Cayat. Developed by Aurold John Sadullo and Carlos Jerico Dela Torre. Optimized by Gerald Berongoy and Rhandie Sales Jr._

@@ -30,13 +30,14 @@ export default function CustomCursor() {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      // Check if target is interactive (has pointer cursor, is an anchor, or is a button)
+      // Check if target is interactive (has pointer cursor class, is an anchor, or is a button)
       const isInteractive =
-        window.getComputedStyle(target).cursor === "pointer" ||
+        target.classList?.contains("cursor-pointer") ||
         target.tagName.toLowerCase() === "a" ||
         target.tagName.toLowerCase() === "button" ||
         target.closest("a") ||
-        target.closest("button");
+        target.closest("button") ||
+        target.closest(".cursor-pointer");
 
       isHovering = !!isInteractive;
       
@@ -59,46 +60,54 @@ export default function CustomCursor() {
   }, []);
 
   return (
-    <div
-      ref={cursorDotRef}
-      className="pointer-events-none fixed left-0 top-0 z-[999999] h-8 w-8 transition-transform duration-100 ease-out will-change-transform drop-shadow-[0_0_8px_rgba(155,231,255,0.6)]"
-    >
-      {isHovered && (
-        <>
-          <div 
-            className="absolute inset-[-20%] -z-10 rounded-full opacity-40 mix-blend-screen animate-ping" 
-            style={{ 
-              animationDuration: "2s", 
-              animationDelay: "0s", 
-              background: "radial-gradient(circle, transparent 30%, rgba(135,206,250,0.6) 65%, rgba(255,255,255,0.9) 85%, transparent 100%)" 
-            }} 
-          />
-          <div 
-            className="absolute inset-[-20%] -z-10 rounded-full opacity-40 mix-blend-screen animate-ping" 
-            style={{ 
-              animationDuration: "2s", 
-              animationDelay: "0.6s", 
-              background: "radial-gradient(circle, transparent 30%, rgba(135,206,250,0.6) 65%, rgba(255,255,255,0.9) 85%, transparent 100%)" 
-            }} 
-          />
-          <div 
-            className="absolute inset-[-20%] -z-10 rounded-full opacity-40 mix-blend-screen animate-ping" 
-            style={{ 
-              animationDuration: "2s", 
-              animationDelay: "1.2s", 
-              background: "radial-gradient(circle, transparent 30%, rgba(135,206,250,0.6) 65%, rgba(255,255,255,0.9) 85%, transparent 100%)" 
-            }} 
-          />
-        </>
-      )}
-      <Image
-        src="/assets/CIRBY.png"
-        alt="Cursor"
-        width={32}
-        height={32}
-        className="h-full w-full object-contain"
-        priority
-      />
-    </div>
+    <>
+      <style dangerouslySetInnerHTML={{ __html: `
+        .custom-cursor-enabled,
+        .custom-cursor-enabled * {
+          cursor: none !important;
+        }
+      `}} />
+      <div
+        ref={cursorDotRef}
+        className="pointer-events-none fixed left-0 top-0 z-[999999] h-8 w-8 will-change-transform drop-shadow-[0_0_8px_rgba(155,231,255,0.6)]"
+      >
+        {isHovered && (
+          <>
+            <div 
+              className="absolute inset-[-20%] -z-10 rounded-full opacity-40 mix-blend-screen animate-ping" 
+              style={{ 
+                animationDuration: "2s", 
+                animationDelay: "0s", 
+                background: "radial-gradient(circle, transparent 30%, rgba(135,206,250,0.6) 65%, rgba(255,255,255,0.9) 85%, transparent 100%)" 
+              }} 
+            />
+            <div 
+              className="absolute inset-[-20%] -z-10 rounded-full opacity-40 mix-blend-screen animate-ping" 
+              style={{ 
+                animationDuration: "2s", 
+                animationDelay: "0.6s", 
+                background: "radial-gradient(circle, transparent 30%, rgba(135,206,250,0.6) 65%, rgba(255,255,255,0.9) 85%, transparent 100%)" 
+              }} 
+            />
+            <div 
+              className="absolute inset-[-20%] -z-10 rounded-full opacity-40 mix-blend-screen animate-ping" 
+              style={{ 
+                animationDuration: "2s", 
+                animationDelay: "1.2s", 
+                background: "radial-gradient(circle, transparent 30%, rgba(135,206,250,0.6) 65%, rgba(255,255,255,0.9) 85%, transparent 100%)" 
+              }} 
+            />
+          </>
+        )}
+        <Image
+          src="/assets/CIRBY.png"
+          alt="Cursor"
+          width={32}
+          height={32}
+          className="h-full w-full object-contain"
+          priority
+        />
+      </div>
+    </>
   );
 }

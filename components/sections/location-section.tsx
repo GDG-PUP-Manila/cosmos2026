@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef } from "react";
 import Image from "next/image";
 import { CheckCircle2, MapPin } from "lucide-react";
 
@@ -12,6 +15,17 @@ const BENEFITS = [
 ];
 
 export default function LocationSection() {
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  const handleOverlayMouseDown = () => {
+    if (!overlayRef.current) return;
+    overlayRef.current.style.pointerEvents = "none";
+    const restore = () => {
+      if (overlayRef.current) overlayRef.current.style.pointerEvents = "auto";
+      window.removeEventListener("mouseup", restore);
+    };
+    window.addEventListener("mouseup", restore);
+  };
   return (
     <section id="location" className="relative scroll-mt-32 overflow-hidden px-4 py-16 text-white md:px-6 md:py-20">
       <Image
@@ -35,6 +49,15 @@ export default function LocationSection() {
                 referrerPolicy="no-referrer-when-downgrade"
                 className="h-full w-full"
                 allowFullScreen
+              />
+              {/* Transparent overlay: keeps mousemove events on the document for the
+                  custom cursor. On mousedown it removes itself so drags reach the
+                  iframe, then restores on mouseup. */}
+              <div
+                ref={overlayRef}
+                onMouseDown={handleOverlayMouseDown}
+                className="absolute inset-0 z-10"
+                style={{ pointerEvents: "auto" }}
               />
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(2,10,32,0.02)_0%,rgba(4,14,37,0.28)_48%,rgba(2,8,28,0.92)_100%)]" />
             </div>

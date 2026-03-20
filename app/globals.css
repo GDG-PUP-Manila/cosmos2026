@@ -25,6 +25,11 @@ body {
   font-family: "Google Sans", "Inter", system-ui, sans-serif;
 }
 
+.custom-cursor-enabled,
+.custom-cursor-enabled * {
+  cursor: none !important;
+}
+
 /* Comet animations for background layers */
 @keyframes shoot-comet {
   0% {

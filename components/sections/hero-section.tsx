@@ -384,13 +384,13 @@ export default function HeroSection() {
                 className="group relative z-10 flex h-9 items-center justify-center overflow-hidden rounded-full border px-6 text-[11px] font-bold uppercase tracking-[0.26em] text-[#0a1332] shadow-[0_8px_20px_rgba(11,23,71,0.6),inset_0_1px_2px_rgba(255,255,255,1)] transition-all duration-300 hover:scale-[1.06] hover:shadow-[0_8px_20px_rgba(11,23,71,0.6),inset_0_1px_2px_rgba(255,255,255,1),0_0_20px_4px_rgba(255,255,255,0.65)]"
                 style={{
                   borderColor: "rgba(255, 255, 255, 0.7)",
-                  background: "linear-gradient(90deg, #183385 0%, #ffffff 35%, #ffffff 100%)",
+                  background: "linear-gradient(90deg, #1738a4ff 0%, #f1f1f1 30%, #ffffff 70%)",
                 }}
               >
                 <span
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   style={{
-                    background: "linear-gradient(90deg, #2446b3 0%, #ffffff 35%, #ffffff 100%)",
+                    background: "linear-gradient(90deg, #446bedff 0%, #f1f1f1 30%, #ffffff 70%)",
                   }}
                 />
                 <span

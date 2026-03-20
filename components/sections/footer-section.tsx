@@ -165,6 +165,8 @@ export default function FooterSection() {
               <li>
                 <span className="block text-[#667d9e] text-[0.7rem] uppercase font-medium tracking-wider mb-1">Development</span>
                 <div className="flex flex-col space-y-2">
+                  <a href="https://www.linkedin.com/in/geraldberongoy/" target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-[#d8e7ff]">Gerald Berongoy</a>
+                  <a href="https://www.linkedin.com/in/rhandie-sales/" target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-[#d8e7ff]">Rhandie Sales Jr.</a>
                   <a href="https://www.linkedin.com/in/ajsadullo/" target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-[#d8e7ff]">Aurold John Sadullo</a>
                   <a href="https://www.linkedin.com/in/delatorrecj/" target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-[#d8e7ff]">Carlos Jerico Dela Torre</a>
                 </div>
