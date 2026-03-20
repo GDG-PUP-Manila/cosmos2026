@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+<<<<<<< Updated upstream
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -11,6 +12,11 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+=======
+import CustomCursor from "@/components/ui/custom-cursor";
+import SplashCursor from "@/components/ui/splash-cursor";
+import LenisProvider from "@/providers/lenis-provider";
+>>>>>>> Stashed changes
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -31,10 +37,19 @@ export default function RootLayout({
           `}
         </style>
       </head>
+<<<<<<< Updated upstream
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+=======
+      <body className="font-sans antialiased">
+        <LenisProvider>
+          <SplashCursor />
+          <CustomCursor />
+          {children}
+        </LenisProvider>
+>>>>>>> Stashed changes
       </body>
     </html>
   );
