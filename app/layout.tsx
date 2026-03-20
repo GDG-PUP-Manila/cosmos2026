@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import CustomCursor from "@/components/ui/custom-cursor";
 import SplashCursor from "@/components/ui/splash-cursor";
+import SmoothScrollProvider from "@/components/providers/smooth-scroll-provider";
 
 export const metadata: Metadata = {
   title: "COSMOS 2026",
@@ -24,16 +25,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en">
       <head>
         <style>
           {`@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');`}
         </style>
       </head>
       <body className="font-sans antialiased">
-        <SplashCursor />
-        <CustomCursor />
-        {children}
+        <SmoothScrollProvider>
+          <SplashCursor />
+          <CustomCursor />
+          {children}
+        </SmoothScrollProvider>
       </body>
     </html>
   );
