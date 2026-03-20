@@ -411,7 +411,7 @@ export default function ProgramFlowSection() {
             <div className="w-8 h-px bg-[#4285f4]/50" />
           </div>
           
-          <div className="relative w-full max-w-[514px] h-[75px] mb-6 md:mb-8">
+          <div className="relative w-full max-w-[514px] h-[40px] md:h-[75px] mb-4 md:mb-8">
             <Image 
               src="/assets/program/program-flow-title.webp" 
               alt="Program Flow" 

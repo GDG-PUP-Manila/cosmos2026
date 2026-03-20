@@ -266,16 +266,7 @@ export default function SponsorsSection() {
             ))}
           </div>
 
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-10">
-            <a href="https://www.facebook.com/GDGonCampusTUPManila/" target="_blank" rel="noopener noreferrer" className="block rounded-lg transition-transform duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#7597d4]/50">
-              <Image
-                src="/assets/sponsors/GDG-TUP.webp"
-                alt="Google Developer Groups on Campus TUP Manila"
-                width={1048}
-                height={152}
-                className="h-15 w-auto object-contain sm:h-16"
-              />
-            </a>
+          <div className="mt-2 md:mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-10">
             <a href="https://www.facebook.com/gdgoc.numanila" target="_blank" rel="noopener noreferrer" className="block rounded-lg transition-transform duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#7597d4]/50">
               <Image
                 src="/assets/sponsors/GDG-NU-MANILA.webp"
@@ -285,9 +276,19 @@ export default function SponsorsSection() {
                 className="h-15 w-auto object-contain sm:h-16"
               />
             </a>
+            <a href="https://www.facebook.com/GDGonCampusTUPManila/" target="_blank" rel="noopener noreferrer" className="block rounded-lg transition-transform duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#7597d4]/50">
+              <Image
+                src="/assets/sponsors/GDG-TUP.webp"
+                alt="Google Developer Groups on Campus TUP Manila"
+                width={1048}
+                height={152}
+                className="h-15 w-auto object-contain sm:h-16"
+              />
+            </a>
+            
           </div>
 
-          <div className="mt-3 flex justify-center">
+          <div className="mt-1.5 md:mt-2 flex justify-center">
             <a href="https://www.facebook.com/GDGoCDLSU/" target="_blank" rel="noopener noreferrer" className="block rounded-lg transition-transform duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#7597d4]/50">
               <Image
                 src="/assets/sponsors/GDG-DLSU.webp"
