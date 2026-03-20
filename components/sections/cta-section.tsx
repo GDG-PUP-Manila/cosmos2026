@@ -71,8 +71,8 @@ export default function CtaSection() {
           You don&apos;t need all the answers. You just need to show up.
         </p>
 
-        <p className="mx-auto mt-2 w-fit max-w-none whitespace-nowrap text-[clamp(0.9rem,3vw,2.2rem)] font-semibold italic leading-[1.1] tracking-[-0.008em] text-[#dce7fa]/96">
-          The cosmos doesn&apos;t wait. Neither should you.
+        <p className="mx-auto mt-2 w-fit max-w-none whitespace-normal sm:whitespace-nowrap text-[clamp(0.9rem,3vw,2.2rem)] font-semibold italic leading-[1.6] sm:leading-[1.1] tracking-[-0.008em] text-[#dce7fa]/96">
+          The cosmos doesn&apos;t wait. <br className="sm:hidden" />Neither should you.
         </p>
 
         <a
