@@ -129,7 +129,7 @@ export default function SpeakersSection() {
             </span>
           </div>
 
-          <div className="relative h-20 md:h-24 w-full max-w-[778px]">
+          <div className="relative h-10 md:h-24 w-full max-w-[778px]">
             <Image
               src="/assets/speakers/meet-the-speakers-title.webp"
               alt="Meet the Speakers"
