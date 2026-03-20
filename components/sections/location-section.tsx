@@ -121,7 +121,7 @@ export default function LocationSection() {
 
           <h2 className="text-3xl font-bold leading-[1.06] text-white sm:text-[2.85rem]">
             More Than Just
-            <span className="block font-light italic text-[#7894c4]">an Event</span>
+            <span className="block font-light italic text-[#4285F4]">an Event</span>
           </h2>
 
           <p className="mt-4 max-w-lg text-sm leading-relaxed text-[#b3c5e3] sm:text-base">

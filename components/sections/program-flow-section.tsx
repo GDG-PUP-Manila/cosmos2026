@@ -84,7 +84,7 @@ const programItems: ProgramItem[] = [
   {
     time: "11:30 AM",
     title: "Panel Discussion: Part 1",
-    detail: "Sermil Matoto & Jazmin Calma",
+    detail: "Sermil Matoto & Jazmine Calma",
     side: "left",
     icon: "panel",
   },
