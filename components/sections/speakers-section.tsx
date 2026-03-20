@@ -60,6 +60,7 @@ export default function SpeakersSection() {
           alt="Speakers section background"
           fill
           unoptimized
+          draggable={false}
           className="object-cover object-[50%_52%]"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#02081c]/80 via-[#02081c]/20 to-[#02081c]/80" />
@@ -74,6 +75,7 @@ export default function SpeakersSection() {
             alt=""
             width={783}
             height={993}
+            draggable={false}
             className="h-auto w-full"
           />
         </div>
@@ -84,6 +86,7 @@ export default function SpeakersSection() {
             alt=""
             width={1098}
             height={1154}
+            draggable={false}
             className="h-auto w-full"
           />
         </div>
@@ -94,6 +97,7 @@ export default function SpeakersSection() {
             alt=""
             width={852}
             height={828}
+            draggable={false}
             className="h-auto w-full"
           />
         </div>
@@ -104,6 +108,7 @@ export default function SpeakersSection() {
             alt=""
             width={867}
             height={795}
+            draggable={false}
             className="h-auto w-full"
           />
         </div>
@@ -127,6 +132,7 @@ export default function SpeakersSection() {
               alt="Meet the Speakers"
               width={778}
               height={96}
+              draggable={false}
               className="object-contain object-left ml-[-22px] md:ml-[-18px]"
               priority
             />
@@ -175,6 +181,7 @@ function SpeakerCard({ speaker }: { speaker: typeof speakersData[0] }) {
           src={speaker.src}
           alt={speaker.alt}
           fill
+          draggable={false}
           sizes="(min-width: 1280px) 384px, (min-width: 768px) 45vw, 85vw"
           className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-0 z-10 will-change-opacity"
         />
@@ -185,6 +192,7 @@ function SpeakerCard({ speaker }: { speaker: typeof speakersData[0] }) {
             src="/assets/speakers/v2-bg.webp"
             alt="V2 Background overlay"
             fill
+            draggable={false}
             className="absolute inset-0 h-full w-full object-cover opacity-40"
           />
 

@@ -32,6 +32,7 @@ export default function LocationSection() {
         src="/assets/location/BG-location.webp"
         alt="Location section background"
         fill
+        draggable={false}
         className="object-cover object-[center_30%]"
         sizes="100vw"
       />
@@ -80,6 +81,7 @@ export default function LocationSection() {
                   src="/assets/location/NALLRC-building.webp"
                   alt="NALLRC building exterior"
                   fill
+                  draggable={false}
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, 50vw"
                 />
@@ -96,6 +98,7 @@ export default function LocationSection() {
                   src="/assets/location/inside-bulwagant-balagtas.webp"
                   alt="Bulwagang Balagtas interior"
                   fill
+                  draggable={false}
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, 50vw"
                 />

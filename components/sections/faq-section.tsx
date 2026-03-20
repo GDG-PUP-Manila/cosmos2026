@@ -222,7 +222,8 @@ export default function FaqSection() {
 
       <div className="pointer-events-none absolute inset-0 z-[2] overflow-hidden" aria-hidden="true">
         <div className="absolute left-[1%] top-[12%] hidden w-[240px] md:block lg:left-[5%] lg:w-[300px]">
-          <Image
+          <Image 
+          draggable={false}
             src="/assets/FAQ/astro-4.webp"
             alt=""
             width={618}
@@ -231,7 +232,8 @@ export default function FaqSection() {
           />
         </div>
         <div className="absolute right-[1%] top-[3%] hidden w-[235px] md:block lg:right-[5%] lg:w-[300px]">
-          <Image
+          <Image 
+          draggable={false}
             src="/assets/FAQ/astro-1.webp"
             alt=""
             width={672}
@@ -240,7 +242,8 @@ export default function FaqSection() {
           />
         </div>
         <div className="absolute left-[3%] bottom-[23%] hidden w-[220px] md:block lg:left-[7%] lg:w-[275px]">
-          <Image
+          <Image 
+          draggable={false}
             src="/assets/FAQ/astro-2.webp"
             alt=""
             width={608}
@@ -249,7 +252,8 @@ export default function FaqSection() {
           />
         </div>
         <div className="absolute right-[2%] bottom-[16%] hidden w-[255px] md:block lg:right-[6%] lg:w-[330px]">
-          <Image
+          <Image 
+          draggable={false}
             src="/assets/FAQ/astro-3.webp"
             alt=""
             width={479}

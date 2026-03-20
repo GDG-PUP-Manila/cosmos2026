@@ -163,7 +163,7 @@ type StoryCloudProps = {
 function StoryCloud({ src, width, height, className }: StoryCloudProps) {
   return (
     <div className={className}>
-      <Image src={src} alt="" width={width} height={height} className="h-auto w-full" priority={false} loading="lazy" />
+      <Image src={src} alt="" width={width} height={height} draggable={false} className="h-auto w-full" priority={false} loading="lazy" />
     </div>
   );
 }
@@ -284,6 +284,7 @@ export default function ProgramFlowSection() {
           src="/assets/program/BG-program.webp"
           alt="Program section background"
           fill
+          draggable={false}
           className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_32%,rgba(44,130,255,0.22),transparent_56%)]" />
@@ -378,6 +379,7 @@ export default function ProgramFlowSection() {
           alt=""
           width={670}
           height={684}
+          draggable={false}
           className="absolute left-[10%] top-[27%] hidden w-[9.5rem] rotate-[-6deg] opacity-90 astro-float-b drop-shadow-[0_0_18px_rgba(174,236,255,0.56)] md:block lg:w-[10.5rem]"
         />
         <Image
@@ -385,6 +387,7 @@ export default function ProgramFlowSection() {
           alt=""
           width={852}
           height={828}
+          draggable={false}
           className="absolute right-[9%] top-[45%] hidden w-[10rem] rotate-[8deg] opacity-95 astro-float-a drop-shadow-[0_0_18px_rgba(174,236,255,0.56)] md:block lg:w-[11rem]"
         />
         <Image
@@ -392,6 +395,7 @@ export default function ProgramFlowSection() {
           alt=""
           width={1132}
           height={1169}
+          draggable={false}
           className="absolute right-[5%] top-[84%] hidden w-[11rem] rotate-[-8deg] opacity-92 astro-float-c drop-shadow-[0_0_18px_rgba(174,236,255,0.56)] md:block lg:w-[12.5rem]"
         />
       </div>
@@ -411,6 +415,7 @@ export default function ProgramFlowSection() {
               src="/assets/program/program-flow-title.webp" 
               alt="Program Flow" 
               fill 
+              draggable={false}
               className="object-contain"
             />
           </div>

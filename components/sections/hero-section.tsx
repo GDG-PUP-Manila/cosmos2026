@@ -211,6 +211,7 @@ export default function HeroSection() {
               alt=""
               width={512}
               height={512}
+              draggable={false}
               className="h-auto w-full astro-float-a drop-shadow-[0_0_28px_rgba(194,235,255,0.82)] relative z-0"
             />
 
@@ -273,6 +274,7 @@ export default function HeroSection() {
               alt=""
               width={512}
               height={512}
+              draggable={false}
               className="h-auto w-full astro-float-b drop-shadow-[0_0_28px_rgba(194,235,255,0.82)] relative z-0"
             />
 
@@ -338,6 +340,7 @@ export default function HeroSection() {
                   alt="COSMOS GDG PUP"
                   width={220}
                   height={60}
+                  draggable={false}
                   className="h-8 w-auto object-contain md:h-9"
                   priority
                 />
@@ -444,6 +447,7 @@ export default function HeroSection() {
               alt="Cosmos 2026"
               width={672}
               height={386}
+              draggable={false}
               className="w-full h-auto object-contain drop-shadow-[0_12px_30px_rgba(33,41,96,0.35)] relative z-0"
               priority
             />

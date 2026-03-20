@@ -89,7 +89,8 @@ export default function FooterSection() {
               rel="noopener noreferrer"
               className="inline-block transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#7597d4]/50 rounded-lg"
             >
-              <Image
+              <Image 
+          draggable={false}
                 src="/assets/gdg-pup-logo.svg"
                 alt="Google Developer Group Polytechnic University of the Philippines"
                 width={260}
