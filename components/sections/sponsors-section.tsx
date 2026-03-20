@@ -246,7 +246,7 @@ export default function SponsorsSection() {
         <div className="mt-12 w-full">
           <p className="text-[11px] uppercase tracking-[0.24em] text-[#8ba5d6]/85">Partnered With</p>
 
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+          <div className="mt-5 flex items-center justify-center gap-4 sm:gap-6">
             {PARTNER_ICONS.map((logo) => (
               <a
                 key={logo.src}

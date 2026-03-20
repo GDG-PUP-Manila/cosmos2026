@@ -22,6 +22,24 @@ export const metadata: Metadata = {
     ],
     other: [{ rel: "manifest", url: "/favicon-for-app/manifest.json" }],
   },
+  openGraph: {
+    title: "COSMOS 2026",
+    description: "GDG PUP's biggest tech event of the year",
+    images: [
+      {
+        url: "/assets/infinity.svg",
+        width: 800,
+        height: 600,
+        alt: "COSMOS 2026 Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "COSMOS 2026",
+    description: "GDG PUP's biggest tech event of the year",
+    images: ["/assets/infinity.svg"],
+  },
 };
 
 export default function RootLayoutt({
