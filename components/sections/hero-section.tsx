@@ -334,7 +334,7 @@ export default function HeroSection() {
               <a
                 href="#hero"
                 onClick={handleLogoClick}
-                className="relative z-10 flex items-center gap-3"
+                className="relative z-10 flex items-center gap-3 transition-transform duration-300 hover:scale-[1.04]"
                 aria-label="Go to hero section"
               >
                 <Image
@@ -352,7 +352,7 @@ export default function HeroSection() {
                 {navItems.map((item, index) => (
                   <li key={item.label} className="flex items-center gap-3">
                     <a 
-                      className="transition hover:text-white" 
+                      className="transition-all duration-300 hover:scale-[1.08] hover:text-white" 
                       href={item.href} 
                       onClick={handleNavItemClick(item.href)}
                       target={item.href.startsWith("#") ? undefined : "_blank"}
@@ -386,27 +386,18 @@ export default function HeroSection() {
                 target={isExternalRegistrationUrl ? "_blank" : undefined}
                 rel={isExternalRegistrationUrl ? "noopener noreferrer" : undefined}
                 onClick={handleRegistrationClick}
-                className="group relative z-10 flex h-9 items-center justify-center overflow-hidden rounded-full border px-6 text-[11px] font-bold uppercase tracking-[0.26em] text-[#0a1332] shadow-[0_8px_20px_rgba(11,23,71,0.6),inset_0_1px_2px_rgba(255,255,255,1)] transition-all duration-300 hover:scale-[1.06] hover:shadow-[0_8px_20px_rgba(11,23,71,0.6),inset_0_1px_2px_rgba(255,255,255,1),0_0_20px_4px_rgba(255,255,255,0.65)]"
+                className="group relative z-10 inline-flex h-9 items-center justify-center overflow-hidden rounded-full border px-5 text-[11px] font-bold uppercase tracking-[0.26em] text-[#0d2370] shadow-[0_4px_16px_rgba(74,125,255,0.35)] transition-all duration-300 hover:scale-[1.06] hover:shadow-[0_4px_22px_rgba(74,125,255,0.55)]"
                 style={{
-                  borderColor: "rgba(255, 255, 255, 0.7)",
-                  background: "linear-gradient(90deg, #1738a4ff 0%, #f1f1f1 30%, #ffffff 70%)",
+                  borderColor: "rgba(100, 150, 255, 0.5)",
+                  background: "linear-gradient(120deg, #4a7dff 0%, #a8c4ff 40%, #ffffff 100%)",
                 }}
               >
+                {/* Hover: slightly deeper blue */}
                 <span
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                  style={{
-                    background: "linear-gradient(90deg, #446bedff 0%, #f1f1f1 30%, #ffffff 70%)",
-                  }}
+                  style={{ background: "linear-gradient(120deg, #3366ee 0%, #90b4ff 40%, #f0f5ff 100%)" }}
                 />
-                <span
-                  className="pointer-events-none absolute -inset-2 rounded-full opacity-60 transition-all duration-300 group-hover:scale-110 group-hover:opacity-80"
-                  style={{
-                    background: "radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 72%)",
-                    filter: "blur(6px)",
-                    transform: "translateY(-60%)",
-                  }}
-                />
-                <span className="relative z-10">Register</span>
+                <span className="relative z-10 tracking-widest">Register</span>
               </a>
             </div>
           </div>
@@ -485,7 +476,7 @@ export default function HeroSection() {
             {/* Top: Date and Location */}
             <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-3 sm:gap-6 inter-var">
               <div className="flex justify-center items-center gap-2">
-                 <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-4.5 sm:h-4.5" aria-hidden="true" fill="none" stroke="#4285F4" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round">
+                 <svg viewBox="0 0 24 24" className="w-[16px] h-[16px] sm:w-[18px] sm:h-[18px]" style={{color: '#4285F4'}} aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                   <line x1="16" y1="2" x2="16" y2="6" />
                   <line x1="8" y1="2" x2="8" y2="6" />
@@ -497,7 +488,7 @@ export default function HeroSection() {
               <div className="hidden md:block w-1 h-1 bg-slate-600 rounded-full" />
               
               <div className="flex justify-center items-center gap-2">
-                 <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-4.5 sm:h-4.5" aria-hidden="true" fill="none" stroke="#4285F4" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round">
+                 <svg viewBox="0 0 24 24" className="w-[16px] h-[16px] sm:w-[18px] sm:h-[18px]" style={{color: '#4285F4'}} aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round">
                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                    <circle cx="12" cy="10" r="3" />
                  </svg>
@@ -511,11 +502,11 @@ export default function HeroSection() {
                 const isSeconds = idx === countdownItems.length - 1;
                 return (
                   <div
-                    key={item.label}
-                    className="flex flex-col items-center px-6 py-3 sm:px-8 sm:py-4 rounded-2xl border border-[#7aa2ff] bg-slate-900/60 backdrop-blur-md shadow-[0_0_32px_0_rgba(122,162,255,0.25),0_0_0_2px_rgba(122,162,255,0.12)] relative"
-                    style={{
-                      boxShadow: "0 0 32px 0 rgba(122,162,255,0.25), 0 0 0 2px rgba(122,162,255,0.12), 0 0 40px 8px rgba(122,162,255,0.18)",
-                    }}
+                    className={`w-full h-full py-2 sm:py-3 absolute left-0 top-0 rounded-[14px] sm:rounded-[20px] outline outline-1 outline-offset-[-1px] flex flex-col justify-center items-center gap-1 sm:gap-2 backdrop-blur-md transition-all duration-300 ${
+                      item.active 
+                        ? "bg-slate-900/60 shadow-[0px_0px_35px_0px_rgba(66,133,244,0.35),inset_0px_1px_8px_0px_rgba(255,255,255,0.15)] outline-[#4285F4]0/50 border border-[#4285F4]/30" 
+                        : "bg-slate-900/40 shadow-[inset_0px_1px_5px_0px_rgba(255,255,255,0.05)] outline-white/5 border border-white/5"
+                    }`}
                   >
                     <span
                       className={`text-center text-2xl sm:text-4xl md:text-[42px] font-bold font-['Consolas'] leading-none drop-shadow-lg ${
