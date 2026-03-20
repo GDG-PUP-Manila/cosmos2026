@@ -77,8 +77,13 @@ export default function AmbientStarfield({ className, density = 1.22 }: AmbientS
 
     const resize = () => {
       const rect = container.getBoundingClientRect();
-      width = Math.max(1, rect.width);
-      height = Math.max(1, rect.height);
+      const newWidth = Math.max(1, rect.width);
+      const newHeight = Math.max(1, rect.height);
+      
+      if (newWidth === width && newHeight === height && stars.length > 0) return;
+
+      width = newWidth;
+      height = newHeight;
       dpr = window.devicePixelRatio || 1;
 
       canvas.width = Math.floor(width * dpr);
@@ -87,11 +92,16 @@ export default function AmbientStarfield({ className, density = 1.22 }: AmbientS
       canvas.style.height = `${height}px`;
 
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
-      stars = createStars(width, height, density);
-      pointer.x = width * 0.5;
-      pointer.y = height * 0.5;
-      pointer.tx = pointer.x;
-      pointer.ty = pointer.y;
+      
+      if (stars.length === 0) {
+        stars = createStars(width, height, density);
+        pointer.x = width * 0.5;
+        pointer.y = height * 0.5;
+        pointer.tx = pointer.x;
+        pointer.ty = pointer.y;
+      }
+      
+      drawFrame();
     };
 
     const updatePointer = (clientX: number, clientY: number) => {
@@ -224,7 +234,7 @@ export default function AmbientStarfield({ className, density = 1.22 }: AmbientS
           stop();
         }
       },
-      { threshold: 0.05 }
+      { threshold: 0 }
     );
     visibilityObserver.observe(container);
 

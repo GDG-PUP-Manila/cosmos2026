@@ -1,10 +1,12 @@
 "use client";
 
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useState, useMemo, memo } from "react";
 import Image from "next/image";
 import { Minus, Plus } from "lucide-react";
 
 import AmbientStarfield from "@/components/ui/ambient-starfield";
+
+const MemoizedAmbientStarfield = memo(AmbientStarfield);
 
 type FaqItem = {
   question: string;
@@ -216,7 +218,7 @@ export default function FaqSection() {
         sizes="100vw"
       />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,10,32,0.2)_0%,rgba(3,9,30,0.38)_42%,rgba(2,8,24,0.62)_100%)]" />
-      <AmbientStarfield className="z-[1] opacity-65" density={0.72} />
+      <MemoizedAmbientStarfield className="z-[1] opacity-65" density={0.72} />
 
       <div className="pointer-events-none absolute inset-0 z-[2] overflow-hidden" aria-hidden="true">
         <div className="absolute left-[1%] top-[12%] hidden w-[240px] md:block lg:left-[5%] lg:w-[300px]">
