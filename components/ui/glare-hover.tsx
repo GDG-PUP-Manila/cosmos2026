@@ -27,7 +27,7 @@ const GlareHover: React.FC<GlareHoverProps> = ({
   borderColor = "transparent",
   children,
   glareColor = "#ffffff",
-  glareOpacity = 0.5,
+  glareOpacity = 0.2,
   glareAngle = -45,
   glareSize = 250,
   transitionDuration = 1800,
@@ -101,6 +101,8 @@ const GlareHover: React.FC<GlareHoverProps> = ({
       }}
       onMouseEnter={animateIn}
       onMouseLeave={animateOut}
+      onTouchStart={animateIn}
+      onTouchEnd={animateOut}
     >
       <div ref={overlayRef} style={overlayStyle} />
       {children}

@@ -78,4 +78,4 @@ This project exists thanks to the structural dedication and incredible talent of
 
 ---
 
-_Built with 💙 by GDG PUP. Designed by Nyzel Cayat. Developed by Aurold John Sadullo and Carlos Jerico Dela Torre. Optimized by Gerald Berongoy and Rhandie Sales Jr._
+_Built with ❤️💙💚💛 by GDG PUP._
