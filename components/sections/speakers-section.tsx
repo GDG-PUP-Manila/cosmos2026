@@ -1,5 +1,4 @@
 import Image from "next/image";
-import AmbientStarfield from "@/components/ui/ambient-starfield";
 
 const speakersData = [
   {
@@ -108,8 +107,6 @@ export default function SpeakersSection() {
           />
         </div>
       </div>
-
-      <AmbientStarfield className="z-[2]" density={0.8} />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 lg:px-8">
         {/* Header Section from Figma */}

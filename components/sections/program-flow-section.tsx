@@ -24,7 +24,6 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "framer-motion";
-import AmbientStarfield from "@/components/ui/ambient-starfield";
 import { TracingBeam } from "@/components/ui/tracing-beam";
 
 type ProgramItem = {
@@ -395,8 +394,6 @@ export default function ProgramFlowSection() {
           className="absolute right-[5%] top-[84%] hidden w-[11rem] rotate-[-8deg] opacity-92 astro-float-c drop-shadow-[0_0_18px_rgba(174,236,255,0.56)] md:block lg:w-[12.5rem]"
         />
       </div>
-
-      <AmbientStarfield className="z-[1]" density={0.8} />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
         <header className="mb-16 md:mb-24 flex flex-col items-center justify-center relative z-10 w-full max-w-4xl mx-auto px-4">

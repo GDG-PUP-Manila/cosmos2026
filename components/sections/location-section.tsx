@@ -4,8 +4,6 @@ import { useRef } from "react";
 import Image from "next/image";
 import { CheckCircle2, MapPin } from "lucide-react";
 
-import AmbientStarfield from "@/components/ui/ambient-starfield";
-
 const BENEFITS = [
   "Build Your Network",
   "Exclusive Industry Insights",
@@ -36,7 +34,6 @@ export default function LocationSection() {
         sizes="100vw"
       />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,27,0.28)_0%,rgba(3,8,26,0.55)_45%,rgba(2,7,22,0.72)_100%)]" />
-      <AmbientStarfield className="z-[1]" density={1.06} />
 
       <div className="relative z-10 mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[1.06fr_0.88fr] lg:items-start lg:gap-16 xl:gap-20">
         <div className="space-y-4">

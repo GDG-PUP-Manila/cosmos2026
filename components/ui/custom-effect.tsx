@@ -1466,7 +1466,7 @@ export default function CustomEffect({
           />
         )}
         <Image
-          src="/assets/CIRBY.webp"
+          src="/assets/CIRBY.png"
           alt="Cursor"
           width={32}
           height={32}

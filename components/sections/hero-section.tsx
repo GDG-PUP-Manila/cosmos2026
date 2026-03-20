@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useEffect, useState, useRef, type MouseEvent } from "react";
-import AmbientStarfield from "@/components/ui/ambient-starfield";
 
 const navItems = [
   { label: "Home", href: "#hero" },
@@ -159,8 +158,6 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0 bg-indigo-900/20 mix-blend-overlay" />
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-gray-950/10 via-gray-950/60 to-gray-950 pointer-events-none" />
 
-      <AmbientStarfield className="z-[1] opacity-70 mix-blend-screen" density={1} />
-      
       {/* Background comets — BEHIND content */}
       <div className="pointer-events-none absolute inset-0 z-[2]" aria-hidden="true">
         {allComets.map((comet) => (

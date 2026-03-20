@@ -1,7 +1,5 @@
 import Image from "next/image";
 
-import AmbientStarfield from "@/components/ui/ambient-starfield";
-
 export default function CtaSection() {
   const registrationUrl = "https://gdg.community.dev/e/my7pyr/";
   const isExternalRegistrationUrl = true;
@@ -10,7 +8,6 @@ export default function CtaSection() {
     <section id="cta" className="relative overflow-hidden px-4 py-16 text-white sm:py-20 md:px-6 md:py-24">
       <Image src="/assets/CTA/BG-CTA.webp" alt="Call to action background" fill className="object-cover object-[center_70%]" sizes="100vw" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,30,0.42)_0%,rgba(2,8,28,0.64)_52%,rgba(1,5,18,0.84)_100%)]" />
-      <AmbientStarfield className="z-[1] opacity-70" density={0.72} />
 
       <div className="pointer-events-none absolute inset-0 z-[2] overflow-hidden" aria-hidden="true">
         <div className="absolute inset-y-0 left-0 w-[18%] bg-[linear-gradient(90deg,rgba(44,123,255,0.16)_0%,rgba(44,123,255,0)_100%)]" />

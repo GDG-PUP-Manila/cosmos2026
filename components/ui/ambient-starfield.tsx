@@ -25,7 +25,7 @@ function clamp(value: number, min: number, max: number) {
 
 function createStars(width: number, height: number, density: number): Star[] {
   const area = width * height;
-  const count = clamp(Math.round((area / 10500) * density), 48, 420);
+  const count = clamp(Math.round((area / 10500) * density), 48, 2000);
   const stars: Star[] = [];
 
   for (let i = 0; i < count; i += 1) {
@@ -253,10 +253,10 @@ export default function AmbientStarfield({ className, density = 1.22 }: AmbientS
   return (
     <div
       ref={containerRef}
-      className={`pointer-events-none absolute inset-0 overflow-hidden ${className ?? ""}`}
+      className={`pointer-events-none overflow-hidden ${className ?? ""}`}
       aria-hidden="true"
     >
-      <canvas ref={canvasRef} className="h-full w-full opacity-80" />
+      <canvas ref={canvasRef} className="h-full w-full" />
     </div>
   );
 }

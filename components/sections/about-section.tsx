@@ -1,5 +1,4 @@
 import Image from "next/image";
-import AmbientStarfield from "@/components/ui/ambient-starfield";
 import ParallaxTilt from "@/components/ui/parallax-tilt";
 
 export default function AboutSection() {
@@ -18,7 +17,6 @@ export default function AboutSection() {
         />
       </div>
       <div className="absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(3,7,18,0.24)_0%,rgba(3,7,18,0.42)_45%,rgba(3,7,18,0.58)_100%)]" />
-      <AmbientStarfield className="z-[2]" density={1.05} />
       <div className="pointer-events-none absolute inset-0 z-[3]" aria-hidden="true">
         <div className="absolute -left-14 top-[31%] hidden w-52 -rotate-8 opacity-95 md:block lg:-left-10 lg:w-64 xl:-left-6 xl:w-72">
           <Image

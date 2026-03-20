@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-import AmbientStarfield from "@/components/ui/ambient-starfield";
 import GlareHover from "@/components/ui/glare-hover";
 
 const PARTNER_ICONS = [
@@ -22,7 +21,6 @@ export default function SponsorsSection() {
         sizes="100vw"
       />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,10,32,0.26)_0%,rgba(3,9,30,0.44)_40%,rgba(2,8,24,0.68)_100%)]" />
-      <AmbientStarfield className="z-[1] opacity-75" density={0.9} />
 
       <div className="pointer-events-none absolute inset-0 z-[2] overflow-hidden" aria-hidden="true">
         <div className="absolute -left-45 bottom-[15%] hidden w-[590px] opacity-88 md:block lg:w-[700px]">
