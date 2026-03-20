@@ -202,6 +202,14 @@ export default function FooterSection() {
                 </span>
                 <div className="flex flex-col space-y-2">
                   <a
+                    href="https://www.linkedin.com/in/aidan-tiu-58650520b"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors duration-200 hover:text-[#d8e7ff]"
+                  >
+                    Aidan Tiu
+                  </a>
+                  <a
                     href="https://www.linkedin.com/in/geraldberongoy/"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -224,14 +232,6 @@ export default function FooterSection() {
                     className="transition-colors duration-200 hover:text-[#d8e7ff]"
                   >
                     Erwin Daguinotas
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/aidan-tiu-58650520b"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-colors duration-200 hover:text-[#d8e7ff]"
-                  >
-                    Aidan Tiu
                   </a>
                   <a
                     href="https://www.linkedin.com/in/ajsadullo/"
