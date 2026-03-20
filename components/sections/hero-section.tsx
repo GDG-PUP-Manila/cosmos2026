@@ -484,7 +484,7 @@ export default function HeroSection() {
             {/* Top: Date and Location */}
             <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-3 sm:gap-6 inter-var">
               <div className="flex justify-center items-center gap-2">
-                 <svg viewBox="0 0 24 24" className="w-[16px] h-[16px] sm:w-[18px] sm:h-[18px] text-indigo-400" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round">
+                 <svg viewBox="0 0 24 24" className="w-[16px] h-[16px] sm:w-[18px] sm:h-[18px]" style={{color: '#4285F4'}} aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                   <line x1="16" y1="2" x2="16" y2="6" />
                   <line x1="8" y1="2" x2="8" y2="6" />
@@ -496,7 +496,7 @@ export default function HeroSection() {
               <div className="hidden md:block w-1 h-1 bg-slate-600 rounded-full" />
               
               <div className="flex justify-center items-center gap-2">
-                 <svg viewBox="0 0 24 24" className="w-[16px] h-[16px] sm:w-[18px] sm:h-[18px] text-indigo-400" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round">
+                 <svg viewBox="0 0 24 24" className="w-[16px] h-[16px] sm:w-[18px] sm:h-[18px]" style={{color: '#4285F4'}} aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round">
                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                    <circle cx="12" cy="10" r="3" />
                  </svg>
@@ -514,7 +514,7 @@ export default function HeroSection() {
                   <div
                     className={`w-full h-full py-2 sm:py-3 absolute left-0 top-0 rounded-[14px] sm:rounded-[20px] outline outline-1 outline-offset-[-1px] flex flex-col justify-center items-center gap-1 sm:gap-2 backdrop-blur-md transition-all duration-300 ${
                       item.active 
-                        ? "bg-slate-900/60 shadow-[0px_0px_35px_0px_rgba(168,85,247,0.35),inset_0px_1px_8px_0px_rgba(255,255,255,0.15)] outline-[#4285F4]0/50 border border-[#4285F4]/30" 
+                        ? "bg-slate-900/60 shadow-[0px_0px_35px_0px_rgba(66,133,244,0.35),inset_0px_1px_8px_0px_rgba(255,255,255,0.15)] outline-[#4285F4]0/50 border border-[#4285F4]/30" 
                         : "bg-slate-900/40 shadow-[inset_0px_1px_5px_0px_rgba(255,255,255,0.05)] outline-white/5 border border-white/5"
                     }`}
                   >
