@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     description: "GDG PUP's biggest tech event of the year",
     images: [
       {
-        url: "/assets/infinity.svg",
+        url: "/assets/infinity.png",
         width: 800,
         height: 600,
         alt: "COSMOS 2026 Logo",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "COSMOS 2026",
     description: "GDG PUP's biggest tech event of the year",
-    images: ["/assets/infinity.svg"],
+    images: ["/assets/infinity.png"],
   },
 };
 
