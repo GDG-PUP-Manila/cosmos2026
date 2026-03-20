@@ -25,12 +25,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "COSMOS 2026",
     description: "GDG PUP's biggest tech event of the year",
+    type: "website",
     images: [
       {
-        url: "/assets/infinity.svg",
-        width: 800,
-        height: 600,
+        url: `${process.env.NEXT_PUBLIC_BASE_URL || "https://cosmos2026.gdgpup.org"}/assets/infinity.png`,
+        width: 1200,
+        height: 630,
         alt: "COSMOS 2026 Logo",
+        type: "image/png",
       },
     ],
   },
@@ -38,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "COSMOS 2026",
     description: "GDG PUP's biggest tech event of the year",
-    images: ["/assets/infinity.svg"],
+    images: [`${process.env.NEXT_PUBLIC_BASE_URL || "https://cosmos2026.gdgpup.org"}/assets/infinity.png`],
   },
 };
 
