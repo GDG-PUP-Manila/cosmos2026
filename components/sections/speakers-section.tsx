@@ -133,7 +133,7 @@ export default function SpeakersSection() {
               width={778}
               height={96}
               draggable={false}
-              className="object-contain object-left ml-[-22px] md:ml-[-18px]"
+              className="object-contain object-left ml-[-8px] md:ml-[-18px]"
               priority
             />
           </div>
