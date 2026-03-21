@@ -109,7 +109,7 @@ const FAQ_ITEMS: FaqItem[] = [
             rel="noreferrer"
             className="font-semibold text-[#5db3ff] underline underline-offset-2"
           >
-            LINK
+            registration link
           </a>{" "}
           to RSVP, wait for a confirmation of your slot. Once registered, you will receive your event pass and QR code
           for day-of check-in.
