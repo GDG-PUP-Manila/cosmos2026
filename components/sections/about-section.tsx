@@ -6,7 +6,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative flex w-full scroll-mt-32 items-center justify-center overflow-hidden bg-[#030712] px-6 py-24 font-sans text-white md:px-12"
+      className="relative flex w-full scroll-mt-32 items-center justify-center overflow-visible bg-[#030712] px-6 py-24 font-sans text-white md:px-12"
     >
       <div className="absolute inset-0 z-0">
         <Image
@@ -81,7 +81,7 @@ export default function AboutSection() {
           {/* Image */}
           <div className="flex w-full flex-1 justify-center md:justify-end">
             <div className="group relative w-full max-w-[520px]">
-              <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[130%] w-[122%] -translate-x-1/2 -translate-y-1/2 rounded-[999px] bg-[radial-gradient(ellipse_at_center,rgba(235,246,255,0.48)_0%,rgba(182,220,255,0.28)_42%,transparent_78%)] blur-3xl transition-all duration-500 group-hover:scale-110 group-hover:opacity-100" />
+              <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[130%] w-[122%] -translate-x-1/2 -translate-y-1/2 rounded-[999px] blur-3xl transition-all duration-500 group-hover:scale-110 group-hover:opacity-100" />
               <ParallaxTilt
                 className="relative z-10 transition-all duration-500 ease-out group-hover:-translate-y-2"
                 maxTilt={11}
@@ -91,10 +91,10 @@ export default function AboutSection() {
                 <Image
                   src="/assets/about/logo-about.svg"
                   alt="Infinity Logo"
-                  width={559}
-                  height={227}
+                  width={719}
+                  height={291}
                   draggable={false}
-                  className="relative z-10 w-full max-w-[500px] drop-shadow-[0_0_20px_rgba(206,234,255,0.58)] transition-all duration-500 ease-out group-hover:scale-[1.035] group-hover:drop-shadow-[0_0_34px_rgba(206,234,255,0.84)]"
+                  className="relative z-10 w-full max-w-[500px] transition-all duration-500 ease-out group-hover:scale-[1.035]"
                 />
               </ParallaxTilt>
             </div>
