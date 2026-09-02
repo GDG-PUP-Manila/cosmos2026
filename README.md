@@ -21,7 +21,9 @@
 
 **Operate mode.** COSMOS 2026 ran on **March 24, 2026**. The site remains live at [cosmos.gdgpup.org](https://cosmos.gdgpup.org) as an archive of the event. Do not treat this as an upcoming launch.
 
-Owner: **GDG PUP Technology** (incoming CTO). Handover **2026-09-02**. Outgoing CTO Carlos Jerico Dela Torre remains listed under Contributors for historical credit.
+Owner: **GDG PUP Technology** (incoming CTO). Handover **2026-09-02**.
+
+Docs: [docs/state.md](docs/state.md) · [docs/index.md](docs/index.md) · [FLAGS.md](FLAGS.md) · [AGENTS.md](AGENTS.md)
 
 ---
 
@@ -188,7 +190,7 @@ This project is made possible by the GDG PUP community:
 | 💻 **Development**    | [Erwin Daguinotas](https://www.linkedin.com/in/erwin-daguinotas/) - Web Development Lead               |
 | ⚙️ **DevOps**         | [Aidan Tiu](https://www.linkedin.com/in/aidan-tiu-58650520b/) - DevOps Lead                            |
 | 🧠 **Infrastructure** | [Aurold John Sadullo](https://www.linkedin.com/in/ajsadullo/) - DCTO for Infrastructure & Intelligence |
-| 🚀 **CTO**            | [Carlos Jerico Dela Torre](https://www.linkedin.com/in/delatorrecj/) - Chief Technology Officer (outgoing, historical) |
+| 🚀 **CTO**            | [Carlos Jerico Dela Torre](https://www.linkedin.com/in/delatorrecj/) - Chief Technology Officer (2025-2026) |
 
 ---
 

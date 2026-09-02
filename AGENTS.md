@@ -2,11 +2,20 @@
 
 COSMOS 2026 official event website for GDG on Campus PUP Manila.
 
+## Read order (every session)
+
+1. [docs/state.md](docs/state.md) - Operate / archive position.
+2. [docs/index.md](docs/index.md) - inventory of docs that exist.
+3. [FLAGS.md](FLAGS.md) - open improvement register.
+4. [README.md](README.md) - stack, structure, contributors.
+
+Do not auto-load archive folders (none present beyond treating the live site itself as event archive).
+
 ## Operating mode
 
 **Event is over** (March 24, 2026). **Operate mode.** The site remains live as an archive. Do not rebuild as a launch campaign unless asked.
 
-Owner: GDG PUP Technology (incoming CTO). Handover 2026-09-02. Outgoing CTO Carlos Jerico Dela Torre is credited historically in README Contributors.
+Owner: GDG PUP Technology (incoming CTO). Handover 2026-09-02.
 
 ## Pinned stack (from package.json)
 
@@ -29,6 +38,6 @@ See [README.md](README.md) Project Structure. Entry: `app/page.tsx` assembles se
 
 ## Notes for agents
 
-- Prefer this file and README. There is no PRD, SDD, DSD, QAD, or OPS doc set for this repo.
-- Keep contributor credits; the CTO listing is historical.
+- Prefer state, FLAGS, this file, and README. There is no PRD, SDD, DSD, QAD, or OPS doc set for this repo.
+- Keep contributor credits; CTO line uses Chief Technology Officer (2025-2026).
 - Do not introduce an FMD engine or suite into this repository.
