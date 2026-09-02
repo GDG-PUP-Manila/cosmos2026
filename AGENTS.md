@@ -41,3 +41,9 @@ See [README.md](README.md) Project Structure. Entry: `app/page.tsx` assembles se
 - Prefer state, FLAGS, this file, and README. There is no PRD, SDD, DSD, QAD, or OPS doc set for this repo.
 - Keep contributor credits; CTO line uses Chief Technology Officer (2025-2026).
 - Do not introduce an FMD engine or suite into this repository.
+
+## FMD
+
+**Built on FMD philosophy (v1.31.0)** - INDEX / STATE / FLAGS control plane for humans and AI; no FMD engine install.
+
+Read order stays: docs/state.md then docs/index.md then FLAGS.md then task docs.
