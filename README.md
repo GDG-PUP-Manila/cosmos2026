@@ -17,6 +17,14 @@
 
 ---
 
+## Status / Handover
+
+**Operate mode.** COSMOS 2026 ran on **March 24, 2026**. The site remains live at [cosmos.gdgpup.org](https://cosmos.gdgpup.org) as an archive of the event. Do not treat this as an upcoming launch.
+
+Owner: **GDG PUP Technology** (incoming CTO). Handover **2026-09-02**. Outgoing CTO Carlos Jerico Dela Torre remains listed under Contributors for historical credit.
+
+---
+
 ## 📖 About
 
 **COSMOS** is the flagship technology conference organized by **Google Developer Group (GDG) on Campus Polytechnic University of the Philippines, Manila**. This repository contains the source code for the official event website.
@@ -25,23 +33,23 @@ The conference bridges the gap between academic learning and real-world industry
 
 |                 | Details                                                       |
 | --------------- | ------------------------------------------------------------- |
-| 📅 **Date**     | March 24, 2026                                                |
+| 📅 **Date**     | March 24, 2026 (completed)                                    |
 | 📍 **Venue**    | PUP Bulawagang Balagtas                                       |
-| 🎟️ **Register** | [GDG Community Platform](https://gdg.community.dev/e/my7pyr/) |
+| 🎟️ **Register** | [GDG Community Platform](https://gdg.community.dev/e/my7pyr/) (registration closed) |
 
 ---
 
 ## ✨ Highlights
 
-- **Cosmic-Themed Design** — A fully immersive dark-space aesthetic with neon glows, radial gradients, and twinkling constellations
-- **Custom Mascots** — _Sparky_ and _Cirby_ are rendered as animated SVG constellations in the hero section
-- **Interactive 3D Flip Cards** — Speaker cards use CSS 3D transforms with a Framer Motion flip animation on hover
-- **Fluid Cursor Effects** — A WebGL-powered splash cursor and a custom dot-follower cursor for a premium feel
-- **Smooth Scrolling** — Powered by [Lenis](https://github.com/darkroomengineering/lenis) for buttery-smooth page navigation
-- **Parallax & Glare Effects** — Custom hooks provide tilt-on-hover and glare lighting to interactive elements
-- **Ambient Starfield** — A procedurally generated, randomly twinkling background layer spanning the entire page
-- **Responsive Countdown** — Real-time, animated countdown to the event date
-- **Fully Static Export** — The site builds to a static bundle (`next export`) for fast, CDN-friendly deployment
+- **Cosmic-Themed Design**: A fully immersive dark-space aesthetic with neon glows, radial gradients, and twinkling constellations
+- **Custom Mascots**: _Sparky_ and _Cirby_ are rendered as animated SVG constellations in the hero section
+- **Interactive 3D Flip Cards**: Speaker cards use CSS 3D transforms with a Framer Motion flip animation on hover
+- **Fluid Cursor Effects**: A WebGL-powered splash cursor and a custom dot-follower cursor for a premium feel
+- **Smooth Scrolling**: Powered by [Lenis](https://github.com/darkroomengineering/lenis) for buttery-smooth page navigation
+- **Parallax & Glare Effects**: Custom hooks provide tilt-on-hover and glare lighting to interactive elements
+- **Ambient Starfield**: A procedurally generated, randomly twinkling background layer spanning the entire page
+- **Responsive Countdown**: Real-time, animated countdown to the event date (historical; event has passed)
+- **Fully Static Export**: The site builds to a static bundle via Next.js `output: "export"` for fast, CDN-friendly deployment
 
 ---
 
@@ -109,7 +117,7 @@ cosmos2026/
 ### Prerequisites
 
 - **Node.js** ≥ 18.x
-- **pnpm** ≥ 9.x (recommended) — Install with `npm install -g pnpm`
+- **pnpm** ≥ 9.x (recommended). Install with `npm install -g pnpm`
 
 ### Installation
 
@@ -174,13 +182,13 @@ This project is made possible by the GDG PUP community:
 
 | Role                  | Name                                                                                                   |
 | --------------------- | ------------------------------------------------------------------------------------------------------ |
-| 🎨 **Design**         | [Nyzel Cayat](https://www.linkedin.com/in/nyzel-cayat0/) — DCTO for Development & Experience           |
-| 💻 **Development**    | [Gerald Berongoy](https://www.linkedin.com/in/geraldberongoy/) — Web Development Learning Head         |
-| 💻 **Development**    | [Rhandie Sales Jr.](https://www.linkedin.com/in/rhandie-sales/) — Web Development Co-Lead              |
-| 💻 **Development**    | [Erwin Daguinotas](https://www.linkedin.com/in/erwin-daguinotas/) — Web Development Lead               |
-| ⚙️ **DevOps**         | [Aidan Tiu](https://www.linkedin.com/in/aidan-tiu-58650520b/) — DevOps Lead                            |
-| 🧠 **Infrastructure** | [Aurold John Sadullo](https://www.linkedin.com/in/ajsadullo/) — DCTO for Infrastructure & Intelligence |
-| 🚀 **CTO**            | [Carlos Jerico Dela Torre](https://www.linkedin.com/in/delatorrecj/) — Chief Technology Officer        |
+| 🎨 **Design**         | [Nyzel Cayat](https://www.linkedin.com/in/nyzel-cayat0/) - DCTO for Development & Experience           |
+| 💻 **Development**    | [Gerald Berongoy](https://www.linkedin.com/in/geraldberongoy/) - Web Development Learning Head         |
+| 💻 **Development**    | [Rhandie Sales Jr.](https://www.linkedin.com/in/rhandie-sales/) - Web Development Co-Lead              |
+| 💻 **Development**    | [Erwin Daguinotas](https://www.linkedin.com/in/erwin-daguinotas/) - Web Development Lead               |
+| ⚙️ **DevOps**         | [Aidan Tiu](https://www.linkedin.com/in/aidan-tiu-58650520b/) - DevOps Lead                            |
+| 🧠 **Infrastructure** | [Aurold John Sadullo](https://www.linkedin.com/in/ajsadullo/) - DCTO for Infrastructure & Intelligence |
+| 🚀 **CTO**            | [Carlos Jerico Dela Torre](https://www.linkedin.com/in/delatorrecj/) - Chief Technology Officer (outgoing, historical) |
 
 ---
 
