@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌌 COSMOS 2026
+# COSMOS 2026
 
 **GDG PUP's Biggest Tech Event of the Year**
 
@@ -11,23 +11,25 @@
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-FF0055?logo=framer&logoColor=white)](https://www.framer.com/motion/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-🔗 **[cosmos.gdgpup.org](https://cosmos.gdgpup.org)**
+**[cosmos.gdgpup.org](https://cosmos.gdgpup.org)**
 
 </div>
 
----
+## Table of Contents
 
-## Status / Handover
+- [About](#about)
+- [Status / Handover](#status--handover)
+- [Highlights](#highlights)
+- [Quick start](#quick-start)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [Contributors](#contributors)
+- [Connect with GDG PUP](#connect-with-gdg-pup)
+- [License](#license)
 
-**Operate mode.** COSMOS 2026 ran on **March 24, 2026**. The site remains live at [cosmos.gdgpup.org](https://cosmos.gdgpup.org) as an archive of the event. Do not treat this as an upcoming launch.
-
-Owner: **GDG PUP Technology** (incoming CTO). Handover **2026-09-02**.
-
-Docs: [docs/state.md](docs/state.md) · [docs/index.md](docs/index.md) · [FLAGS.md](FLAGS.md) · [AGENTS.md](AGENTS.md)
-
----
-
-## 📖 About
+## About
 
 **COSMOS** is the flagship technology conference organized by **Google Developer Group (GDG) on Campus Polytechnic University of the Philippines, Manila**. This repository contains the source code for the official event website.
 
@@ -35,13 +37,19 @@ The conference bridges the gap between academic learning and real-world industry
 
 |                 | Details                                                       |
 | --------------- | ------------------------------------------------------------- |
-| 📅 **Date**     | March 24, 2026 (completed)                                    |
-| 📍 **Venue**    | PUP Bulawagang Balagtas                                       |
-| 🎟️ **Register** | [GDG Community Platform](https://gdg.community.dev/e/my7pyr/) (registration closed) |
+| **Date**     | March 24, 2026 (completed)                                    |
+| **Venue**    | PUP Bulawagang Balagtas                                       |
+| **Register** | [GDG Community Platform](https://gdg.community.dev/e/my7pyr/) (registration closed) |
 
----
+Live archive: [cosmos.gdgpup.org](https://cosmos.gdgpup.org)
 
-## ✨ Highlights
+## Status / Handover
+
+**Operate mode.** COSMOS 2026 ran on **March 24, 2026**. The site remains live at [cosmos.gdgpup.org](https://cosmos.gdgpup.org) as an archive of the event. Do not treat this as an upcoming launch.
+
+Owner: **GDG PUP Technology** (incoming CTO). Handover **2026-09-02**.
+
+## Highlights
 
 - **Cosmic-Themed Design**: A fully immersive dark-space aesthetic with neon glows, radial gradients, and twinkling constellations
 - **Custom Mascots**: _Sparky_ and _Cirby_ are rendered as animated SVG constellations in the hero section
@@ -53,68 +61,7 @@ The conference bridges the gap between academic learning and real-world industry
 - **Responsive Countdown**: Real-time, animated countdown to the event date (historical; event has passed)
 - **Fully Static Export**: The site builds to a static bundle via Next.js `output: "export"` for fast, CDN-friendly deployment
 
----
-
-## 💻 Tech Stack
-
-| Category            | Technology                                                                   |
-| ------------------- | ---------------------------------------------------------------------------- |
-| **Framework**       | [Next.js 16](https://nextjs.org/) (App Router, Static Export)                |
-| **UI Library**      | [React 19](https://react.dev/)                                               |
-| **Language**        | [TypeScript 5](https://www.typescriptlang.org/)                              |
-| **Styling**         | [Tailwind CSS 4](https://tailwindcss.com/) + Custom CSS Keyframes            |
-| **Animations**      | [Framer Motion 12](https://www.framer.com/motion/)                           |
-| **Smooth Scroll**   | [Lenis](https://github.com/darkroomengineering/lenis)                        |
-| **Icons**           | [Lucide React](https://lucide.dev/)                                          |
-| **Bundle Analysis** | [@next/bundle-analyzer](https://www.npmjs.com/package/@next/bundle-analyzer) |
-| **Package Manager** | [pnpm](https://pnpm.io/)                                                     |
-
----
-
-## 🗂️ Project Structure
-
-```
-cosmos2026/
-├── app/                        # Next.js App Router
-│   ├── globals.css             # Global styles & CSS custom properties
-│   ├── layout.tsx              # Root HTML layout, metadata, fonts, providers
-│   └── page.tsx                # Main page (assembles all sections)
-├── components/
-│   ├── layouts/                # Page-level layout wrappers
-│   │   └── RootLayout.tsx      # Navigation bar + content wrapper
-│   ├── providers/              # React context providers
-│   │   └── smooth-scroll-provider.tsx
-│   ├── sections/               # Page sections (rendered top-to-bottom)
-│   │   ├── hero-section.tsx
-│   │   ├── about-section.tsx
-│   │   ├── speakers-section.tsx
-│   │   ├── program-flow-section.tsx
-│   │   ├── location-section.tsx
-│   │   ├── sponsors-section.tsx
-│   │   ├── faq-section.tsx
-│   │   ├── cta-section.tsx
-│   │   └── footer-section.tsx
-│   └── ui/                     # Reusable UI primitives & effects
-│       ├── ambient-starfield.tsx
-│       ├── custom-cursor.tsx
-│       ├── custom-effect.tsx
-│       ├── glare-hover.tsx
-│       ├── parallax-tilt.tsx
-│       ├── splash-cursor.tsx
-│       └── tracing-beam.tsx
-├── lib/                        # Shared utilities
-│   └── utils.ts                # Classname merging (clsx + tailwind-merge)
-├── public/
-│   └── assets/                 # Images, SVGs, and optimized WebP files
-├── next.config.ts
-├── package.json
-├── tsconfig.json
-└── pnpm-lock.yaml
-```
-
----
-
-## 🛠️ Getting Started
+## Quick start
 
 ### Prerequisites
 
@@ -159,9 +106,71 @@ cosmos2026/
 | ---------------------- | --------------------------- | ----------------------------------- |
 | `NEXT_PUBLIC_BASE_URL` | `https://cosmos.gdgpup.org` | Base URL for OpenGraph and metadata |
 
----
+## Tech Stack
 
-## 🤝 Contributing
+| Category            | Technology                                                                   |
+| ------------------- | ---------------------------------------------------------------------------- |
+| **Framework**       | [Next.js 16](https://nextjs.org/) (App Router, Static Export)                |
+| **UI Library**      | [React 19](https://react.dev/)                                               |
+| **Language**        | [TypeScript 5](https://www.typescriptlang.org/)                              |
+| **Styling**         | [Tailwind CSS 4](https://tailwindcss.com/) + Custom CSS Keyframes            |
+| **Animations**      | [Framer Motion 12](https://www.framer.com/motion/)                           |
+| **Smooth Scroll**   | [Lenis](https://github.com/darkroomengineering/lenis)                        |
+| **Icons**           | [Lucide React](https://lucide.dev/)                                          |
+| **Bundle Analysis** | [@next/bundle-analyzer](https://www.npmjs.com/package/@next/bundle-analyzer) |
+| **Package Manager** | [pnpm](https://pnpm.io/)                                                     |
+
+## Project Structure
+
+```
+cosmos2026/
+├── app/                        # Next.js App Router
+│   ├── globals.css             # Global styles & CSS custom properties
+│   ├── layout.tsx              # Root HTML layout, metadata, fonts, providers
+│   └── page.tsx                # Main page (assembles all sections)
+├── components/
+│   ├── layouts/                # Page-level layout wrappers
+│   │   └── RootLayout.tsx      # Navigation bar + content wrapper
+│   ├── providers/              # React context providers
+│   │   └── smooth-scroll-provider.tsx
+│   ├── sections/               # Page sections (rendered top-to-bottom)
+│   │   ├── hero-section.tsx
+│   │   ├── about-section.tsx
+│   │   ├── speakers-section.tsx
+│   │   ├── program-flow-section.tsx
+│   │   ├── location-section.tsx
+│   │   ├── sponsors-section.tsx
+│   │   ├── faq-section.tsx
+│   │   ├── cta-section.tsx
+│   │   └── footer-section.tsx
+│   └── ui/                     # Reusable UI primitives & effects
+│       ├── ambient-starfield.tsx
+│       ├── custom-cursor.tsx
+│       ├── custom-effect.tsx
+│       ├── glare-hover.tsx
+│       ├── parallax-tilt.tsx
+│       ├── splash-cursor.tsx
+│       └── tracing-beam.tsx
+├── lib/                        # Shared utilities
+│   └── utils.ts                # Classname merging (clsx + tailwind-merge)
+├── public/
+│   └── assets/                 # Images, SVGs, and optimized WebP files
+├── next.config.ts
+├── package.json
+├── tsconfig.json
+└── pnpm-lock.yaml
+```
+
+## Documentation
+
+| Doc | Purpose |
+|-----|---------|
+| [State](docs/state.md) | Operate position, ownership, cold start |
+| [Index](docs/index.md) | Document manifest |
+| [FLAGS](FLAGS.md) | Improvement register |
+| [AGENTS](AGENTS.md) | Agent read order |
+
+## Contributing
 
 We welcome contributions! If you'd like to help improve the COSMOS 2026 website:
 
@@ -176,25 +185,19 @@ We welcome contributions! If you'd like to help improve the COSMOS 2026 website:
 > [!NOTE]
 > Please ensure your code passes linting (`pnpm run lint`) before opening a PR.
 
----
+## Contributors
 
-## 👥 Contributors
+This project is made possible by the GDG PUP community. Names below match git commit authors, mapped via the GDG PUP contributors roster:
 
-This project is made possible by the GDG PUP community:
+| Role | Name |
+| --- | --- |
+| Development | [Gerald Berongoy](https://www.linkedin.com/in/geraldberongoy/) - Senior Backend Developer / Web Development Learning Head |
+| Development | [Rhandie Sales](https://www.linkedin.com/in/rhandie-sales/) - Senior Frontend Developer / Web Development Co Lead |
+| Development | [Erwin Daguinotas](https://www.linkedin.com/in/erwin-daguinotas/) - Web Development Lead |
+| Infrastructure | [Aurold John Sadullo](https://www.linkedin.com/in/ajsadullo/) - DCTO for Infrastructure and Intelligence |
+| CTO | [Carlos Jerico Dela Torre](https://www.linkedin.com/in/delatorrecj/) - Chief Technology Officer (2025-2026) |
 
-| Role                  | Name                                                                                                   |
-| --------------------- | ------------------------------------------------------------------------------------------------------ |
-| 🎨 **Design**         | [Nyzel Cayat](https://www.linkedin.com/in/nyzel-cayat0/) - DCTO for Development & Experience           |
-| 💻 **Development**    | [Gerald Berongoy](https://www.linkedin.com/in/geraldberongoy/) - Web Development Learning Head         |
-| 💻 **Development**    | [Rhandie Sales Jr.](https://www.linkedin.com/in/rhandie-sales/) - Web Development Co-Lead              |
-| 💻 **Development**    | [Erwin Daguinotas](https://www.linkedin.com/in/erwin-daguinotas/) - Web Development Lead               |
-| ⚙️ **DevOps**         | [Aidan Tiu](https://www.linkedin.com/in/aidan-tiu-58650520b/) - DevOps Lead                            |
-| 🧠 **Infrastructure** | [Aurold John Sadullo](https://www.linkedin.com/in/ajsadullo/) - DCTO for Infrastructure & Intelligence |
-| 🚀 **CTO**            | [Carlos Jerico Dela Torre](https://www.linkedin.com/in/delatorrecj/) - Chief Technology Officer (2025-2026) |
-
----
-
-## 🔗 Connect with GDG PUP
+## Connect with GDG PUP
 
 <div align="center">
 
@@ -206,16 +209,12 @@ This project is made possible by the GDG PUP community:
 
 </div>
 
----
-
-## 📄 License
+## License
 
 This project is licensed under the [MIT License](LICENSE).
 
----
-
 <div align="center">
 
-_Built with ❤️💙💚💛 by **GDG PUP ^-^**_
+_Built with care by **GDG PUP**_
 
 </div>
