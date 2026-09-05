@@ -10,6 +10,8 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-FF0055?logo=framer&logoColor=white)](https://www.framer.com/motion/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Status: Archive](https://img.shields.io/badge/Status-Archive-lightgrey)](docs/state.md)
+[![FMD philosophy: 1.31.0](https://img.shields.io/badge/FMD%20philosophy-1.31.0-blue)](AGENTS.md)
 
 **[cosmos.gdgpup.org](https://cosmos.gdgpup.org)**
 
@@ -18,6 +20,7 @@
 ## Table of Contents
 
 - [About](#about)
+- [Start here](#start-here)
 - [Status / Handover](#status--handover)
 - [Highlights](#highlights)
 - [Quick start](#quick-start)
@@ -42,6 +45,12 @@ The conference bridges the gap between academic learning and real-world industry
 | **Register** | [GDG Community Platform](https://gdg.community.dev/e/my7pyr/) (registration closed) |
 
 Live archive: [cosmos.gdgpup.org](https://cosmos.gdgpup.org)
+
+## Start here
+
+- **Humans:** this README, then [docs/state.md](docs/state.md)
+- **Agents:** [AGENTS.md](AGENTS.md) (state → index → FLAGS)
+- **Contributors:** table below
 
 ## Status / Handover
 
@@ -187,15 +196,15 @@ We welcome contributions! If you'd like to help improve the COSMOS 2026 website:
 
 ## Contributors
 
-This project is made possible by the GDG PUP community. Names below match git commit authors, mapped via the GDG PUP contributors roster:
+This project is made possible by the GDG PUP community.
 
-| Role | Name |
-| --- | --- |
-| Development | [Gerald Berongoy](https://www.linkedin.com/in/geraldberongoy/) - Senior Backend Developer / Web Development Learning Head |
-| Development | [Rhandie Sales](https://www.linkedin.com/in/rhandie-sales/) - Senior Frontend Developer / Web Development Co Lead |
-| Development | [Erwin Daguinotas](https://www.linkedin.com/in/erwin-daguinotas/) - Web Development Lead |
-| Infrastructure | [Aurold John Sadullo](https://www.linkedin.com/in/ajsadullo/) - DCTO for Infrastructure and Intelligence |
-| CTO | [Carlos Jerico Dela Torre](https://www.linkedin.com/in/delatorrecj/) - Chief Technology Officer (2025-2026) |
+| Name | Role | GitHub |
+| --- | --- | --- |
+| [Carlos Jerico Dela Torre](https://www.linkedin.com/in/delatorrecj) | Chief Technology Officer (2025-2026) | [@delatorrecj](https://github.com/delatorrecj) |
+| [Aurold John Sadullo](https://www.linkedin.com/in/ajsadullo) | DCTO for Infrastructure and Intelligence | [@iamaoii](https://github.com/iamaoii) |
+| [Erwin Daguinotas](https://www.linkedin.com/in/erwin-daguinotas) | Web Development Lead | [@SauceCode01](https://github.com/SauceCode01) |
+| [Gerald Berongoy](https://www.linkedin.com/in/geraldberongoy) | Senior Backend Developer / Web Development Learning Head | [@geraldsberongoy](https://github.com/geraldsberongoy) |
+| [Rhandie Sales](https://www.linkedin.com/in/rhandie-sales) | Senior Frontend Developer / Web Development Co Lead | [@r0undy](https://github.com/r0undy) |
 
 ## Connect with GDG PUP
 
